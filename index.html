@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Guest Manager API Documentation - REST API v1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -209,12 +209,10 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <h1 class="logo">guest<span>manager</span><small>API Documentation</small></h1>
+
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">JSON</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -223,111 +221,375 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#base-url" class="toc-h2 toc-link" data-title="Introduction">Base URL</a>
+                  </li>
+                  <li>
+                    <a href="#versioning" class="toc-h2 toc-link" data-title="Introduction">Versioning</a>
+                  </li>
+                  <li>
+                    <a href="#requests" class="toc-h2 toc-link" data-title="Introduction">Requests</a>
+                  </li>
+                  <li>
+                    <a href="#responses" class="toc-h2 toc-link" data-title="Introduction">Responses</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Kittens">Get All Kittens</a>
+                    <a href="#api-keys" class="toc-h2 toc-link" data-title="Authentication">API Keys</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#topics" class="toc-h1 toc-link" data-title="Topics">Topics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#common-attributes" class="toc-h2 toc-link" data-title="Topics">Common attributes</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Get a Specific Kitten</a>
+                    <a href="#data-types" class="toc-h2 toc-link" data-title="Topics">Data Types</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Delete a Specific Kitten</a>
+                    <a href="#filters" class="toc-h2 toc-link" data-title="Topics">Filters</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Topics">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#fields-and-relationships" class="toc-h2 toc-link" data-title="Topics">Fields and Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#sorting" class="toc-h2 toc-link" data-title="Topics">Sorting</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#status-codes" class="toc-h2 toc-link" data-title="Errors">Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#responses" class="toc-h2 toc-link" data-title="Errors">Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#events" class="toc-h1 toc-link" data-title="Events">Events</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-and-end-attributes" class="toc-h2 toc-link" data-title="Events">Start and end attributes</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-events" class="toc-h2 toc-link" data-title="Events">List all events</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-event" class="toc-h2 toc-link" data-title="Events">Fetch event</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-ticket-tiers" class="toc-h2 toc-link" data-title="Events">Fetch ticket tiers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#ticket-tiers" class="toc-h1 toc-link" data-title="Ticket Tiers">Ticket Tiers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#attributes" class="toc-h2 toc-link" data-title="Ticket Tiers">Attributes</a>
+                  </li>
+                  <li>
+                    <a href="#ticket-tier-level-attributes" class="toc-h2 toc-link" data-title="Ticket Tiers">Ticket Tier Level Attributes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#event-series" class="toc-h1 toc-link" data-title="Event Series">Event Series</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-parameters" class="toc-h2 toc-link" data-title="Event Series">Request Parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#event-categories" class="toc-h1 toc-link" data-title="Event Categories">Event Categories</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-parameters" class="toc-h2 toc-link" data-title="Event Categories">Request Parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#venues" class="toc-h1 toc-link" data-title="Venues">Venues</a>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-properties" class="toc-h2 toc-link" data-title="Orders">Order properties</a>
+                  </li>
+                  <li>
+                    <a href="#related-objects" class="toc-h2 toc-link" data-title="Orders">Related objects</a>
+                  </li>
+                  <li>
+                    <a href="#guest-checkout-properties" class="toc-h2 toc-link" data-title="Orders">Guest checkout properties</a>
+                  </li>
+                  <li>
+                    <a href="#order-states" class="toc-h2 toc-link" data-title="Orders">Order states</a>
+                  </li>
+                  <li>
+                    <a href="#payment-states" class="toc-h2 toc-link" data-title="Orders">Payment states</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Orders">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-order" class="toc-h2 toc-link" data-title="Orders">Retrieve an order</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-order" class="toc-h2 toc-link" data-title="Orders">Update an order</a>
+                  </li>
+                  <li>
+                    <a href="#apply-coupon-code" class="toc-h2 toc-link" data-title="Orders">Apply coupon code</a>
+                  </li>
+                  <li>
+                    <a href="#list-orders" class="toc-h2 toc-link" data-title="Orders">List orders</a>
+                  </li>
+                  <li>
+                    <a href="#add-items" class="toc-h2 toc-link" data-title="Orders">Add items</a>
+                  </li>
+                  <li>
+                    <a href="#remove-items" class="toc-h2 toc-link" data-title="Orders">Remove items</a>
+                  </li>
+                  <li>
+                    <a href="#delete-line-item" class="toc-h2 toc-link" data-title="Orders">Delete line item</a>
+                  </li>
+                  <li>
+                    <a href="#update-line-item" class="toc-h2 toc-link" data-title="Orders">Update line item</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#checkout" class="toc-h1 toc-link" data-title="Checkout">Checkout</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#link-based-checkout" class="toc-h2 toc-link" data-title="Checkout">Link based checkout</a>
+                  </li>
+                  <li>
+                    <a href="#api-based-checkout" class="toc-h2 toc-link" data-title="Checkout">API based checkout</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-states" class="toc-h2 toc-link" data-title="Checkout">Checkout states</a>
+                  </li>
+                  <li>
+                    <a href="#standard-checkout" class="toc-h2 toc-link" data-title="Checkout">Standard checkout</a>
+                  </li>
+                  <li>
+                    <a href="#guest-checkout" class="toc-h2 toc-link" data-title="Checkout">Guest checkout</a>
+                  </li>
+                  <li>
+                    <a href="#resuming-an-order" class="toc-h2 toc-link" data-title="Checkout">Resuming an order</a>
+                  </li>
+                  <li>
+                    <a href="#begin-checkout" class="toc-h2 toc-link" data-title="Checkout">Begin checkout</a>
+                  </li>
+                  <li>
+                    <a href="#update-and-transition-order" class="toc-h2 toc-link" data-title="Checkout">Update and transition order</a>
+                  </li>
+                  <li>
+                    <a href="#code-cart-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>cart</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-tickets-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>tickets</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-address-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>address</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-form-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>form</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-payment-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>payment</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-processing-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>processing</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-complete-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>complete</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-requested-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>requested</code> step</a>
+                  </li>
+                  <li>
+                    <a href="#code-reserved-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>reserved</code> step</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#responses" class="toc-h1 toc-link" data-title="Responses">Responses</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href="https://guestmanager.com">Guest Manager</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='introduction'>Introduction</h1><h2 id='base-url'>Base URL</h2>
+<p><code>https://guestmanager.com/api/public/v1</code></p>
+<h2 id='versioning'>Versioning</h2>
+<p>The version is specified in the request URL. If the version is omitted, the latest version will be used by default.</p>
+<h2 id='requests'>Requests</h2><h3 id='headers'>Headers</h3>
+<p>The following headers must be specified in all API requests.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td><code>Token abcdefg</code></td>
+</tr>
+<tr>
+<td><code>Content-Type</code></td>
+<td><code>application/json</code></td>
+</tr>
+<tr>
+<td><code>Accept</code></td>
+<td><code>application/json</code></td>
+</tr>
+</tbody></table>
+<h3 id='parameters'>Parameters</h3>
+<p>All parameters should be submitted as JSON, however url-encoded data is also suitable. Provide only the attributes that you wish to change - do not submit the entire object, as you will likely encounter an error due to read-only attributes.</p>
+<h2 id='responses'>Responses</h2>
+<p>All responses are returned as JSON, along with a relevant status code.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>You may change how results are returned by specifying an <code>adapter</code> in the <code>GET</code> request.</p>
+
+<table><thead>
+<tr>
+<th><code>adapter</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>attributes</code></td>
+<td>Default. Array of objects, with no top-level key.</td>
+</tr>
+<tr>
+<td><code>json</code>*</td>
+<td>Array of objects, with a top-level key, and pagination information.</td>
+</tr>
+<tr>
+<td><code>json_api</code>**</td>
+<td>Conforms to the JSON API spec.</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>* Alpha.</li>
+<li>** Super Duper Alpha.</li>
+</ul>
+<h3 id='successful-status-codes'>Successful Status Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>201</code></td>
+<td>Created</td>
+</tr>
+<tr>
+<td><code>204</code></td>
+<td>No Content -- used for <code>DELETE</code> requests.</td>
+</tr>
+</tbody></table>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Authentication is done through the <code>Authorization</code> request header. The value should be in the format <code>Token abcdefg</code> where <code>abcdefg</code> is replaced with your API Key.</p>
+<pre class="highlight shell tab-shell"><code><span class="c">## Request Header</span>
+curl <span class="s2">"http://guestmanager.com/api/pubic/v1"</span>
+  -H <span class="s2">"Authorization: Token meowmeowmeow"</span>
+</code></pre><h2 id='api-keys'>API Keys</h2>
+<p>API Keys are created in the company dashboard under the Config menu. API keys are authorized for either <code>read</code>, <code>write</code>, or both.</p>
+<h1 id='topics'>Topics</h1><h2 id='common-attributes'>Common attributes</h2>
+<p>All resources have the following attributes.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Unique identifier for the resource. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>datetime</td>
+<td>When the record was created. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>datetime</td>
+<td>When the record was last updated. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>deleted_at</code></td>
+<td>datetime</td>
+<td>When the record was deleted. <i class="label label-info">read-only</i></td>
+</tr>
+</tbody></table>
+<h2 id='data-types'>Data Types</h2>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>datetime</code></td>
+<td><code>&quot;2017-10-25T17:54:51.557604Z&quot;</code></td>
+<td><code>iso8601</code> format in the UTC time zone.</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td><code>102.56</code></td>
+<td>All monetary amounts are returned as a <code>string</code> to two decimal places.</td>
+</tr>
+</tbody></table>
+<h2 id='filters'>Filters</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Format</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ids</code></td>
+<td>Comma separated string or JSON array.</td>
+<td><code>&quot;1,2,3&quot;</code> or <code>json {&quot;ids&quot;: [1,2,3]}</code></td>
+</tr>
+</tbody></table>
+<h2 id='pagination'>Pagination</h2>
+<p>For resource collection endpoints, the following parameters can be used to paginate responses.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -336,107 +598,54 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code>per_page</code></td>
+<td><code>10</code></td>
+<td>How many records to return in each response.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code>page</code></td>
+<td><code>1</code></td>
+<td>The page to return records for.</td>
 </tr>
 </tbody></table>
+<h2 id='fields-and-relationships'>Fields and Relationships</h2>
+<p>To increase performance and optimize network traffic, you may specify only the fields and relationships you interested in.
+Refer to a specific resource endpoint to see which fields and relationships are available.</p>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Description</th>
+<th>Options</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><code>fields</code></td>
+<td>Comma separated string of the attributes you are interested in for that particular model.</td>
+</tr>
+<tr>
+<td><code>includes</code></td>
+<td>Comma separated string of the relationships you are interested in for that particular model.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='sorting'>Sorting</h2>
+<p>For resource collection endpoints, you can sort by the following common attributes, or any resource-specific attribute (e.g. <code>start_date</code> for <code>Event</code>)</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Description</th>
+<th>Options</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td><code>sort_dir</code></td>
+<td><code>asc</code> or <code>desc</code></td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td><code>id</code>, <code>created_at</code>, <code>updated_at</code>, or any resource specific attribute.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h1 id='errors'>Errors</h1><h2 id='status-codes'>Status Codes</h2>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -444,58 +653,1807 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request sucks</td>
+<td><code>400</code></td>
+<td>Bad Request</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong</td>
+<td><code>401</code></td>
+<td>Unauthorized -- Your API key is wrong.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only</td>
+<td><code>403</code></td>
+<td>Forbidden -- API Key is not authorized to perform this action.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found</td>
+<td><code>404</code></td>
+<td>Not Found -- The requested resource could not be found.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method</td>
+<td><code>405</code></td>
+<td>Method Not Allowed -- Request URL invalid.</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json</td>
+<td><code>406</code></td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers</td>
+<td><code>410</code></td>
+<td>Gone -- The requested resource is no longer available.</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot</td>
+<td><code>422</code></td>
+<td>Unprocessable Entity -- validation failed.</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td><code>429</code></td>
+<td>Too Many Requests -- You&#39;re making too many requests.</td>
 </tr>
 <tr>
-<td>500</td>
+<td><code>500</code></td>
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 <tr>
-<td>503</td>
+<td><code>503</code></td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h2 id='responses'>Responses</h2><h3 id='exceptional-errors'>Exceptional errors</h3>
+<p>Exceptions vary in format. Please see the right hand panel for examples.</p>
 
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>forbidden</code>, <code>not_found</code>, <code>routing_error</code>, <code>parameter_missing</code>, <code>unpermitted_parameters</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>Description of the error.</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td>object</td>
+<td>Detailed information on the error, depending on the error.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>not_found</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found: Couldn't find Order with 'id'=232323 [WHERE </span><span class="se">\"</span><span class="s2">orders</span><span class="se">\"</span><span class="s2">.</span><span class="se">\"</span><span class="s2">deleted_at</span><span class="se">\"</span><span class="s2"> IS NULL AND </span><span class="se">\"</span><span class="s2">orders</span><span class="se">\"</span><span class="s2">.</span><span class="se">\"</span><span class="s2">company_id</span><span class="se">\"</span><span class="s2"> = $1]"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_found"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"232323"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"primary_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>parameter_missing</p>
+
+<p>unpermitted_parameters</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"found unpermitted parameter: :total"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"total"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='validation-errors'>Validation errors</h3>
+<p>Validation errors occur when a provided attribute does not meet the validation requirements on the model. The status code is always <code>422</code>.</p>
+
+<blockquote>
+<p>Example Order Validation Error</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validation_error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First name Required, Last name Required, Email Required, and Guest Required"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blank"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Required"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blank"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Required"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blank"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Required"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guest"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blank"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Required"</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+        </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"2148082"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guest"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blank"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h4 id='format'>Format</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>always <code>validation_error</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>All of the validation errors concatenated into a single message.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td>object</td>
+<td>Details on the individual validation errors. Look for the key relevant to the resource you are modifying. E.g. for Orders, the key is <code>order</code></td>
+</tr>
+<tr>
+<td><code>errors.{model-name}</code></td>
+<td>array</td>
+<td>e.g. <code>errors.order</code> for Order.</td>
+</tr>
+</tbody></table>
+<h4 id='association-errors'>Association errors</h4>
+<p>When you are submitting nested parameters, e.g. <code>tickets</code> with an <code>Order</code>, the errors associated to those resources are specified in an <code>array</code>, in the <code>errors</code> attribute, with the key being the name of the association. E.g. for <code>tickets</code> submitted along with an order, the key to access those is <code>errors.tickets</code>
+Inside the association errors key, you will find a hash, indexed by the ID of the associated record. See example.</p>
+<h4 id='error-codes'>Error codes</h4>
+<table><thead>
+<tr>
+<th><code>code</code></th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>blank</code></td>
+<td>attribute is required</td>
+</tr>
+</tbody></table>
+<h1 id='events'>Events</h1>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Name of the series.</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>venue_id</code></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td><code>parent_event_id</code></td>
+<td>integer</td>
+<td>The series this event belongs to.</td>
+</tr>
+<tr>
+<td><code>published_at</code></td>
+<td>datetime</td>
+<td>When the event was published.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>integer</td>
+<td>Sorting.</td>
+</tr>
+<tr>
+<td><code>calendar_id</code></td>
+<td>integer</td>
+<td>Calendar this event belongs to.</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td>array</td>
+<td>Categories associated to this event.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td>object</td>
+<td><code>manage</code>, <code>event_page</code>, <code>order_page</code></td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>object</td>
+<td><code>tz</code>, <code>local</code>, <code>utc</code></td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td><code>running</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>past</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>future</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>selling</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>graphics</code></td>
+<td>object</td>
+<td><code>banner</code>, <code>background</code></td>
+</tr>
+<tr>
+<td><code>venue</code></td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ticket_tiers</code></td>
+<td>array</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='start-and-end-attributes'>Start and end attributes</h2>
+<p>For convenience, <code>start</code> and <code>end</code> are provided as objects, each containing <code>tz</code>, <code>local</code>, and a <code>utc</code> attribute.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"local"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-31T11:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-31T00:00:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tz</code></td>
+<td>string</td>
+<td>Venue time zone.</td>
+</tr>
+<tr>
+<td><code>local</code></td>
+<td>string</td>
+<td><code>datetime</code> in the venue time zone.</td>
+</tr>
+<tr>
+<td><code>utc</code></td>
+<td>string</td>
+<td><code>datetime</code> in UTC (global) format.</td>
+</tr>
+</tbody></table>
+<h2 id='list-all-events'>List all events</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/events</h6>
+    </div>
+</div>
+<h3 id='request-parameters'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>links</code></td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>start_date</code>, <code>end_date</code>, <code>name</code>, <code>parent_event_id</code>, <code>venue_id</code>, <code>published_at</code>, <code>position</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>tags</code>, <code>categories</code>, <code>ticket_tiers</code>, <code>ticket_tiers.price_levels</code>, <code>venue</code>, <code>venue.address</code></td>
+</tr>
+<tr>
+<td><code>venue_id</code></td>
+<td>integer</td>
+<td><em>none</em></td>
+<td>Filter by a specific venue.</td>
+</tr>
+<tr>
+<td><code>parent_event_id</code></td>
+<td>integer</td>
+<td><em>none</em></td>
+<td>Filter by event series.</td>
+</tr>
+<tr>
+<td><code>category_id</code></td>
+<td>integer</td>
+<td><em>none</em></td>
+<td>Filter by category.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>active</code>: events in progress and future events<br><code>over</code>: events where <code>end_date &lt; current time</code><br><code>future</code>: events with start dates in the future (excludes active events)<br><code>past</code>: events where start_date is less than current time<br><code>this_week</code>: Monday-Sunday<br><code>next_week</code>: Next Monday-Sunday</td>
+</tr>
+<tr>
+<td><code>published</code></td>
+<td>boolean</td>
+<td><em>none</em></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td>Runs a case insensitive query to match any events containing this query. Only use for user-generated searching as this is slower, and querying attributes directly (like parent_event_id and venue_id) is going to be much more reliable.</td>
+</tr>
+<tr>
+<td><code>start_date[range_start]</code></td>
+<td>date or datetime</td>
+<td><em>none</em></td>
+<td>Beginning start date range.</td>
+</tr>
+<tr>
+<td><code>start_date[range_end]</code></td>
+<td>date or datetime</td>
+<td><em>none</em></td>
+<td>Ending start date range.</td>
+</tr>
+<tr>
+<td><code>end_date[range_start]</code></td>
+<td>date or datetime</td>
+<td><em>none</em></td>
+<td>Beginning end date range.</td>
+</tr>
+<tr>
+<td><code>end_date[range_end]</code></td>
+<td>date or datetime</td>
+<td><em>none</em></td>
+<td>Ending end date range.</td>
+</tr>
+</tbody></table>
+<h2 id='fetch-event'>Fetch event</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/events/{id}</h6>
+    </div>
+</div>
+<h2 id='fetch-ticket-tiers'>Fetch ticket tiers</h2>
+<p>Returns the bookable items for an event.</p>
+
+<p>Each Tier has at least one Price Level. The variant_id in the price_levels array is important, because it’s used to create an Order.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/events/{id}/ticket_tiers</h6>
+    </div>
+</div>
+<h3 id='request-parameters-2'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{id}</code></td>
+<td>integer</td>
+<td><em>required</em></td>
+<td>Event ID.</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>string</td>
+<td><code>price_levels</code></td>
+<td><code>price_levels</code></td>
+</tr>
+</tbody></table>
+<h1 id='ticket-tiers'>Ticket Tiers</h1><h2 id='attributes'>Attributes</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event_id</code></td>
+<td>integer</td>
+<td>Event this tier belongs to.</td>
+</tr>
+<tr>
+<td><code>parent_tier_id</code></td>
+<td>integer</td>
+<td>Parent <code>TicketTier</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>integer</td>
+<td><code>Product</code> this tier belongs to.</td>
+</tr>
+<tr>
+<td><code>ticket_type</code></td>
+<td>object</td>
+<td><code>TicketType</code> this tier belongs to.</td>
+</tr>
+<tr>
+<td><code>price_levels</code></td>
+<td>array</td>
+<td>Array of <code>TicketTierLevel</code></td>
+</tr>
+</tbody></table>
+<h2 id='ticket-tier-level-attributes'>Ticket Tier Level Attributes</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Name.</td>
+</tr>
+<tr>
+<td><code>ticket_tier_id</code></td>
+<td>integer</td>
+<td><code>TicketTier</code></td>
+</tr>
+<tr>
+<td><code>variant_id</code></td>
+<td>integer</td>
+<td>ID of the related product - used to create <code>LineItem</code>&#39;s</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>decimal</td>
+<td>The variant&#39;s price.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>The variant&#39;s currency.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Current selling status of the variant.</td>
+</tr>
+<tr>
+<td><code>count_on_hand</code></td>
+<td>integer</td>
+<td>How many are in-stock.</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td>object</td>
+<td>The related variant.</td>
+</tr>
+</tbody></table>
+<h1 id='event-series'>Event Series</h1>
+<p>Top level non-bookable events that serve as the wrapper around individual event date/times. The ID of the class can be used to query against the Events API to return date/times for that series.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Name of the series.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>integer</td>
+<td>Sorting.</td>
+</tr>
+<tr>
+<td><code>calendar_id</code></td>
+<td>integer</td>
+<td>Calendar this series belongs to.</td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td>array</td>
+<td>Categories associated to this series.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>array</td>
+<td>Tags associated to this series.</td>
+</tr>
+</tbody></table>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/series</h6>
+    </div>
+</div>
+<h2 id='request-parameters'>Request Parameters</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>tags</code>, <code>categories</code></td>
+</tr>
+</tbody></table>
+<h1 id='event-categories'>Event Categories</h1>
+<p>An event can have many categories.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Name of the category.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>text</td>
+<td>Description.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>string</td>
+<td>Subtitle.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>integer</td>
+<td>Sorting.</td>
+</tr>
+<tr>
+<td><code>short_description</code></td>
+<td>text</td>
+<td>Shorter description.</td>
+</tr>
+<tr>
+<td><code>icon_url</code></td>
+<td>string</td>
+<td>URL for the icon image.</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>array</td>
+<td>Sub-categories.</td>
+</tr>
+</tbody></table>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/categories</h6>
+    </div>
+</div>
+<h2 id='request-parameters'>Request Parameters</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sort_by</code></td>
+<td>string</td>
+<td><code>name</code>, <code>position</code></td>
+</tr>
+</tbody></table>
+<h1 id='venues'>Venues</h1>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Name of the venue.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>text</td>
+<td>Additional line can be used to describe the venue.</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>string</td>
+<td>Auto-generated for use in url-generation.</td>
+</tr>
+<tr>
+<td><code>time_zone</code></td>
+<td>string</td>
+<td>Time zone where the venue is located.</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>string</td>
+<td>Latitude of venue. Used for Apple Wallet.</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>string</td>
+<td>Longitude of venue. Used for Apple Wallet.</td>
+</tr>
+<tr>
+<td><code>address_id</code></td>
+<td>integer</td>
+<td>ID of the associated address.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>object</td>
+<td>Address of the venue. See <code>Address</code>.</td>
+</tr>
+</tbody></table>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/venues</h6>
+    </div>
+</div>
+<h1 id='orders'>Orders</h1><h2 id='order-properties'>Order properties</h2>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">176260</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GM720XKYDP5SLR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cart"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"checkout_steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"register"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tickets"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"complete"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"guest_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"guest_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeff"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blake"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeff.blake2@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61491570156"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"item_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"adjustment_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"promo_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-25T17:54:51.557604Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://miele.guestmanager.dev:3000/cart?guest_token=5b8fa186f25a225fbe95744baf6326fb&amp;id=GM720XKYDP5SLR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://miele.guestmanager.dev:3000/cart/checkout/GM720XKYDP5SLR?guest_token=5b8fa186f25a225fbe95744baf6326fb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gateway::Stripe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit Card"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"AUD"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"billing_address_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payment_profiles_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tokenize_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pk_live_*****"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">176643</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">176260</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6522</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bundle_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ticket_tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complimentary Owner Product Demonstrations"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oven"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04-11-2017"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30am-12:00pm"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Knoxfield"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"promotions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>string</td>
+<td>Order number. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>The current step of the order. See order states. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>checkout_steps</code></td>
+<td>array</td>
+<td>List of all states dynamically computed for this order. Can change from state to state. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>guest_id</code></td>
+<td>integer</td>
+<td>The guest associated to this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>guest_token</code></td>
+<td>string</td>
+<td>Unique token for the session. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>payment_state</code></td>
+<td>string</td>
+<td>Current payment status. See payment states. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>ISO code of currency. All items added to order must have a price available in this currency.</td>
+</tr>
+<tr>
+<td><code>item_count</code></td>
+<td>integer</td>
+<td>Number of items in the order. Sum of all <code>line_item.quantity</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>decimal</td>
+<td>Grand (net) total, after adjustments, promotions, fees, and taxes. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>item_total</code></td>
+<td>decimal</td>
+<td>Sum of all <code>line_item.price x line_item.quantity</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>adjustment_total</code></td>
+<td>decimal</td>
+<td>Sum of all non-line-item charges (promotions, taxes, fees, etc). <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>payment_total</code></td>
+<td>decimal</td>
+<td>Sum of all completed payments. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>additional_tax_total</code></td>
+<td>decimal</td>
+<td>Additional taxes passed onto the guest. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>included_tax_total</code></td>
+<td>decimal</td>
+<td>Included taxes. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>included_service_fee_total</code></td>
+<td>decimal</td>
+<td>Included fees. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>additional_service_fee_total</code></td>
+<td>decimal</td>
+<td>Extra fees passed onto the guest. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>promo_total</code></td>
+<td>decimal</td>
+<td>The discount on this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>shipment_total</code></td>
+<td>decimal</td>
+<td>Total shipping charges. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>taxable_adjustment_total</code></td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td><code>non_taxable_adjustment_total</code></td>
+<td>decimal</td>
+<td></td>
+</tr>
+<tr>
+<td><code>application_fee_total</code></td>
+<td>decimal</td>
+<td>The fee charged by Guest Manager. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>merchant_fee_total</code></td>
+<td>decimal</td>
+<td>The portion of service fees collected that are denoted as merchant fees. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>datetime</td>
+<td>When the items are released back into inventory. Default 15 minutes.</td>
+</tr>
+<tr>
+<td><code>completed_at</code></td>
+<td>datetime</td>
+<td>When the order was completed. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>abandon_at</code></td>
+<td>datetime</td>
+<td>When the order will be marked as abandoned. Configured via <code>CheckoutCustomization</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>can_checkout_at</code></td>
+<td>datetime</td>
+<td>If the order is <code>reserved</code>, the time at which the order will be eligible for completion. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>created_by_id</code></td>
+<td>integer</td>
+<td>The admin who created this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>canceler_id</code></td>
+<td>integer</td>
+<td>The admin who canceled this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>approver_id</code></td>
+<td>integer</td>
+<td>The admin who approved this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>holder_id</code></td>
+<td>integer</td>
+<td>The admin who held this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>company_id</code></td>
+<td>integer</td>
+<td>The company associated to this order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>checkout_customization_id</code></td>
+<td>integer</td>
+<td>The checkout configuration. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>zone_id</code></td>
+<td>integer</td>
+<td>Tax zone. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>order_form_id</code></td>
+<td>integer</td>
+<td>Related order form.</td>
+</tr>
+<tr>
+<td><code>order_channel_id</code></td>
+<td>integer</td>
+<td>Related order channel for tracking purposes.</td>
+</tr>
+<tr>
+<td><code>shipping_method_id</code></td>
+<td>integer</td>
+<td>Chosen shipping method.</td>
+</tr>
+<tr>
+<td><code>bill_address_id</code></td>
+<td>integer</td>
+<td>Billing address.</td>
+</tr>
+<tr>
+<td><code>ship_address_id</code></td>
+<td>integer</td>
+<td>Shipping address.</td>
+</tr>
+<tr>
+<td><code>shipment_state</code></td>
+<td>string</td>
+<td>Status of shipment.</td>
+</tr>
+<tr>
+<td><code>email_state</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>hash</td>
+<td>Extra data stored in order.</td>
+</tr>
+<tr>
+<td><code>mobile</code></td>
+<td>boolean</td>
+<td>If the order was placed on a mobile device.</td>
+</tr>
+<tr>
+<td><code>locked</code></td>
+<td>boolean</td>
+<td>If the order is locked for updates.</td>
+</tr>
+<tr>
+<td><code>last_ip_address</code></td>
+<td>string</td>
+<td>Last known ip address of guest.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>text</td>
+<td>Admin note.</td>
+</tr>
+</tbody></table>
+<h2 id='related-objects'>Related objects</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bill_address</code></td>
+<td>object</td>
+<td>Billing address.</td>
+</tr>
+<tr>
+<td><code>ship_address</code></td>
+<td>object</td>
+<td>Shipping address.</td>
+</tr>
+<tr>
+<td><code>line_items</code></td>
+<td>array</td>
+<td>Items in the order.</td>
+</tr>
+<tr>
+<td><code>payment_methods</code></td>
+<td>array</td>
+<td>Available payment methods.</td>
+</tr>
+<tr>
+<td><code>tickets</code></td>
+<td>array</td>
+<td>Tickets relevant to the line items.</td>
+</tr>
+<tr>
+<td><code>responses</code></td>
+<td>array</td>
+<td>Surveys/questions.</td>
+</tr>
+<tr>
+<td><code>payments</code></td>
+<td>array</td>
+<td>Payments made on this order.</td>
+</tr>
+</tbody></table>
+<h2 id='guest-checkout-properties'>Guest checkout properties</h2>
+<p>Add these attributes through either the create or update order endpoint.
+The <code>guest_id</code> attribute will be set on the order through a find or create process based on the provided email and phone number.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>guest_checkout</code></td>
+<td>boolean</td>
+<td>Set this to <code>true</code> to enable guest checkout.</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>First name of guest.</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>Last name of guest.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Email address of guest. Format is validated.</td>
+</tr>
+<tr>
+<td><code>phone_number</code></td>
+<td>string</td>
+<td>Phone number of guest. <br>Format is validated according to the <code>phone_number_country</code> provided.</td>
+</tr>
+<tr>
+<td><code>phone_number_country</code></td>
+<td>string</td>
+<td>Country of the phone number. 2 digit ISO code, uppercase.</td>
+</tr>
+</tbody></table>
+<h2 id='order-states'>Order states</h2>
+<table><thead>
+<tr>
+<th><code>state</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cart</code></td>
+<td>Default state for all newly created orders.</td>
+</tr>
+<tr>
+<td><code>expired</code></td>
+<td>Order was not completed within 15 minutes of creation. Can be resumed.</td>
+</tr>
+<tr>
+<td><code>voided</code></td>
+<td>Voided by an admin. Cannot be resumed.</td>
+</tr>
+<tr>
+<td><code>canceled</code></td>
+<td>Canceled by admin or guest. Cannot be resumed.</td>
+</tr>
+<tr>
+<td><code>abandoned</code></td>
+<td>No action was taken on order X hours after expired. Enabled if Abandoned Cart Recovery feature is configured.</td>
+</tr>
+</tbody></table>
+<h2 id='payment-states'>Payment states</h2>
+<table><thead>
+<tr>
+<th><code>payment_state</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>paid</code></td>
+<td><code>payment_total == total</code></td>
+</tr>
+<tr>
+<td><code>balance_due</code></td>
+<td><code>payment_total &lt; total</code></td>
+</tr>
+<tr>
+<td><code>credit_owed</code></td>
+<td><code>payment_total &gt; total</code></td>
+</tr>
+<tr>
+<td><code>partial_refund</code></td>
+<td>Some items have been refunded.</td>
+</tr>
+<tr>
+<td><code>refunded</code></td>
+<td>All items have been refunded.</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Payment failed.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-order'>Create an order</h2>
+<aside class="notice">
+Please note that once an order is created, the tickets are reserved for 15 minutes as indicated by the `expires_at` attribute. You can still send the guest to checkout after 15 minutes, and the system will attempt to re-reserve the tickets and continue checkout. If the tickets are no longer available, the user is unable to proceed.
+</aside>
+<h3 id='request'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/orders</h6>
+    </div>
+</div>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order[currency]</code></td>
+<td>Optional if your account is not enabled for multi-currency.</td>
+</tr>
+<tr>
+<td><code>order[line_items]</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Empty order</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Order w/ line items</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"guest_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeff"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blake"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeff@guestmanager.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2069405178"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='retrieve-an-order'>Retrieve an order</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/orders/{id}</h6>
+    </div>
+</div>
+<h2 id='update-an-order'>Update an order</h2>
+<p>Updates an order. All line items must be provided.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/orders/{id}</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='apply-coupon-code'>Apply coupon code</h2>
+<p>Attempts to apply a coupon/promo code to the order.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/orders/{id}/apply_coupon_code</h6>
+    </div>
+</div>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>coupon_code</code></td>
+<td><code>string</code></td>
+<td>Optional if your account is not enabled for multi-currency.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Coupon successfully applied. Inspect the new <code>total</code>, <code>promo_total</code>, and <code>adjustment_total</code></td>
+</tr>
+<tr>
+<td><code>422</code></td>
+<td>Error. Coupon not found, expired, inactive, or ineligible. Review the <code>error</code> message.</td>
+</tr>
+</tbody></table>
+<h2 id='list-orders'>List orders</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/orders</h6>
+    </div>
+</div>
+<h2 id='add-items'>Add items</h2>
+<p>“Add to cart” Adds specified quantity of the variant to the order.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">POST</i>
+        <h6>/orders/{id}/line_items/add</h6>
+    </div>
+</div>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>variant_id</code></td>
+<td><code>integer</code></td>
+<td>The variant to add to the order.</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td><code>integer</code></td>
+<td>Quantity of <code>variant_id</code> to add.</td>
+</tr>
+</tbody></table>
+<h2 id='remove-items'>Remove items</h2>
+<p>“Remove from cart” Removes specified quantity of the variant from the order.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">POST</i>
+        <h6>/orders/{id}/line_items/remove</h6>
+    </div>
+</div>
+<h3 id='parameters-4'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>variant_id</code></td>
+<td><code>integer</code></td>
+<td>The variant to remove from the order.</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td><code>integer</code></td>
+<td>Quantity of <code>variant_id</code> to remove.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-line-item'>Delete line item</h2>
+<p>Deletes an entire line item from the order.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-delete">DELETE</i>
+        <h6>/orders/{order-id}/line_items/{id}</h6>
+    </div>
+</div>
+<h3 id='parameters-5'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{order-id}</code></td>
+<td>integer</td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>{id}</code></td>
+<td><code>integer</code></td>
+<td>The line item ID to delete. <em>not</em> the variant ID.</td>
+</tr>
+</tbody></table>
+<h2 id='update-line-item'>Update line item</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/orders/{order-id}/line_items/{id}</h6>
+    </div>
+</div>
+<h3 id='parameters-6'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{order-id}</code></td>
+<td>integer</td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>{id}</code></td>
+<td><code>integer</code></td>
+<td>The line item ID to delete. <em>not</em> the variant ID.</td>
+</tr>
+<tr>
+<td><code>line_item[quantity]</code></td>
+<td><code>integer</code></td>
+<td>The quantity.</td>
+</tr>
+</tbody></table>
+<h1 id='checkout'>Checkout</h1>
+<p>There are two ways to implement the checkout process via the API.</p>
+<h2 id='link-based-checkout'>Link based checkout</h2>
+<p>The <code>links</code> attribute on the <code>Order</code> will specify a URL that you can redirect users to or open in an <code>iFrame</code> popup within your site. This will utilize the Guest Manager UI.</p>
+
+<blockquote>
+<p>Order</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"cart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"checkout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='api-based-checkout'>API based checkout</h2>
+<p>For complete control of the checkout experience, you may implement the checkout step UI yourself and make API calls to transition the order forward.</p>
+<h2 id='checkout-states'>Checkout states</h2>
+<table><thead>
+<tr>
+<th><code>state</code></th>
+<th>Enabled If</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Standard checkout mode.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>register</code></td>
+<td>Standard checkout mode.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>order_form</code></td>
+<td>Items in cart do not satisfy order form conditions.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>customize</code></td>
+<td>A <code>master</code> variant was added to the cart, a specific variant needs to be chosen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>addon</code></td>
+<td>Any products in the order have addon relationships.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tickets</code></td>
+<td>Any ticket types in the order are set to collect name and/or email.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Any event in the order is password protected.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>invite</code></td>
+<td>An event in the order requires an invitation to proceed.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>member</code></td>
+<td>Any ticket type in the order is set to collect a Member ID.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>membership</code></td>
+<td>Any item in the order requires a membership to purchase.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Billing or shipping address are required.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td>Any item in the order requires shipping.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td>Any event in the order has a form configured.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>reserved</code></td>
+<td>Any item in the order is not currently onsale, but can be reserved.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>requested</code></td>
+<td>Any item in the order is soldot, but can be requested (wait list).</td>
+<td></td>
+</tr>
+<tr>
+<td><code>conflict</code></td>
+<td>Any event in the order conflicts with another event in the order (if configured).</td>
+<td></td>
+</tr>
+<tr>
+<td><code>payment</code></td>
+<td>Order total is greater than 0.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>confirm</code></td>
+<td>Setting to review order before placing is enabled.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>processing</code></td>
+<td>Payment is currently processing in the background.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>All previous states have been satisfied.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='standard-checkout'>Standard checkout</h2>
+<p>Requires the guest to login or register. This method is not currently supported via the API.</p>
+<h2 id='guest-checkout'>Guest checkout</h2>
+<p>Allows the guest to checkout an order without authenticating or registering their email or phone number.
+The <code>enable_guest_checkout</code> option must be enabled on the <code>CheckoutCustomization</code> object.
+The order will require <code>email</code>, <code>first_name</code>, and <code>last_name</code> to be updated before transitioning the order from the <code>cart</code> step to the checkout process. <code>phone_number</code> and <code>phone_number_country</code> may also be provided.</p>
+<h2 id='resuming-an-order'>Resuming an order</h2>
+<p>Inspect the <code>expires_at</code> attribute on the order. This is 15 minutes in the future by default. When this timer expires, the order is moved from whatever state it is currently, to <code>expired</code>. The tickets are released back to inventory
+When an order expires, need to resume it. Need to check that inventory was successfully re-reserved (e.g. if sold out, not on sale, tickets are not available).</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/checkout/{NUMBER}/resume</h6>
+    </div>
+</div>
+<h2 id='begin-checkout'>Begin checkout</h2>
+<p>Attempt to move the order to the next step in the checkout process without providing any new attributes. Typically this is used for moving an order from <code>cart</code> to the first step in the checkout process, as this transition does not require any new attributes.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/checkout/{id}/next</h6>
+    </div>
+</div>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{id}</code></td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>Optional. Attempt to move the order directly to this state.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>Upon successful transition to checkout, Inspect the <code>state</code> (string) and <code>checkout_steps</code> (array of strings) attributes on the Order and update your UI accordingly.
+The last step will be one of <code>complete</code>, <code>requested</code>, or <code>reserved</code>, depending on the availability and on-sale restrictions of the items in the cart.</p>
+<h2 id='update-and-transition-order'>Update and transition order</h2>
+<p>This is the sole endpoint for transitioning an order through the various checkout steps. Which step the order is on will dictate which attributes need to be submitted.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/checkout/{id}</h6>
+    </div>
+</div>
+<h3 id='parameters-2'>Parameters</h3>
+<p>The following parameters should be submitted for every checkout step, along with the step-specific data.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{id}</code></td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>order[guest_token]</code></td>
+<td>Optional if your account is not enabled for multi-currency.</td>
+</tr>
+<tr>
+<td><code>order[state]</code></td>
+<td>Provide the current <code>state</code> attribute that you are sending parameters for.</td>
+</tr>
+<tr>
+<td>Step specific data.</td>
+<td>Include the relevent information specified below, according to the current step.</td>
+</tr>
+</tbody></table>
+<h3 id='response-errors'>Response Errors</h3>
+<p>Every time this endpoint is called, the order is first checked for checkout eligibility, so it is important to handle all of these errors in every checkout step.</p>
+<h2 id='code-cart-code-step'><code>cart</code> step</h2>
+<p>The default state of all newly created orders.</p>
+<h2 id='code-tickets-code-step'><code>tickets</code> step</h2>
+<p>The tickets step is included if the ticket type related to the line item in the cart has been set to include the name or email fields during checkout.
+The purpose of this step is to collect attendee information prior to completion of an order.</p>
+
+<p>The <code>tickets</code> attribute on the order will dictate which tickets need to be updated with names and/or emails.</p>
+
+<p>When the <code>keep</code> attribute is <code>true</code>, a <code>name</code> is not required, because that ticket is being assigned to the <code>order.guest</code>.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tickets"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"keep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">987655</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bizzy Bone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response (Error)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/tickets"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2148074</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"is required"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order[tickets]</code></td>
+<td>Array. Include <code>id</code>, <code>name</code>, <code>email</code>, <code>keep</code>, for each ticket.</td>
+</tr>
+</tbody></table>
+<h3 id='notes'>Notes</h3>
+<ul>
+<li>Only one ticket should be eligible to assign directly to the customer, the rest of the tickets should have a <code>name</code> attribute required, and optional <code>email</code></li>
+</ul>
+<h2 id='code-address-code-step'><code>address</code> step</h2>
+<p>This step is included if shipping is enabled for any of the line items, order total is greater than 0, and/or if the billing address is set to required for all orders (via the <code>CheckoutCustomization</code>), even if the order total is 0.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"bill_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92109"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ship_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main Street"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92109"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order[bill_address]</code></td>
+<td><code>object</code></td>
+<td>See <code>Address</code> for format.</td>
+</tr>
+<tr>
+<td><code>order[ship_address]</code></td>
+<td><code>object</code></td>
+<td>See <code>Address</code> for format.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>Upon successful addition of address information, you will see a populated <code>bill_address_id</code> and/or <code>ship_address_id</code>.</p>
+<h2 id='code-form-code-step'><code>form</code> step</h2>
+<p>This step is included if a Form (i.e. Questions or Survey) has been configured on this order. Inspect the <code>form_responses</code> attribute.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order[form_responses]</code></td>
+<td><code>array</code></td>
+<td>See <code>FormResponse</code> for format.</td>
+</tr>
+</tbody></table>
+<h2 id='code-payment-code-step'><code>payment</code> step</h2>
+<p>This step is included if the order total is greater than 0. Inspect the <code>payment_methods</code> attribute to see which options are available for payment.</p>
+
+<p>Do not submit credit card information via the API. Use your payment provider&#39;s Javascript SDK to create a token instead.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order[payments]</code></td>
+<td><code>array</code></td>
+<td>See <code>Payment</code> for format.</td>
+</tr>
+</tbody></table>
+<h2 id='code-processing-code-step'><code>processing</code> step</h2>
+<p>This step is not present in the <code>checkout_steps</code> attribute. Once payment information is submitted in the <code>payment</code> step, the payments are processed asynchronously during the <code>processing</code> state.</p>
+
+<p>Poll the order until the <code>state</code> changes from <code>processing</code>. If payment failed, the <code>state</code> will return to <code>payment</code>. If successful, the order will be complete and in the <code>complete</code> state.</p>
+<h2 id='code-complete-code-step'><code>complete</code> step</h2>
+<p>Order is now complete. Tickets have been fulfilled. The order is not necessarily fully paid at this point. <code>completed_at</code> will be non-null.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>state</code></td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td><code>completed_at</code></td>
+<td><code>iso8601 datetime</code></td>
+</tr>
+<tr>
+<td><code>payment_state</code></td>
+<td>`paid</td>
+</tr>
+</tbody></table>
+<h2 id='code-requested-code-step'><code>requested</code> step</h2>
+<p>Included if any of the products in the order are currently sold out, <em>and</em> the product has <code>can_request</code> attribute enabled.</p>
+<h2 id='code-reserved-code-step'><code>reserved</code> step</h2>
+<p>Included if any of the products in the order are not currently on sale, <em>and</em> the product has <code>can_reserve</code> attribute enabled.</p>
+<h1 id='responses'>Responses</h1>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">JSON</a>
           </div>
       </div>
     </div>
