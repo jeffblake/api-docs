@@ -11,7 +11,7 @@ Attribute                      | Type     | Description
 `deleted_at`                   | datetime | When the record was deleted. <i class="label label-info">read-only</i>
 
 
-## Data Types
+## Data types
 
 Type              | Example                           | Description
 ----------------- | --------------------------------  | ----------------------------------
@@ -33,7 +33,7 @@ Parameter           | Default            | Description
 `page`         | `1`                | The page to return records for.
 
 
-## Fields and Relationships
+## Fields and relationships
 To increase performance and optimize network traffic, you may specify only the fields and relationships you interested in.
 Refer to a specific resource endpoint to see which fields and relationships are available.
 

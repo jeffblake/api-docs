@@ -11,7 +11,6 @@ includes:
   - v1/introduction
   - v1/authentication
   - v1/topics
-  - v1/errors
   - v1/events
   - v1/ticket_tiers
   - v1/event_series

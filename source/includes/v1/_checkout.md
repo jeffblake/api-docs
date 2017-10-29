@@ -107,6 +107,15 @@ Step specific data.    | Include the relevent information specified below, accor
 ### Response Errors
 Every time this endpoint is called, the order is first checked for checkout eligibility, so it is important to handle all of these errors in every checkout step.
 
+Refer to the section on errors for the JSON format of the response.
+
+Error `type`               | Meaning
+-------------------------- | ----------------------------------
+`checkout_not_allowed`     |
+`order_processing`         |
+`order_complete`           |
+`invalid_state`            |
+
 
 
 ## `cart` step
@@ -143,23 +152,7 @@ When the `keep` attribute is `true`, a `name` is not required, because that tick
 > Example Response (Error)
 
 ```json
-{
-    "errors": [
-        {
-            "source": {
-                "pointer": "/data/attributes/tickets"
-            },
-            "detail": {
-                "id": 2148074,
-                "errors": {
-                    "name": [
-                        "is required"
-                    ]
-                }
-            }
-        }
-    ]
-}
+
 ```
 
 ### Parameters
@@ -178,23 +171,26 @@ This step is included if shipping is enabled for any of the line items, order to
 ```json
 {
   "order": {
+    "state": "address",
     "bill_address": {
       "address1": "123 Main Street",
       "city": "Anytown",
       "zipcode": "92109",
-      "state_id": 45,
-      "country_id": 120
+      "state_id": 162,
+      "country_id": 14
     },
     "ship_address": {
       "address1": "123 Main Street",
       "city": "Anytown",
       "zipcode": "92109",
-      "state_id": 45,
-      "country_id": 120
+      "state_code": "WA",
+      "country_code": "AU"
     }
   }
 }
 ```
+
+`State` and `Country` information can either be provided from their respective `id` (fetched from the API), or as their ISO codes: `state_code` and `country_code`
 
 Parameter              | Type     | Description
 ---------------------- | ------   | -----------
@@ -206,6 +202,45 @@ Upon successful addition of address information, you will see a populated `bill_
 
 ## `form` step
 This step is included if a Form (i.e. Questions or Survey) has been configured on this order. Inspect the `form_responses` attribute.
+
+Only the `answers` `id` and `value` need to be submitted back.
+For multiple choice fields, the `answer.value` will be the `id` of the `FormFieldOption`
+
+> Example Request
+
+```json
+{
+	"order": {
+		"state": "form",
+		"responses": [
+			{
+				"id": 38133,
+				"answers": [
+				{
+					"id": 167288,
+					"value": "791"
+				},
+				{
+					"id": 167286,
+					"value": "592"
+				},
+				{
+					"id": 167287,
+					"value": "test"
+				}
+			]
+			}
+
+		]
+	}
+}
+```
+
+> Example Response (Error)
+
+```json
+
+```
 
 Parameter                | Type     | Description
 ------------------------ | ------   | -----------

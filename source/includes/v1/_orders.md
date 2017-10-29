@@ -133,7 +133,6 @@ Attribute                      | Type     | Description
 `last_ip_address`              | string   | Last known ip address of guest.
 `message`                      | text     | Admin note.
 
-
 ## Related objects
 
 Attribute                    | Type    | Description
@@ -180,6 +179,14 @@ Attribute                    | Type    | Description
 `partial_refund`   | Some items have been refunded.
 `refunded`         | All items have been refunded.
 `failed`           | Payment failed.
+
+## Exceptional errors
+Exceptions vary in format. Please see the right hand panel for examples.
+
+`type`            | Meaning
+----------------- | -------------------------------
+`cannot_modify`   | Order is in an uneditable state. (e.g. `complete`)
+`invalid_state`   | Order cannot transition to provided state.
 
 ## Create an order
 <aside class="notice">
