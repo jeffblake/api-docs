@@ -1,6 +1,6 @@
 # Responses
 
-## Atributes
+## Response properties
 
 > Example Response
 

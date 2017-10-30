@@ -1,10 +1,18 @@
 # Introduction
 
+## REST
+
 ## Base URL
 `https://guestmanager.com/api/public/v1`
 
 ## Versioning
 The version is specified in the request URL. If the version is omitted, the latest version will be used by default.
+
+## Rate limiting
+TBA
+
+## Tooling
+Postman is a great app for testing and experimenting with our API.
 
 ## Requests
 
@@ -41,6 +49,8 @@ Code                 | Description
 `201`                | Created
 `204`                | No Content -- used for `DELETE` requests.
 
+## Errors
+
 ### Error status codes
 
 Error Code | Meaning
@@ -57,7 +67,8 @@ Error Code | Meaning
 `500`      | Internal Server Error -- We had a problem with our server. Try again later.
 `503`      | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
 
-#### Exceptional errors
+
+### Exceptional errors
 Exceptions vary in format. Please see the right hand panel for examples.
 
 Attribute  | Type     | Meaning
@@ -103,63 +114,88 @@ Attribute  | Type     | Meaning
 }
 ```
 
-#### Validation errors
+### Validation errors
 Validation errors occur when a provided attribute does not meet the validation requirements on the model. The status code is always `422`.
 
-> Example Order Validation Error
+> Example Validation Error
 
 ```json
 {
-	"type": "validation_error",
-	"message": "First name Required, Last name Required, Email Required, and Guest Required",
-	"errors": {
-		"order": [{
-			"field": "first_name",
-			"label": "First name",
-			"code": "blank",
-			"message": "Required"
-		}, {
-			"field": "last_name",
-			"label": "Last name",
-			"code": "blank",
-			"message": "Required"
-		}, {
-			"field": "email",
-			"label": "Email",
-			"code": "blank",
-			"message": "Required"
-		}, {
-			"field": "guest",
-			"label": "Guest",
-			"code": "blank",
-			"message": "Required"
-		}],
-		"tickets": {
-			"2148082": [{
-				"field": "guest",
-				"label": "Guest",
-				"code": "blank",
-				"message": "can't be blank"
-			}]
-		}
-	}
+    "type": "validation_error",
+    "message": "Email is invalid",
+    "errors": {
+        "attributes": [
+            {
+                "field": "email",
+                "label": "Email",
+                "code": "invalid",
+                "message": "is invalid"
+            }
+        ],
+        "associations": {
+            "tickets": {},
+            "form_responses": {}
+        }
+    }
 }
 ```
 
-##### Format
+> Example Validation Error w/ Associations
+
+```json
+{
+  "type": "validation_error",
+  "message": "",
+  "errors": {
+      "attributes": [],
+      "associations": {
+          "tickets": {
+              "2148094": {
+                  "type": "validation_error",
+                  "message": "Name can't be blank",
+                  "errors": {
+                      "attributes": [
+                          {
+                              "attribute": "name",
+                              "label": "Name",
+                              "code": "blank",
+                              "message": "can't be blank"
+                          }
+                      ],
+                      "associations": {}
+                  }
+              }
+          },
+          "form_responses": {}
+      }
+  }
+}
+```
+
+#### Error response
 
 Attribute             | Type     | Meaning
 --------------------- | -------- | -----------------
 `type`                | string   | always `validation_error`
 `message`             | string   | All of the validation errors concatenated into a single message.
 `errors`              | object   | Details on the individual validation errors. Look for the key relevant to the resource you are modifying. E.g. for Orders, the key is `order`
-`errors.{model-name}` | array    | e.g. `errors.order` for Order.
+`errors[attributes]`  | array    | Errors on the object itself.
+`errors[associations]`| hash     | Errors on associated objects.
 
-##### Association errors
-When you are submitting nested parameters, e.g. `tickets` with an `Order`, the errors associated to those resources are specified in an `array`, in the `errors` attribute, with the key being the name of the association. E.g. for `tickets` submitted along with an order, the key to access those is `errors.tickets`
+#### Error node
+
+Attribute             | Type     | Meaning
+--------------------- | -------- | -----------------
+`attribute`           | string   | The attribute on the model that triggered the error.
+`label`               | string   | A human readable version of the attribute.
+`code`                | string   | The type of validation error. See below for possibile codes.
+`message`             | string   | A human readable version of the `code`
+
+#### Association errors
+When you are submitting nested parameters, e.g. `tickets` with an `Order`, the errors associated to those resources are specified in an `array`, in the `errors` attribute, with the key being the name of the association. E.g. for `tickets` submitted along with an order, the key to access those is `errors.associations.tickets`
 Inside the association errors key, you will find a hash, indexed by the ID of the associated record. See example.
 
-##### Error codes
+#### Validation error codes
 https://github.com/rails/rails/blob/master/activemodel/lib/active_model/locale/en.yml
 
 `code`     | Meaning

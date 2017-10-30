@@ -1,5 +1,7 @@
 # Events
 
+## Event properties
+
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
 `name`                         | string   | Name of the series.
@@ -41,7 +43,7 @@ Attribute                      | Type     | Description
 `utc`                          | string   | `datetime` in UTC (global) format.
 
 
-## List all events
+## List events
 
 <div class="api-endpoint">
 	<div class="endpoint-data">

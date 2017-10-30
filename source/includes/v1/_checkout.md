@@ -59,7 +59,7 @@ When an order expires, need to resume it. Need to check that inventory was succe
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-patch">PATCH</i>
-		<h6>/checkout/{NUMBER}/resume</h6>
+		<h6>/checkout/{id}/resume</h6>
 	</div>
 </div>
 
@@ -114,9 +114,7 @@ Error `type`               | Meaning
 `checkout_not_allowed`     |
 `order_processing`         |
 `order_complete`           |
-`invalid_state`            |
-
-
+`invalid_state`            | Order cannot transition to provided state.
 
 ## `cart` step
 The default state of all newly created orders.
@@ -152,7 +150,33 @@ When the `keep` attribute is `true`, a `name` is not required, because that tick
 > Example Response (Error)
 
 ```json
-
+{
+    "type": "validation_error",
+    "message": "",
+    "errors": {
+        "attributes": [],
+        "associations": {
+            "tickets": {
+                "2148093": {
+                    "type": "validation_error",
+                    "message": "Name can't be blank",
+                    "errors": {
+                        "attributes": [
+                            {
+                                "field": "name",
+                                "label": "Name",
+                                "code": "blank",
+                                "message": "can't be blank"
+                            }
+                        ],
+                        "associations": {}
+                    }
+                }
+            },
+            "form_responses": {}
+        }
+    }
+}
 ```
 
 ### Parameters
@@ -201,7 +225,7 @@ Parameter              | Type     | Description
 Upon successful addition of address information, you will see a populated `bill_address_id` and/or `ship_address_id`.
 
 ## `form` step
-This step is included if a Form (i.e. Questions or Survey) has been configured on this order. Inspect the `form_responses` attribute.
+This step is included if a Form (i.e. Questions or Survey) has been configured on this order. Inspect the `responses` attribute on the `Order`.
 
 Only the `answers` `id` and `value` need to be submitted back.
 For multiple choice fields, the `answer.value` will be the `id` of the `FormFieldOption`
@@ -214,15 +238,15 @@ For multiple choice fields, the `answer.value` will be the `id` of the `FormFiel
 		"state": "form",
 		"responses": [
 			{
-				"id": 38133,
+				"id": 38133, /* Response ID */
 				"answers": [
 				{
 					"id": 167288,
-					"value": "791"
+					"value": "791" /* multiple choice */
 				},
 				{
 					"id": 167286,
-					"value": "592"
+					"value": "592" /* multiple choice */
 				},
 				{
 					"id": 167287,
@@ -244,7 +268,7 @@ For multiple choice fields, the `answer.value` will be the `id` of the `FormFiel
 
 Parameter                | Type     | Description
 ------------------------ | ------   | -----------
-`order[form_responses]`  | `array`  | See `FormResponse` for format.
+`order[responses]`       | `array`  | See `FormResponse` for format.
 
 ## `payment` step
 This step is included if the order total is greater than 0. Inspect the `payment_methods` attribute to see which options are available for payment.
@@ -254,6 +278,22 @@ Do not submit credit card information via the API. Use your payment provider's J
 Parameter              | Type     | Description
 ---------------------- | ------   | -----------
 `order[payments]`      | `array`  | See `Payment` for format.
+
+> Example Request
+
+```json
+{
+	"order": {
+		"state": "payment",
+		"payments": [
+			{
+				"token": 38133
+			}
+
+		]
+	}
+}
+```
 
 ## `processing` step
 This step is not present in the `checkout_steps` attribute. Once payment information is submitted in the `payment` step, the payments are processed asynchronously during the `processing` state.

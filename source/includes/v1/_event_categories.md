@@ -1,6 +1,8 @@
 # Event Categories
 An event can have many categories.
 
+## Category properties
+
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
 `name`                         | string   | Name of the category.
@@ -12,6 +14,8 @@ Attribute                      | Type     | Description
 `children`                     | array    | Sub-categories.
 
 
+## List categories
+
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-get">GET</i>
@@ -19,7 +23,7 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
-## Request Parameters
+### Request
 
 Attribute                      | Type     | Values
 ------------------------------ | -------- | -----------

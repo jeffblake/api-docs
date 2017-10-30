@@ -186,7 +186,6 @@ Exceptions vary in format. Please see the right hand panel for examples.
 `type`            | Meaning
 ----------------- | -------------------------------
 `cannot_modify`   | Order is in an uneditable state. (e.g. `complete`)
-`invalid_state`   | Order cannot transition to provided state.
 
 ## Create an order
 <aside class="notice">

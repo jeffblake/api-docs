@@ -1,6 +1,8 @@
 # Event Series
 Top level non-bookable events that serve as the wrapper around individual event date/times. The ID of the class can be used to query against the Events API to return date/times for that series.
 
+## Series properties
+
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
 `name`                         | string   | Name of the series.
@@ -9,6 +11,7 @@ Attribute                      | Type     | Description
 `categories`                   | array    | Categories associated to this series.
 `tags`                         | array    | Tags associated to this series.
 
+## List series
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
@@ -17,7 +20,7 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
-## Request Parameters
+### Request
 
 Attribute                      | Type     | Default   | Values
 ------------------------------ | -------- | --------- | ----------

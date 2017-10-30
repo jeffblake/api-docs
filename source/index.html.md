@@ -19,6 +19,7 @@ includes:
   - v1/orders
   - v1/checkout
   - v1/form_responses
+  - v1/addresses
 
 search: true
 ---

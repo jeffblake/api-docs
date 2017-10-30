@@ -1,5 +1,7 @@
 # Venues
 
+## Venue properties
+
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
 `name`                         | string   | Name of the venue.
@@ -11,6 +13,8 @@ Attribute                      | Type     | Description
 `address_id`                   | integer  | ID of the associated address.
 `address`                      | object   | Address of the venue. See `Address`.
 
+
+## List venues
 
 <div class="api-endpoint">
 	<div class="endpoint-data">

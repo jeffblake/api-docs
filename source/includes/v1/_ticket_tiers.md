@@ -1,6 +1,6 @@
 # Ticket Tiers
 
-## Attributes
+## Tier properties
 
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
@@ -11,7 +11,7 @@ Attribute                      | Type     | Description
 `price_levels`                 | array    | Array of `TicketTierLevel`
 
 
-## Ticket Tier Level Attributes
+## Tier level properties
 
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
