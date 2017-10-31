@@ -23,7 +23,7 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
-### Request
+### Request parameters
 
 Attribute                      | Type     | Values
 ------------------------------ | -------- | -----------

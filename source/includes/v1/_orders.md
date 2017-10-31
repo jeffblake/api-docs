@@ -91,7 +91,7 @@ Attribute                      | Type     | Description
 `state`                        | string   | The current step of the order. See order states. <i class="label label-info">read-only</i>
 `checkout_steps`               | array    | List of all states dynamically computed for this order. Can change from state to state. <i class="label label-info">read-only</i>
 `guest_id`                     | integer  | The guest associated to this order. <i class="label label-info">read-only</i>
-`guest_token`                  | string   | Unique token for the session. <i class="label label-info">read-only</i>
+`guest_token`                  | string   | Unique token for the session. Submit this back to GM for any requests that modify this order. <i class="label label-info">read-only</i>
 `payment_state`                | string   | Current payment status. See payment states. <i class="label label-info">read-only</i>
 `currency`                     | string   | ISO code of currency. All items added to order must have a price available in this currency.
 `item_count`                   | integer  | Number of items in the order. Sum of all `line_item.quantity` <i class="label label-info">read-only</i>
@@ -133,7 +133,7 @@ Attribute                      | Type     | Description
 `last_ip_address`              | string   | Last known ip address of guest.
 `message`                      | text     | Admin note.
 
-## Related objects
+### Related objects
 
 Attribute                    | Type    | Description
 ---------------------------- | ------- | -----------
@@ -144,9 +144,10 @@ Attribute                    | Type    | Description
 `tickets`                    | array   | Tickets relevant to the line items.
 `responses`                  | array   | Surveys/questions.
 `payments`                   | array   | Payments made on this order.
+`promotions`                 | array   | If any promo's were applied to this order. If so, a corresponding `Adjustment` will be present on the order or line item.
 
 
-## Guest checkout properties
+### Guest checkout properties
 Add these attributes through either the create or update order endpoint.
 The `guest_id` attribute will be set on the order through a find or create process based on the provided email and phone number.
 
@@ -158,6 +159,76 @@ Attribute                    | Type    | Description
 `email`                      | string  | Email address of guest. Format is validated.
 `phone_number`               | string  | Phone number of guest. <br>Format is validated according to the `phone_number_country` provided.
 `phone_number_country`       | string  | Country of the phone number. 2 digit ISO code, uppercase.
+
+### Line item properties
+
+Attribute                    | Type    | Description
+---------------------------- | ------- | -----------
+`order_id`                   | boolean | Set this to `true` to enable guest checkout. <i class="label label-info">read-only</i>
+`name`                       | string  | Variant name. <i class="label label-info">read-only</i>
+`description`                | string  |
+`variant_id`                 | integer | The product variation in the cart.
+`quantity`                   | integer | number of items.
+`price`                      | decimal | per unit price.
+`amount`                     | decimal | `price * quantity` <i class="label label-info">read-only</i>
+`currency`                   | string  | ISO code.
+`bundle_item_id`             | integer | The parent `LineItem` this `LineItem` is bundled under. <i class="label label-info">read-only</i>
+`ticket_tier`                | object  | Present if a ticket tier is being sold. <i class="label label-info">read-only</i>
+`adjustments`                | array   | adjustments related to this line item. (fees, taxes, promotions) <i class="label label-info">read-only</i>
+`tickets`                    | array   | Tickets issued as specified by the variant's package. <i class="label label-info">read-only</i>
+
+#### Ticket tier properties
+
+Attribute                    | Type    | Description
+---------------------------- | ------- | -----------
+`name`                       | string  | The Ticket Type name.
+`event`                      | object  |
+`event.name`                 | string  | Name of the event.
+`event.date`                 | date    | Localized date of the event.
+`event.time`                 | time    | Localized time of the event.
+`venue`                      | string  | Name of the venue where event is held.
+
+
+#### Line item validation errors
+
+`code`                | Meaning
+--------------------- | ------------------------
+`not_available`       | Product is no longer on sale. Could be disabled, or past the `end_sale_at` date.
+`sold_out`            | Product is sold out.
+
+### Adjustment properties
+
+Attribute                    | Type    | Description
+---------------------------- | ------- | -----------
+`label`                      | string  | Description of the adjustment.
+`order_id`                   | integer | Order. <i class="label label-info">read-only</i>
+`adjustable_id`              | integer | ID of what this adjustment is adjusting <i class="label label-info">read-only</i>
+`adjustable_type`            | string  | The model of what this adjustment is adjusting. One of `Order` or `LineItem` <i class="label label-info">read-only</i>
+`amount`                     | decimal | Dollar amount.
+`source_id`                  | integer | ID of what created this adjustment. <i class="label label-info">read-only</i>
+`source_type`                | string  | The model of what created this adjustment. One of `ServiceFeeRate`, `TaxRate`, `PromotionAction` <i class="label label-info">read-only</i>
+`included`                   | boolean | Whether the amount is included in the `adjustable` total, or added on top. <i class="label label-info">read-only</i>
+`mandatory`                  | boolean |
+`eligible`                   | boolean | If this adjustment is eligible, determined by `source` <i class="label label-info">read-only</i>
+`groupable`                  | boolean | Whether this adjustment can be grouped into a total amount (e.g. taxes), or must be listed out separately. <i class="label label-info">read-only</i>
+`finalized`                  | boolean | If this adjustment can be modified. <i class="label label-info">read-only</i>
+`merchant_fee`               | boolean | If this adjustment is used to cover credit card processing fees. Determined by the `ServiceFeeRate` <i class="label label-info">read-only</i>
+`application_fee`            | boolean | If this amount is monies owed to Guest Manager. <i class="label label-info">read-only</i>
+
+### Payment properties
+
+Attribute                    | Type    | Description
+---------------------------- | ------- | -----------
+`number`                     | string  | Unique identifier.
+`amount`                     | decimal | Payment amount.
+`state`                      | string  | status of the payment.
+`order_id`                   | integer | Order ID.
+`source_id`                  | integer |
+`source_type`                | string  |
+`payment_method_id`          | integer |
+`response_code`              | string  | Response from payment gateway. Typically is the unique identifier used by the gateway.
+`application_fee`            | decimal | Monies routed to Guest Manager.
+`reason`                     | string  | A decline reason.
 
 ## Order states
 
@@ -239,7 +310,7 @@ Parameter              | Description
 }
 ```
 
-## Retrieve an order
+## Fetch order
 
 
 <div class="api-endpoint">
@@ -249,7 +320,7 @@ Parameter              | Description
 	</div>
 </div>
 
-## Update an order
+## Update order
 Updates an order. All line items must be provided.
 
 <div class="api-endpoint">
@@ -266,13 +337,26 @@ Updates an order. All line items must be provided.
   "order": {
     "line_items": [
       {
+        /* no ID present, creates new line item */
         "variant_id": 12345,
         "quantity": 4
+      },
+      {
+        /* updates existing line item */
+        "id": 12345,
+        "variant_id": 9999,
+        "quantity": 2
       }
     ]
   }
 }
 ```
+
+### Request parameters
+Parameter              | Description
+---------------------- | -----------
+`{id}`                 | Order ID.
+`guest_token`          | Provide the order's guest_token to authorize updates to this order.
 
 ## Apply coupon code
 Attempts to apply a coupon/promo code to the order.
@@ -284,10 +368,11 @@ Attempts to apply a coupon/promo code to the order.
 	</div>
 </div>
 
-### Parameters
+### Request parameters
 Parameter              | Type     | Description
 ---------------------- | -------- | -------------
 `coupon_code`          | `string` | Optional if your account is not enabled for multi-currency.
+`guest_token`          | `string` | Provide the order's guest_token to authorize updates to this order.
 
 ### Response
 Status         | Description
@@ -310,11 +395,11 @@ Status         | Description
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-get">POST</i>
-		<h6>/orders/{id}/line_items/add</h6>
+		<h6>/orders/{order-id}/line_items/add</h6>
 	</div>
 </div>
 
-### Parameters
+### Request parameters
 Parameter              | Type      | Description
 ---------------------- | --------  | -------------
 `variant_id`           | `integer` | The variant to add to the order.
@@ -327,11 +412,11 @@ Parameter              | Type      | Description
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-get">POST</i>
-		<h6>/orders/{id}/line_items/remove</h6>
+		<h6>/orders/{order-id}/line_items/remove</h6>
 	</div>
 </div>
 
-### Parameters
+### Request parameters
 Parameter              | Type      | Description
 ---------------------- | --------  | -------------
 `variant_id`           | `integer` | The variant to remove from the order.
@@ -362,7 +447,8 @@ Parameter        | Type      | Description
 	</div>
 </div>
 
-### Parameters
+### Request parameters
+
 Parameter                   | Type      | Description
 --------------------------- | --------  | -------------
 `{order-id}`                | integer   | Order ID.

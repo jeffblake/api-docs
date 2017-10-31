@@ -3,16 +3,23 @@
 ## REST
 
 ## Base URL
-`https://guestmanager.com/api/public/v1`
+
+Api Version          | URL
+-------------------- | -----------
+Latest               | `https://guestmanager.com/api/public`
+`v1`                 | `https://guestmanager.com/api/public/v1`
 
 ## Versioning
 The version is specified in the request URL. If the version is omitted, the latest version will be used by default.
 
 ## Rate limiting
-TBA
+API requests are throttled by IP address and limited to 300 requests per 5 minute period.
 
 ## Tooling
 Postman is a great app for testing and experimenting with our API.
+
+## Feedback
+Do you have a suggestion on how we can improve this API? Email us at support@guestmanager.com.
 
 ## Requests
 
@@ -76,6 +83,13 @@ Attribute  | Type     | Meaning
 `type`     | string   | `forbidden`, `not_found`, `routing_error`, `parameter_missing`, `unpermitted_parameters`
 `message`  | string   | Description of the error.
 `detail`   | object   | Detailed information on the error, depending on the error.
+
+> rate_limit_exceeded
+
+{
+    "type": "rate_limit_exceeded",
+    "message": "Throttle limit reached. Retry later."
+}
 
 > not_found
 

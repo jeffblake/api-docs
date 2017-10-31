@@ -9,7 +9,6 @@ toc_footers:
 
 includes:
   - v1/introduction
-  - v1/authentication
   - v1/topics
   - v1/events
   - v1/ticket_tiers
@@ -19,6 +18,7 @@ includes:
   - v1/orders
   - v1/checkout
   - v1/form_responses
+  - v1/payment_methods
   - v1/addresses
 
 search: true

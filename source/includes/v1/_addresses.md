@@ -34,3 +34,23 @@ Attribute                      | Type     | Description
 `code`                         | string   | ISO code of the country.
 `currency_code`                | string   | Currency ISO code.
 `phone_prefix`                 | string   | Phone prefix.
+
+
+## List countries
+If you need to create address forms in your UI, it is recommended to use our maintained list of country data and `ids`.
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-get">GET</i>
+		<h6>/countries</h6>
+	</div>
+</div>
+
+## List country states
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-get">GET</i>
+		<h6>/countries/{country-id}/states</h6>
+	</div>
+</div>

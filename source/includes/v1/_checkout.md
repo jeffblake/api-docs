@@ -63,6 +63,12 @@ When an order expires, need to resume it. Need to check that inventory was succe
 	</div>
 </div>
 
+### Request parameters
+
+Parameter              | Description
+---------------------- | -----------
+`{id}`                 | Order ID.
+`guest_token`          | Provide the order's guest_token to authorize updates to this order.
 
 ## Begin checkout
 Attempt to move the order to the next step in the checkout process without providing any new attributes. Typically this is used for moving an order from `cart` to the first step in the checkout process, as this transition does not require any new attributes.
@@ -74,10 +80,11 @@ Attempt to move the order to the next step in the checkout process without provi
 	</div>
 </div>
 
-### Parameters
+### Request parameters
 Parameter              | Description
 ---------------------- | -----------
 `{id}`                 | Order ID.
+`guest_token`          | Provide the order's guest_token to authorize updates to this order.
 `state`                | Optional. Attempt to move the order directly to this state.
 
 ### Response
@@ -94,13 +101,13 @@ This is the sole endpoint for transitioning an order through the various checkou
 	</div>
 </div>
 
-### Parameters
+### Request parameters
 The following parameters should be submitted for every checkout step, along with the step-specific data.
 
 Parameter              | Description
 ---------------------- | -----------
 `{id}`                 | Order ID.
-`order[guest_token]`   | Optional if your account is not enabled for multi-currency.
+`guest_token`          | Provide the order's guest_token to authorize updates to this order.
 `order[state]`         | Provide the current `state` attribute that you are sending parameters for.
 Step specific data.    | Include the relevent information specified below, according to the current step.
 
@@ -179,7 +186,7 @@ When the `keep` attribute is `true`, a `name` is not required, because that tick
 }
 ```
 
-### Parameters
+### Request parameters
 Parameter              | Description
 ---------------------- | -----------
 `order[tickets]`       | Array. Include `id`, `name`, `email`, `keep`, for each ticket.
@@ -285,9 +292,14 @@ Parameter              | Type     | Description
 {
 	"order": {
 		"state": "payment",
-		"payments": [
-			{
-				"token": 38133
+		"payments": [{
+				"payment_method_id": 75,
+				"source": {
+					"card_type": "VI",
+					"last_four": "4680",
+					"token": "tok_1231231231312322",
+					"cvv": "123"
+				}
 			}
 
 		]
@@ -295,10 +307,52 @@ Parameter              | Type     | Description
 }
 ```
 
+### Payment request parameters
+
+Parameter                 | Type     | Description
+------------------------- | ------   | -----------
+`amount`                  | decimal  | Leave this blank and it will be automatically be set to the amount due on the order.
+`payment_method_id`       | integer  | The payment method ID.
+`source.last_four`        | string   | Last 4 digits on the credit card.
+`source.card_type`        | string   | Credit card type. One of
+`source.token`            | string   | The tokenized identifier of the credit card, created using the payment method SDK.
+`source.cardholder_name`  | string   | Name of the card owner.
+`source.cvv`              | `string` | 3 or 4 digit code on the card to perform verification.
+
 ## `processing` step
 This step is not present in the `checkout_steps` attribute. Once payment information is submitted in the `payment` step, the payments are processed asynchronously during the `processing` state.
 
 Poll the order until the `state` changes from `processing`. If payment failed, the `state` will return to `payment`. If successful, the order will be complete and in the `complete` state.
+
+### Poll order state
+If the order is still processing, a single `state` attribute will be returned, for efficiency. If the order is no longer processing, you will receive a full `Order` object back.
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-get">GET</i>
+		<h6>/orders/{id}/poll?guest_token=xyz</h6>
+	</div>
+</div>
+
+> Example Response (Payment Processing)
+
+```json
+{
+  "state": "processing"
+}
+```
+
+> Example Response (Order Complete)
+
+```json
+{
+  "id": 1232323
+  "state": "complete",
+  "payment_state": "paid"
+  /* rest of attributes redacted */
+}
+```
+
 
 ## `complete` step
 Order is now complete. Tickets have been fulfilled. The order is not necessarily fully paid at this point. `completed_at` will be non-null.
