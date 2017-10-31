@@ -349,7 +349,7 @@ If the order is still processing, a single `state` attribute will be returned, f
   "id": 1232323
   "state": "complete",
   "payment_state": "paid"
-  /* rest of attributes redacted */
+  /* attributes redacted */
 }
 ```
 
