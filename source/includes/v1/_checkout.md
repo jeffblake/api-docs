@@ -353,7 +353,6 @@ If the order is still processing, a single `state` attribute will be returned, f
 }
 ```
 
-
 ## `complete` step
 Order is now complete. Tickets have been fulfilled. The order is not necessarily fully paid at this point. `completed_at` will be non-null.
 
