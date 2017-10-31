@@ -238,6 +238,9 @@
                     <a href="#introduction_tooling" class="toc-h2 toc-link" data-title="Introduction">Tooling</a>
                   </li>
                   <li>
+                    <a href="#introduction_feedback" class="toc-h2 toc-link" data-title="Introduction">Feedback</a>
+                  </li>
+                  <li>
                     <a href="#introduction_requests" class="toc-h2 toc-link" data-title="Introduction">Requests</a>
                   </li>
                   <li>
@@ -249,16 +252,11 @@
               </ul>
           </li>
           <li>
-            <a href="#authentication_authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#authentication_api-keys" class="toc-h2 toc-link" data-title="Authentication">API Keys</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#topics_topics" class="toc-h1 toc-link" data-title="Topics">Topics</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#topics_authentication" class="toc-h2 toc-link" data-title="Topics">Authentication</a>
+                  </li>
                   <li>
                     <a href="#topics_common-attributes" class="toc-h2 toc-link" data-title="Topics">Common attributes</a>
                   </li>
@@ -350,12 +348,6 @@
                     <a href="#orders_order-properties" class="toc-h2 toc-link" data-title="Orders">Order properties</a>
                   </li>
                   <li>
-                    <a href="#orders_related-objects" class="toc-h2 toc-link" data-title="Orders">Related objects</a>
-                  </li>
-                  <li>
-                    <a href="#orders_guest-checkout-properties" class="toc-h2 toc-link" data-title="Orders">Guest checkout properties</a>
-                  </li>
-                  <li>
                     <a href="#orders_order-states" class="toc-h2 toc-link" data-title="Orders">Order states</a>
                   </li>
                   <li>
@@ -368,10 +360,10 @@
                     <a href="#orders_create-an-order" class="toc-h2 toc-link" data-title="Orders">Create an order</a>
                   </li>
                   <li>
-                    <a href="#orders_retrieve-an-order" class="toc-h2 toc-link" data-title="Orders">Retrieve an order</a>
+                    <a href="#orders_fetch-order" class="toc-h2 toc-link" data-title="Orders">Fetch order</a>
                   </li>
                   <li>
-                    <a href="#orders_update-an-order" class="toc-h2 toc-link" data-title="Orders">Update an order</a>
+                    <a href="#orders_update-order" class="toc-h2 toc-link" data-title="Orders">Update order</a>
                   </li>
                   <li>
                     <a href="#orders_apply-coupon-code" class="toc-h2 toc-link" data-title="Orders">Apply coupon code</a>
@@ -458,6 +450,14 @@
               </ul>
           </li>
           <li>
+            <a href="#payment-methods_payment-methods" class="toc-h1 toc-link" data-title="Payment Methods">Payment Methods</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#payment-methods_payment-method-properties" class="toc-h2 toc-link" data-title="Payment Methods">Payment method properties</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#addresses_addresses" class="toc-h1 toc-link" data-title="Addresses">Addresses</a>
               <ul class="toc-list-h2">
                   <li>
@@ -468,6 +468,12 @@
                   </li>
                   <li>
                     <a href="#addresses_country-properties" class="toc-h2 toc-link" data-title="Addresses">Country properties</a>
+                  </li>
+                  <li>
+                    <a href="#addresses_list-countries" class="toc-h2 toc-link" data-title="Addresses">List countries</a>
+                  </li>
+                  <li>
+                    <a href="#addresses_list-country-states" class="toc-h2 toc-link" data-title="Addresses">List country states</a>
                   </li>
               </ul>
           </li>
@@ -480,13 +486,29 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction_introduction'>Introduction</h1><h2 id='introduction_rest'>REST</h2><h2 id='introduction_base-url'>Base URL</h2>
-<p><code>https://guestmanager.com/api/public/v1</code></p>
+<table><thead>
+<tr>
+<th>Api Version</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Latest</td>
+<td><code>https://guestmanager.com/api/public</code></td>
+</tr>
+<tr>
+<td><code>v1</code></td>
+<td><code>https://guestmanager.com/api/public/v1</code></td>
+</tr>
+</tbody></table>
 <h2 id='introduction_versioning'>Versioning</h2>
 <p>The version is specified in the request URL. If the version is omitted, the latest version will be used by default.</p>
 <h2 id='introduction_rate-limiting'>Rate limiting</h2>
-<p>TBA</p>
+<p>API requests are throttled by IP address and limited to 300 requests per 5 minute period.</p>
 <h2 id='introduction_tooling'>Tooling</h2>
 <p>Postman is a great app for testing and experimenting with our API.</p>
+<h2 id='introduction_feedback'>Feedback</h2>
+<p>Do you have a suggestion on how we can improve this API? Email us at support@guestmanager.com.</p>
 <h2 id='introduction_requests'>Requests</h2><h3 id='introduction_headers'>Headers</h3>
 <p>The following headers must be specified in all API requests.</p>
 
@@ -638,6 +660,15 @@
 <td>Detailed information on the error, depending on the error.</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>rate_limit_exceeded</p>
+</blockquote>
+
+<p>{
+    &quot;type&quot;: &quot;rate_limit_exceeded&quot;,
+    &quot;message&quot;: &quot;Throttle limit reached. Retry later.&quot;
+}</p>
 
 <blockquote>
 <p>not_found</p>
@@ -811,14 +842,32 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td>attribute format is invalid.</td>
 </tr>
 </tbody></table>
-<h1 id='authentication_authentication'>Authentication</h1>
+<h1 id='topics_topics'>Topics</h1><h2 id='topics_authentication'>Authentication</h2>
 <p>Authentication is done through the <code>Authorization</code> request header. The value should be in the format <code>Token abcdefg</code> where <code>abcdefg</code> is replaced with your API Key.</p>
-<pre class="highlight shell tab-shell"><code><span class="c">## Request Header</span>
+<pre class="highlight shell tab-shell"><code><span class="c">### Request Header</span>
 curl <span class="s2">"http://guestmanager.com/api/pubic/v1"</span>
   -H <span class="s2">"Authorization: Token meowmeowmeow"</span>
-</code></pre><h2 id='authentication_api-keys'>API Keys</h2>
+</code></pre><h3 id='topics_api-keys'>API keys</h3>
 <p>API Keys are created in the company dashboard under the Config menu. API keys are authorized for either <code>read</code>, <code>write</code>, or both.</p>
-<h1 id='topics_topics'>Topics</h1><h2 id='topics_common-attributes'>Common attributes</h2>
+<h3 id='topics_api-key-permissions'>API key permissions</h3>
+<p>API Keys are authorized for <code>read</code>, <code>write</code>, or both.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Request methods</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>read</code></td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td><code>write</code></td>
+<td><code>POST</code>, <code>PATCH</code>, <code>DELETE</code></td>
+</tr>
+</tbody></table>
+<h2 id='topics_common-attributes'>Common attributes</h2>
 <p>All resources have the following attributes.</p>
 
 <table><thead>
@@ -1405,7 +1454,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
         <h6>/categories</h6>
     </div>
 </div>
-<h3 id='event-categories_request'>Request</h3>
+<h3 id='event-categories_request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1586,7 +1635,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <tr>
 <td><code>guest_token</code></td>
 <td>string</td>
-<td>Unique token for the session. <i class="label label-info">read-only</i></td>
+<td>Unique token for the session. Submit this back to GM for any requests that modify this order. <i class="label label-info">read-only</i></td>
 </tr>
 <tr>
 <td><code>payment_state</code></td>
@@ -1789,7 +1838,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td>Admin note.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_related-objects'>Related objects</h2>
+<h3 id='orders_related-objects'>Related objects</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1832,8 +1881,13 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td>array</td>
 <td>Payments made on this order.</td>
 </tr>
+<tr>
+<td><code>promotions</code></td>
+<td>array</td>
+<td>If any promo&#39;s were applied to this order. If so, a corresponding <code>Adjustment</code> will be present on the order or line item.</td>
+</tr>
 </tbody></table>
-<h2 id='orders_guest-checkout-properties'>Guest checkout properties</h2>
+<h3 id='orders_guest-checkout-properties'>Guest checkout properties</h3>
 <p>Add these attributes through either the create or update order endpoint.
 The <code>guest_id</code> attribute will be set on the order through a find or create process based on the provided email and phone number.</p>
 
@@ -1873,6 +1927,268 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td><code>phone_number_country</code></td>
 <td>string</td>
 <td>Country of the phone number. 2 digit ISO code, uppercase.</td>
+</tr>
+</tbody></table>
+<h3 id='orders_line-item-properties'>Line item properties</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order_id</code></td>
+<td>boolean</td>
+<td>Set this to <code>true</code> to enable guest checkout. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Variant name. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>variant_id</code></td>
+<td>integer</td>
+<td>The product variation in the cart.</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>integer</td>
+<td>number of items.</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>decimal</td>
+<td>per unit price.</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td><code>price * quantity</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>ISO code.</td>
+</tr>
+<tr>
+<td><code>bundle_item_id</code></td>
+<td>integer</td>
+<td>The parent <code>LineItem</code> this <code>LineItem</code> is bundled under. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>ticket_tier</code></td>
+<td>object</td>
+<td>Present if a ticket tier is being sold. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>adjustments</code></td>
+<td>array</td>
+<td>adjustments related to this line item. (fees, taxes, promotions) <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>tickets</code></td>
+<td>array</td>
+<td>Tickets issued as specified by the variant&#39;s package. <i class="label label-info">read-only</i></td>
+</tr>
+</tbody></table>
+<h4 id='orders_ticket-tier-properties'>Ticket tier properties</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The Ticket Type name.</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td><code>event.name</code></td>
+<td>string</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td><code>event.date</code></td>
+<td>date</td>
+<td>Localized date of the event.</td>
+</tr>
+<tr>
+<td><code>event.time</code></td>
+<td>time</td>
+<td>Localized time of the event.</td>
+</tr>
+<tr>
+<td><code>venue</code></td>
+<td>string</td>
+<td>Name of the venue where event is held.</td>
+</tr>
+</tbody></table>
+<h4 id='orders_line-item-validation-errors'>Line item validation errors</h4>
+<table><thead>
+<tr>
+<th><code>code</code></th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>not_available</code></td>
+<td>Product is no longer on sale. Could be disabled, or past the <code>end_sale_at</code> date.</td>
+</tr>
+<tr>
+<td><code>sold_out</code></td>
+<td>Product is sold out.</td>
+</tr>
+</tbody></table>
+<h3 id='orders_adjustment-properties'>Adjustment properties</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>label</code></td>
+<td>string</td>
+<td>Description of the adjustment.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td>integer</td>
+<td>Order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>adjustable_id</code></td>
+<td>integer</td>
+<td>ID of what this adjustment is adjusting <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>adjustable_type</code></td>
+<td>string</td>
+<td>The model of what this adjustment is adjusting. One of <code>Order</code> or <code>LineItem</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>Dollar amount.</td>
+</tr>
+<tr>
+<td><code>source_id</code></td>
+<td>integer</td>
+<td>ID of what created this adjustment. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td>string</td>
+<td>The model of what created this adjustment. One of <code>ServiceFeeRate</code>, <code>TaxRate</code>, <code>PromotionAction</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>included</code></td>
+<td>boolean</td>
+<td>Whether the amount is included in the <code>adjustable</code> total, or added on top. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>mandatory</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>eligible</code></td>
+<td>boolean</td>
+<td>If this adjustment is eligible, determined by <code>source</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>groupable</code></td>
+<td>boolean</td>
+<td>Whether this adjustment can be grouped into a total amount (e.g. taxes), or must be listed out separately. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>finalized</code></td>
+<td>boolean</td>
+<td>If this adjustment can be modified. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>merchant_fee</code></td>
+<td>boolean</td>
+<td>If this adjustment is used to cover credit card processing fees. Determined by the <code>ServiceFeeRate</code> <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>application_fee</code></td>
+<td>boolean</td>
+<td>If this amount is monies owed to Guest Manager. <i class="label label-info">read-only</i></td>
+</tr>
+</tbody></table>
+<h3 id='orders_payment-properties'>Payment properties</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>string</td>
+<td>Unique identifier.</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>Payment amount.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>status of the payment.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td>integer</td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>source_id</code></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source_type</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>payment_method_id</code></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td><code>response_code</code></td>
+<td>string</td>
+<td>Response from payment gateway. Typically is the unique identifier used by the gateway.</td>
+</tr>
+<tr>
+<td><code>application_fee</code></td>
+<td>decimal</td>
+<td>Monies routed to Guest Manager.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>string</td>
+<td>A decline reason.</td>
 </tr>
 </tbody></table>
 <h2 id='orders_order-states'>Order states</h2>
@@ -2006,14 +2322,14 @@ Please note that once an order is created, the tickets are reserved for 15 minut
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='orders_retrieve-an-order'>Retrieve an order</h2>
+</span></code></pre><h2 id='orders_fetch-order'>Fetch order</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/orders/{id}</h6>
     </div>
 </div>
-<h2 id='orders_update-an-order'>Update an order</h2>
+<h2 id='orders_update-order'>Update order</h2>
 <p>Updates an order. All line items must be provided.</p>
 
 <div class="api-endpoint">
@@ -2030,13 +2346,36 @@ Please note that once an order is created, the tickets are reserved for 15 minut
   </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*</span><span class="w"> </span><span class="err">no</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">present</span><span class="p">,</span><span class="w"> </span><span class="err">creates</span><span class="w"> </span><span class="err">new</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">item</span><span class="w"> </span><span class="err">*/</span><span class="w">
         </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*</span><span class="w"> </span><span class="err">updates</span><span class="w"> </span><span class="err">existing</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">item</span><span class="w"> </span><span class="err">*/</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"variant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='orders_apply-coupon-code'>Apply coupon code</h2>
+</span></code></pre><h3 id='orders_request-parameters'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{id}</code></td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>guest_token</code></td>
+<td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
+</tr>
+</tbody></table>
+<h2 id='orders_apply-coupon-code'>Apply coupon code</h2>
 <p>Attempts to apply a coupon/promo code to the order.</p>
 
 <div class="api-endpoint">
@@ -2045,7 +2384,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{id}/apply_coupon_code</h6>
     </div>
 </div>
-<h3 id='orders_parameters-2'>Parameters</h3>
+<h3 id='orders_request-parameters-2'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2057,6 +2396,11 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td><code>coupon_code</code></td>
 <td><code>string</code></td>
 <td>Optional if your account is not enabled for multi-currency.</td>
+</tr>
+<tr>
+<td><code>guest_token</code></td>
+<td><code>string</code></td>
+<td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
 </tr>
 </tbody></table>
 <h3 id='orders_response'>Response</h3>
@@ -2088,10 +2432,10 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">POST</i>
-        <h6>/orders/{id}/line_items/add</h6>
+        <h6>/orders/{order-id}/line_items/add</h6>
     </div>
 </div>
-<h3 id='orders_parameters-3'>Parameters</h3>
+<h3 id='orders_request-parameters-3'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2116,10 +2460,10 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">POST</i>
-        <h6>/orders/{id}/line_items/remove</h6>
+        <h6>/orders/{order-id}/line_items/remove</h6>
     </div>
 </div>
-<h3 id='orders_parameters-4'>Parameters</h3>
+<h3 id='orders_request-parameters-4'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2147,7 +2491,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{order-id}/line_items/{id}</h6>
     </div>
 </div>
-<h3 id='orders_parameters-5'>Parameters</h3>
+<h3 id='orders_parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2173,7 +2517,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{order-id}/line_items/{id}</h6>
     </div>
 </div>
-<h3 id='orders_parameters-6'>Parameters</h3>
+<h3 id='orders_request-parameters-5'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2338,16 +2682,7 @@ When an order expires, need to resume it. Need to check that inventory was succe
         <h6>/checkout/{id}/resume</h6>
     </div>
 </div>
-<h2 id='checkout_begin-checkout'>Begin checkout</h2>
-<p>Attempt to move the order to the next step in the checkout process without providing any new attributes. Typically this is used for moving an order from <code>cart</code> to the first step in the checkout process, as this transition does not require any new attributes.</p>
-
-<div class="api-endpoint">
-    <div class="endpoint-data">
-        <i class="label label-patch">PATCH</i>
-        <h6>/checkout/{id}/next</h6>
-    </div>
-</div>
-<h3 id='checkout_parameters'>Parameters</h3>
+<h3 id='checkout_request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2357,6 +2692,35 @@ When an order expires, need to resume it. Need to check that inventory was succe
 <tr>
 <td><code>{id}</code></td>
 <td>Order ID.</td>
+</tr>
+<tr>
+<td><code>guest_token</code></td>
+<td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
+</tr>
+</tbody></table>
+<h2 id='checkout_begin-checkout'>Begin checkout</h2>
+<p>Attempt to move the order to the next step in the checkout process without providing any new attributes. Typically this is used for moving an order from <code>cart</code> to the first step in the checkout process, as this transition does not require any new attributes.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/checkout/{id}/next</h6>
+    </div>
+</div>
+<h3 id='checkout_request-parameters-2'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{id}</code></td>
+<td>Order ID.</td>
+</tr>
+<tr>
+<td><code>guest_token</code></td>
+<td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
 </tr>
 <tr>
 <td><code>state</code></td>
@@ -2375,7 +2739,7 @@ The last step will be one of <code>complete</code>, <code>requested</code>, or <
         <h6>/checkout/{id}</h6>
     </div>
 </div>
-<h3 id='checkout_parameters-2'>Parameters</h3>
+<h3 id='checkout_request-parameters-3'>Request parameters</h3>
 <p>The following parameters should be submitted for every checkout step, along with the step-specific data.</p>
 
 <table><thead>
@@ -2389,8 +2753,8 @@ The last step will be one of <code>complete</code>, <code>requested</code>, or <
 <td>Order ID.</td>
 </tr>
 <tr>
-<td><code>order[guest_token]</code></td>
-<td>Optional if your account is not enabled for multi-currency.</td>
+<td><code>guest_token</code></td>
+<td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
 </tr>
 <tr>
 <td><code>order[state]</code></td>
@@ -2488,7 +2852,7 @@ The purpose of this step is to collect attendee information prior to completion 
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='checkout_parameters-3'>Parameters</h3>
+</span></code></pre><h3 id='checkout_request-parameters-4'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2630,19 +2994,94 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="mi">38133</span><span class="w">
+        </span><span class="s2">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"payment_method_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"last_four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4680"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1231231231312322"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
 
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='checkout_code-processing-code-step'><code>processing</code> step</h2>
+</span></code></pre><h3 id='checkout_payment-request-parameters'>Payment request parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>Leave this blank and it will be automatically be set to the amount due on the order.</td>
+</tr>
+<tr>
+<td><code>payment_method_id</code></td>
+<td>integer</td>
+<td>The payment method ID.</td>
+</tr>
+<tr>
+<td><code>source.last_four</code></td>
+<td>string</td>
+<td>Last 4 digits on the credit card.</td>
+</tr>
+<tr>
+<td><code>source.card_type</code></td>
+<td>string</td>
+<td>Credit card type. One of</td>
+</tr>
+<tr>
+<td><code>source.token</code></td>
+<td>string</td>
+<td>The tokenized identifier of the credit card, created using the payment method SDK.</td>
+</tr>
+<tr>
+<td><code>source.cardholder_name</code></td>
+<td>string</td>
+<td>Name of the card owner.</td>
+</tr>
+<tr>
+<td><code>source.cvv</code></td>
+<td><code>string</code></td>
+<td>3 or 4 digit code on the card to perform verification.</td>
+</tr>
+</tbody></table>
+<h2 id='checkout_code-processing-code-step'><code>processing</code> step</h2>
 <p>This step is not present in the <code>checkout_steps</code> attribute. Once payment information is submitted in the <code>payment</code> step, the payments are processed asynchronously during the <code>processing</code> state.</p>
 
 <p>Poll the order until the <code>state</code> changes from <code>processing</code>. If payment failed, the <code>state</code> will return to <code>payment</code>. If successful, the order will be complete and in the <code>complete</code> state.</p>
-<h2 id='checkout_code-complete-code-step'><code>complete</code> step</h2>
+<h3 id='checkout_poll-order-state'>Poll order state</h3>
+<p>If the order is still processing, a single <code>state</code> attribute will be returned, for efficiency. If the order is no longer processing, you will receive a full <code>Order</code> object back.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/orders/{id}/poll?guest_token=xyz</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>Example Response (Payment Processing)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response (Order Complete)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1232323</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payment_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="w">
+  </span><span class="err">/*</span><span class="w"> </span><span class="err">rest</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">redacted</span><span class="w"> </span><span class="err">*/</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='checkout_code-complete-code-step'><code>complete</code> step</h2>
 <p>Order is now complete. Tickets have been fulfilled. The order is not necessarily fully paid at this point. <code>completed_at</code> will be non-null.</p>
 
 <table><thead>
@@ -2896,6 +3335,65 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>How to sort the option.</td>
 </tr>
 </tbody></table>
+<h1 id='payment-methods_payment-methods'>Payment Methods</h1><h2 id='payment-methods_payment-method-properties'>Payment method properties</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>display_name</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>currencies</code></td>
+<td>array</td>
+<td>A list of currencies this payment method supports.</td>
+</tr>
+<tr>
+<td><code>billing_address_required</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>payment_profiles_enabled</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>test_mode</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tokenize_key</code></td>
+<td>string</td>
+<td>If the gateway supports credit card tokenization, use this key to generate a token clientside before submitting to the API.</td>
+</tr>
+</tbody></table>
 <h1 id='addresses_addresses'>Addresses</h1><h2 id='addresses_address-properties'>Address properties</h2>
 <table><thead>
 <tr>
@@ -3018,6 +3516,22 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>Phone prefix.</td>
 </tr>
 </tbody></table>
+<h2 id='addresses_list-countries'>List countries</h2>
+<p>If you need to create address forms in your UI, it is recommended to use our maintained list of country data and <code>ids</code>.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/countries</h6>
+    </div>
+</div>
+<h2 id='addresses_list-country-states'>List country states</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/countries/{country-id}/states</h6>
+    </div>
+</div>
 
       </div>
       <div class="dark-box">
