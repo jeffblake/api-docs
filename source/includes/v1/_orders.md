@@ -276,6 +276,7 @@ Parameter              | Description
 ---------------------- | -----------
 `order[currency]`      | Optional if your account is not enabled for multi-currency.
 `order[line_items]`    |
+`transition_order`     | Include this parameter to automatically being the checkout process.
 
 > Empty order
 
@@ -357,6 +358,7 @@ Parameter              | Description
 ---------------------- | -----------
 `{id}`                 | Order ID.
 `guest_token`          | Provide the order's guest_token to authorize updates to this order.
+`transition_order`     | Include this parameter to automatically being the checkout process.
 
 ## Apply coupon code
 Attempts to apply a coupon/promo code to the order.
