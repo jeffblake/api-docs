@@ -295,7 +295,7 @@ Parameter              | Type     | Description
 		"payments": [{
 				"payment_method_id": 75,
 				"source": {
-					"card_type": "VI",
+					"brand": "visa",
 					"last_four": "4680",
 					"token": "tok_1231231231312322",
 					"cvv": "123"
@@ -314,7 +314,7 @@ Parameter                 | Type     | Description
 `amount`                  | decimal  | Leave this blank and it will be automatically be set to the amount due on the order.
 `payment_method_id`       | integer  | The payment method ID.
 `source.last_four`        | string   | Last 4 digits on the credit card.
-`source.card_type`        | string   | Credit card type. One of
+`source.brand`            | string   | Credit card type. One of `visa`, `master`, `american_express`, `jcb`, `diners_club`, or `discover`
 `source.token`            | string   | The tokenized identifier of the credit card, created using the payment method SDK.
 `source.cardholder_name`  | string   | Name of the card owner.
 `source.cvv`              | `string` | 3 or 4 digit code on the card to perform verification.
