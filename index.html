@@ -3005,7 +3005,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
         </span><span class="s2">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
                 </span><span class="s2">"payment_method_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"last_four"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4680"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1231231231312322"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
@@ -3039,9 +3039,9 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>Last 4 digits on the credit card.</td>
 </tr>
 <tr>
-<td><code>source.card_type</code></td>
+<td><code>source.brand</code></td>
 <td>string</td>
-<td>Credit card type. One of</td>
+<td>Credit card type. One of <code>visa</code>, <code>master</code>, <code>american_express</code>, <code>jcb</code>, <code>diners_club</code>, or <code>discover</code></td>
 </tr>
 <tr>
 <td><code>source.token</code></td>
