@@ -442,6 +442,17 @@
               </ul>
           </li>
           <li>
+            <a href="#tickets_tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tickets_ticket-properties" class="toc-h2 toc-link" data-title="Tickets">Ticket properties</a>
+                  </li>
+                  <li>
+                    <a href="#tickets_create-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Create a ticket</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#responses_responses" class="toc-h1 toc-link" data-title="Responses">Responses</a>
               <ul class="toc-list-h2">
                   <li>
@@ -479,7 +490,9 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href="https://guestmanager.com">Guest Manager</a></li>
+            <li><a href="https://www.guestmanager.com">Guest Manager</a></li>
+            <li><a href="https://manual.guestmanager.com">User Manual</a></li>
+            <li><a href="https://app.guestmanager.com/login">Login</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -3115,7 +3128,101 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <p>Included if any of the products in the order are currently sold out, <em>and</em> the product has <code>can_request</code> attribute enabled.</p>
 <h2 id='checkout_code-reserved-code-step'><code>reserved</code> step</h2>
 <p>Included if any of the products in the order are not currently on sale, <em>and</em> the product has <code>can_reserve</code> attribute enabled.</p>
-<h1 id='responses_responses'>Responses</h1><h2 id='responses_response-properties'>Response properties</h2>
+<h1 id='tickets_tickets'>Tickets</h1><h2 id='tickets_ticket-properties'>Ticket properties</h2><h2 id='tickets_create-a-ticket'>Create a ticket</h2><h3 id='tickets_request'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/tickets</h6>
+    </div>
+</div>
+<h4 id='tickets_parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ticket[name]</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Name to be shown on the ticket. Automatically set if <code>guest_id</code> is provided.</td>
+</tr>
+<tr>
+<td><code>ticket[email]</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Email address of the ticket owner. Automatically set if <code>guest_id</code> is provided.</td>
+</tr>
+<tr>
+<td><code>ticket[guest_id]</code></td>
+<td><code>int</code></td>
+<td>Yes</td>
+<td>Link a guest in your database as the owner of this ticket.</td>
+</tr>
+<tr>
+<td><code>ticket[event_ticket_type_id]</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>The Ticket Type to assign to the ticket.</td>
+</tr>
+<tr>
+<td><code>ticket[dispatch]</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>If <code>true</code>, an email is dispatched to the owner of the ticket, with the ticket as a PDF attachment.</td>
+</tr>
+<tr>
+<td><code>ticket[barcode_id]</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A barcode number will be automatically generated if one is not provided.</td>
+</tr>
+<tr>
+<td><code>ticket[list_id]</code></td>
+<td><code>int</code></td>
+<td>Yes</td>
+<td>The list to assign this ticket to.</td>
+</tr>
+<tr>
+<td><code>ticket[event_id]</code></td>
+<td><code>int</code></td>
+<td>Yes, if <code>event_ticket_type_id</code> is provided.</td>
+<td>The event to assign this ticket to.</td>
+</tr>
+<tr>
+<td><code>ticket[ticket_type_id]</code></td>
+<td><code>int</code></td>
+<td>Yes, if <code>event_ticket_type_id</code> is provided.</td>
+<td>The ticket type to assign this ticket to.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Standalone ticket</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeff@guestmanager.com"</span><span class="w">
+    </span><span class="s2">"event_ticket_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+    </span><span class="s2">"dispatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Ticket belonging to guest</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"guest_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">98433</span><span class="w">
+    </span><span class="s2">"event_ticket_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+    </span><span class="s2">"dispatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='responses_responses'>Responses</h1><h2 id='responses_response-properties'>Response properties</h2>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
