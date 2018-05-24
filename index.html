@@ -448,7 +448,16 @@
                     <a href="#tickets_ticket-properties" class="toc-h2 toc-link" data-title="Tickets">Ticket properties</a>
                   </li>
                   <li>
+                    <a href="#tickets_fetch-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Fetch a ticket</a>
+                  </li>
+                  <li>
                     <a href="#tickets_create-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Create a ticket</a>
+                  </li>
+                  <li>
+                    <a href="#tickets_update-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Update a ticket</a>
+                  </li>
+                  <li>
+                    <a href="#tickets_delete-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Delete a ticket</a>
                   </li>
               </ul>
           </li>
@@ -3128,14 +3137,25 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <p>Included if any of the products in the order are currently sold out, <em>and</em> the product has <code>can_request</code> attribute enabled.</p>
 <h2 id='checkout_code-reserved-code-step'><code>reserved</code> step</h2>
 <p>Included if any of the products in the order are not currently on sale, <em>and</em> the product has <code>can_reserve</code> attribute enabled.</p>
-<h1 id='tickets_tickets'>Tickets</h1><h2 id='tickets_ticket-properties'>Ticket properties</h2><h2 id='tickets_create-a-ticket'>Create a ticket</h2><h3 id='tickets_request'>Request</h3>
+<h1 id='tickets_tickets'>Tickets</h1><h2 id='tickets_ticket-properties'>Ticket properties</h2>
+<p>{TBI}</p>
+<h2 id='tickets_fetch-a-ticket'>Fetch a ticket</h2><h3 id='tickets_request'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/tickets/{id}</h6>
+    </div>
+</div>
+<h4 id='tickets_parameters'>Parameters</h4>
+<p>No parameters.</p>
+<h2 id='tickets_create-a-ticket'>Create a ticket</h2><h3 id='tickets_request-2'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/tickets</h6>
     </div>
 </div>
-<h4 id='tickets_parameters'>Parameters</h4>
+<h4 id='tickets_parameters-2'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3165,7 +3185,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <tr>
 <td><code>ticket[event_ticket_type_id]</code></td>
 <td><code>int</code></td>
-<td>No</td>
+<td>Yes, if both <code>event_id</code> and <code>ticket_type_id</code> are provided.</td>
 <td>The Ticket Type to assign to the ticket.</td>
 </tr>
 <tr>
@@ -3222,7 +3242,25 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
     </span><span class="s2">"dispatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='responses_responses'>Responses</h1><h2 id='responses_response-properties'>Response properties</h2>
+</span></code></pre><h2 id='tickets_update-a-ticket'>Update a ticket</h2><h3 id='tickets_request-3'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/tickets/{id}</h6>
+    </div>
+</div>
+<h4 id='tickets_parameters-3'>Parameters</h4>
+<p>See parameters for create a ticket.</p>
+<h2 id='tickets_delete-a-ticket'>Delete a ticket</h2><h3 id='tickets_request-4'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-delete">DELETE</i>
+        <h6>/tickets/{id}</h6>
+    </div>
+</div>
+<h4 id='tickets_parameters-4'>Parameters</h4>
+<p>None.</p>
+<h1 id='responses_responses'>Responses</h1><h2 id='responses_response-properties'>Response properties</h2>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
