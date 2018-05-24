@@ -49,7 +49,7 @@ Parameter                          | Type        | Optional                     
 ```json
 {
   "ticket": {
-    "name": "USD"
+    "name": "Jeff Blake"
     "email": "jeff@guestmanager.com"
     "event_ticket_type_id": 123456
     "dispatch": true
