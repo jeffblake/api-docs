@@ -2,16 +2,15 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'custom';
+// @import 'rtl'; // uncomment to switch to RTL format
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
-
 Licensed under the Apache License, Version 2.0 (the "License"); you may
 not use this file except in compliance with the License. You may obtain
 a copy of the License at
-
   http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -33,18 +32,6 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
-}
-
-h1.logo {
-  color: white;
-  text-align: center;
-}
-h1.logo span {
-  color: red;
-}
-h1.logo small {
-  color: #999;
-  display: block;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -83,9 +70,10 @@ h1.logo small {
   }
 
   // This is the logo at the top of the ToC
-  &>img {
+  .logo {
     display: block;
     max-width: 100%;
+    margin-bottom: $logo-margin;
   }
 
   &>.search {
@@ -111,10 +99,6 @@ h1.logo small {
       color: $nav-text;
       @extend %icon-search;
     }
-  }
-
-  .logo {
-    margin-bottom: $logo-margin;
   }
 
   .search-results {
@@ -217,7 +201,7 @@ h1.logo small {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  color: $nav-text;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -417,6 +401,9 @@ h1.logo small {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
+      code {
+        white-space: nowrap;
+      }
     }
 
     th {
@@ -509,7 +496,7 @@ h1.logo small {
 
   .search-highlight {
     padding: 2px;
-    margin: -2px;
+    margin: -3px;
     border-radius: 4px;
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
@@ -624,72 +611,3 @@ h1.logo small {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
-
-///////////////////////////////////////////////////////////////////////////////////
-// API ENDPOINT
-////////////////////////////////////////////////////////////////////////////////
-.api-endpoint {
-  margin-right: $examples-width;
-  padding: 0 $main-padding;
-  display: block;
-  @extend %left-col;
-
-  .endpoint-data {
-    background-color: $code-bg;
-    color: #fff;
-    border-radius: 5px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #404040;
-    margin: 15px 0;
-    height: 38px;
-
-    i {
-      display: inline-block;
-      margin: 5px;
-      padding: 4px 12px;
-      line-height: 20px;
-    }
-
-    h6 {
-      display: inline-block;
-      margin: 0;
-      @extend %code-font;
-      text-transform: lowercase;
-      font-weight: 400;
-    }
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// LABEL
-////////////////////////////////////////////////////////////////////////////////
-.label {
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-style: normal;
-  white-space: nowrap;
-}
-
-.label-get {
-  background: #008000;
-}
-
-.label-post,
-.label-put, .label-patch {
-  background: #4e92d7;
-}
-
-.label-delete {
-  background: #ca4949;
-}
-
-.label-info {
-  background: #efefef;
-  color: #999;
-  float: right;
-  font-weight: 700;
-  font-size: 70%;
-  padding: 2px 4px;
-  margin-left: 5px;
-}
-
