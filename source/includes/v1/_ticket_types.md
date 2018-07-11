@@ -6,7 +6,7 @@ An event ticket type associates a ticket type to a specific event.
 ## Ticket type properties
 
 Attribute                      | Type     | Default   | Description
------------------------------- | -------- | ---------
+------------------------------ | -------- | --------- | -----------------
 `name`                         | string   |           | Name of the ticket type.
 `display_name`                 | string   |           | What is displayed to the guest, e.g. on the PDF. Defaults to the `name` if left blank.
 `pdf_template_id`              | integer  |           | ID number of the associated PDF template.
