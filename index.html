@@ -298,6 +298,20 @@
               </ul>
           </li>
           <li>
+            <a href="#ticket-types_ticket-types" class="toc-h1 toc-link" data-title="Ticket types">Ticket types</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ticket-types_ticket-type-properties" class="toc-h2 toc-link" data-title="Ticket types">Ticket type properties</a>
+                  </li>
+                  <li>
+                    <a href="#ticket-types_event-ticket-type-properties" class="toc-h2 toc-link" data-title="Ticket types">Event ticket type properties</a>
+                  </li>
+                  <li>
+                    <a href="#ticket-types_create-a-ticket-type-for-an-event" class="toc-h2 toc-link" data-title="Ticket types">Create a ticket type for an event</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#ticket-tiers_ticket-tiers" class="toc-h1 toc-link" data-title="Ticket Tiers">Ticket Tiers</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1281,7 +1295,108 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td><code>price_levels</code></td>
 </tr>
 </tbody></table>
-<h1 id='ticket-tiers_ticket-tiers'>Ticket Tiers</h1><h2 id='ticket-tiers_tier-properties'>Tier properties</h2>
+<h1 id='ticket-types_ticket-types'>Ticket types</h1>
+<p>Ticket types are composed of two data models: ticket type, and event ticket type. A ticket type is a standalone entity that can be re-used for many different events.
+An event ticket type associates a ticket type to a specific event.</p>
+<h2 id='ticket-types_ticket-type-properties'>Ticket type properties</h2>
+<p>Attribute                      | Type     | Default   | Description
+------------------------------ | -------- | ---------
+<code>name</code>                         | string   |           | Name of the ticket type.
+<code>display_name</code>                 | string   |           | What is displayed to the guest, e.g. on the PDF. Defaults to the <code>name</code> if left blank.
+<code>pdf_template_id</code>              | integer  |           | ID number of the associated PDF template.
+<code>wallet_template_id</code>           | integer  |           | ID number of the associated Apple Wallet template.
+<code>transferable</code>                 | boolean  | <code>true</code>    | Whether guests can transfer this ticket type to another guest.
+<code>attachable</code>                   | boolean  | <code>true</code>    | Whether tickets are attached in emails (true) or provided as a download link (false).</p>
+<h2 id='ticket-types_event-ticket-type-properties'>Event ticket type properties</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ticket_type_id</code></td>
+<td>integer</td>
+<td>ID of associated ticket type.</td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td>integer</td>
+<td>ID of associated event.</td>
+</tr>
+<tr>
+<td><code>starts_at</code></td>
+<td>datetime</td>
+<td>When this ticket is valid from. Display purposes only.</td>
+</tr>
+<tr>
+<td><code>ends_at</code></td>
+<td>datetime</td>
+<td>When this ticket is valid until. Display purposes only.</td>
+</tr>
+<tr>
+<td><code>pdf_template_id</code></td>
+<td>integer</td>
+<td>Override the ticket type if necessary.</td>
+</tr>
+<tr>
+<td><code>wallet_template_id</code></td>
+<td>integer</td>
+<td>Override the ticket type if necessary.</td>
+</tr>
+</tbody></table>
+<h2 id='ticket-types_create-a-ticket-type-for-an-event'>Create a ticket type for an event</h2><h3 id='ticket-types_request'>Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/event_ticket_types</h6>
+    </div>
+</div>
+<h4 id='ticket-types_parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event_ticket_type</code></td>
+<td><code>Event ticket type</code></td>
+<td>See properties above.</td>
+</tr>
+<tr>
+<td><code>event_ticket_type[ticket_type_attributes]</code></td>
+<td><code>Ticket type</code></td>
+<td>See properties above. Used to create a new ticket type. Required if <code>event_ticket_type[ticket_type_id]</code> is not provided.</td>
+</tr>
+</tbody></table>
+<h4 id='ticket-types_examples'>Examples</h4>
+<p>See example requests on the right.</p>
+
+<blockquote>
+<p>Create a ticket type and add it to an event</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_ticket_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ticket_type_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Add an existing ticket type to an event</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event_ticket_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ticket_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='ticket-tiers_ticket-tiers'>Ticket Tiers</h1><h2 id='ticket-tiers_tier-properties'>Tier properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
