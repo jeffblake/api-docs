@@ -1299,14 +1299,51 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <p>Ticket types are composed of two data models: ticket type, and event ticket type. A ticket type is a standalone entity that can be re-used for many different events.
 An event ticket type associates a ticket type to a specific event.</p>
 <h2 id='ticket-types_ticket-type-properties'>Ticket type properties</h2>
-<p>Attribute                      | Type     | Default   | Description
------------------------------- | -------- | ---------
-<code>name</code>                         | string   |           | Name of the ticket type.
-<code>display_name</code>                 | string   |           | What is displayed to the guest, e.g. on the PDF. Defaults to the <code>name</code> if left blank.
-<code>pdf_template_id</code>              | integer  |           | ID number of the associated PDF template.
-<code>wallet_template_id</code>           | integer  |           | ID number of the associated Apple Wallet template.
-<code>transferable</code>                 | boolean  | <code>true</code>    | Whether guests can transfer this ticket type to another guest.
-<code>attachable</code>                   | boolean  | <code>true</code>    | Whether tickets are attached in emails (true) or provided as a download link (false).</p>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td></td>
+<td>Name of the ticket type.</td>
+</tr>
+<tr>
+<td><code>display_name</code></td>
+<td>string</td>
+<td></td>
+<td>What is displayed to the guest, e.g. on the PDF. Defaults to the <code>name</code> if left blank.</td>
+</tr>
+<tr>
+<td><code>pdf_template_id</code></td>
+<td>integer</td>
+<td></td>
+<td>ID number of the associated PDF template.</td>
+</tr>
+<tr>
+<td><code>wallet_template_id</code></td>
+<td>integer</td>
+<td></td>
+<td>ID number of the associated Apple Wallet template.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether guests can transfer this ticket type to another guest.</td>
+</tr>
+<tr>
+<td><code>attachable</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether tickets are attached in emails (true) or provided as a download link (false).</td>
+</tr>
+</tbody></table>
 <h2 id='ticket-types_event-ticket-type-properties'>Event ticket type properties</h2>
 <table><thead>
 <tr>
