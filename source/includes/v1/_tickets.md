@@ -39,7 +39,8 @@ Parameter                          | Type        | Optional                     
 `ticket[event_ticket_type_id]`     | `int`       | Yes, if both `event_id` and `ticket_type_id` are provided. | The Ticket Type to assign to the ticket.
 `ticket[dispatch]`                 | `boolean`   | Yes                                                        | If `true`, an email is dispatched to the owner of the ticket, with the ticket as a PDF attachment.
 `ticket[barcode_id]`               | `string`    | Yes                                                        | A barcode number will be automatically generated if one is not provided.
-`ticket[list_id]`                  | `int`       | Yes                                                        | The list to assign this ticket to.
+`ticket[list_id]`                  | `int`       | Yes                                                        | The list to assign this ticket to. If not provided, defaults to the company master list.
+`ticket[permanent_list_id]`        | `int`       | Yes                                                        | The permanent list. If provided, the event specific `list_id` will be automatically set.
 `ticket[event_id]`                 | `int`       | Yes, if `event_ticket_type_id` is provided.                | The event to assign this ticket to.
 `ticket[ticket_type_id]`           | `int`       | Yes, if `event_ticket_type_id` is provided.                | The ticket type to assign this ticket to.
 

@@ -1,7 +1,7 @@
-# Event Series
+# Recurring events
 Top level non-bookable events that serve as the wrapper around individual event date/times. The ID of the class can be used to query against the Events API to return date/times for that series.
 
-## Series properties
+##  Properties
 
 Attribute                      | Type     | Description
 ------------------------------ | -------- | -----------
@@ -11,7 +11,7 @@ Attribute                      | Type     | Description
 `categories`                   | array    | Categories associated to this series.
 `tags`                         | array    | Tags associated to this series.
 
-## List series
+## List recurring events
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
@@ -25,4 +25,5 @@ Attribute                      | Type     | Description
 Attribute                      | Type     | Default   | Values
 ------------------------------ | -------- | --------- | ----------
 `include`                      | string   | *none*    | `tags`, `categories`
+`published_at`                 | string   | *none*    | `published`, `unpublished`
 
