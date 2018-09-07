@@ -323,13 +323,13 @@
               </ul>
           </li>
           <li>
-            <a href="#event-series_event-series" class="toc-h1 toc-link" data-title="Event Series">Event Series</a>
+            <a href="#recurring-events_recurring-events" class="toc-h1 toc-link" data-title="Recurring events">Recurring events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#event-series_series-properties" class="toc-h2 toc-link" data-title="Event Series">Series properties</a>
+                    <a href="#recurring-events_properties" class="toc-h2 toc-link" data-title="Recurring events">Properties</a>
                   </li>
                   <li>
-                    <a href="#event-series_list-series" class="toc-h2 toc-link" data-title="Event Series">List series</a>
+                    <a href="#recurring-events_list-recurring-events" class="toc-h2 toc-link" data-title="Recurring events">List recurring events</a>
                   </li>
               </ul>
           </li>
@@ -1516,9 +1516,9 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>The related variant.</td>
 </tr>
 </tbody></table>
-<h1 id='event-series_event-series'>Event Series</h1>
+<h1 id='recurring-events_recurring-events'>Recurring events</h1>
 <p>Top level non-bookable events that serve as the wrapper around individual event date/times. The ID of the class can be used to query against the Events API to return date/times for that series.</p>
-<h2 id='event-series_series-properties'>Series properties</h2>
+<h2 id='recurring-events_properties'>Properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1552,14 +1552,14 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Tags associated to this series.</td>
 </tr>
 </tbody></table>
-<h2 id='event-series_list-series'>List series</h2>
+<h2 id='recurring-events_list-recurring-events'>List recurring events</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/series</h6>
     </div>
 </div>
-<h3 id='event-series_request'>Request</h3>
+<h3 id='recurring-events_request'>Request</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1573,6 +1573,12 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>string</td>
 <td><em>none</em></td>
 <td><code>tags</code>, <code>categories</code></td>
+</tr>
+<tr>
+<td><code>published_at</code></td>
+<td>string</td>
+<td><em>none</em></td>
+<td><code>published</code>, <code>unpublished</code></td>
 </tr>
 </tbody></table>
 <h1 id='event-categories_event-categories'>Event Categories</h1>
@@ -3356,7 +3362,13 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td><code>ticket[list_id]</code></td>
 <td><code>int</code></td>
 <td>Yes</td>
-<td>The list to assign this ticket to.</td>
+<td>The list to assign this ticket to. If not provided, defaults to the company master list.</td>
+</tr>
+<tr>
+<td><code>ticket[permanent_list_id]</code></td>
+<td><code>int</code></td>
+<td>Yes</td>
+<td>The permanent list. If provided, the event specific <code>list_id</code> will be automatically set.</td>
 </tr>
 <tr>
 <td><code>ticket[event_id]</code></td>
