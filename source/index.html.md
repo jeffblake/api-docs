@@ -24,6 +24,7 @@ includes:
   - v1/form_responses
   - v1/payment_methods
   - v1/addresses
+  - v1/enterprise
 
 search: true
 ---
