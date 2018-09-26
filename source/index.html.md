@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - <a href="https://www.guestmanager.com">Guest Manager</a>
-  - <a href="https://manual.guestmanager.com">User Manual</a>
+  - <a href="https://docs.guestmanager.com">Support Documentation</a>
   - <a href="https://app.guestmanager.com/login">Login</a>
 
 includes:
