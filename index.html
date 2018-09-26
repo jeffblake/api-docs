@@ -293,6 +293,9 @@
                     <a href="#events_fetch-event" class="toc-h2 toc-link" data-title="Events">Fetch event</a>
                   </li>
                   <li>
+                    <a href="#events_create-event" class="toc-h2 toc-link" data-title="Events">Create event</a>
+                  </li>
+                  <li>
                     <a href="#events_fetch-ticket-tiers" class="toc-h2 toc-link" data-title="Events">Fetch ticket tiers</a>
                   </li>
               </ul>
@@ -352,6 +355,12 @@
                   </li>
                   <li>
                     <a href="#venues_list-venues" class="toc-h2 toc-link" data-title="Venues">List venues</a>
+                  </li>
+                  <li>
+                    <a href="#venues_create-venue" class="toc-h2 toc-link" data-title="Venues">Create venue</a>
+                  </li>
+                  <li>
+                    <a href="#venues_time-zones" class="toc-h2 toc-link" data-title="Venues">Time zones</a>
                   </li>
               </ul>
           </li>
@@ -508,6 +517,23 @@
                   </li>
                   <li>
                     <a href="#addresses_list-country-states" class="toc-h2 toc-link" data-title="Addresses">List country states</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#enterprise_enterprise" class="toc-h1 toc-link" data-title="Enterprise">Enterprise</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#enterprise_base-url" class="toc-h2 toc-link" data-title="Enterprise">Base URL</a>
+                  </li>
+                  <li>
+                    <a href="#enterprise_authentication" class="toc-h2 toc-link" data-title="Enterprise">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#enterprise_using-the-api-endpoints-above" class="toc-h2 toc-link" data-title="Enterprise">Using the API endpoints above</a>
+                  </li>
+                  <li>
+                    <a href="#enterprise_create-company" class="toc-h2 toc-link" data-title="Enterprise">Create company</a>
                   </li>
               </ul>
           </li>
@@ -1262,6 +1288,47 @@ Refer to a specific resource endpoint to see which fields and relationships are 
         <h6>/events/{id}</h6>
     </div>
 </div>
+<h2 id='events_create-event'>Create event</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/events</h6>
+    </div>
+</div>
+<h3 id='events_request-parameters-2'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event[name]</code></td>
+<td><code>string</code></td>
+<td><em>yes</em></td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td><code>event[venue_id]</code></td>
+<td><code>integer</code></td>
+<td><em>yes</em></td>
+<td><code>id</code> of the venue. Please find or create a venue first.</td>
+</tr>
+<tr>
+<td><code>event[start_date]</code></td>
+<td><code>datetime</code></td>
+<td><em>yes</em></td>
+<td>Start date and time of the event.</td>
+</tr>
+<tr>
+<td><code>event[end_date]</code></td>
+<td><code>datetime</code></td>
+<td><em>yes</em></td>
+<td>End date and time of the event.</td>
+</tr>
+</tbody></table>
 <h2 id='events_fetch-ticket-tiers'>Fetch ticket tiers</h2>
 <p>Returns the bookable items for an event.</p>
 
@@ -1273,7 +1340,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
         <h6>/events/{id}/ticket_tiers</h6>
     </div>
 </div>
-<h3 id='events_request-parameters-2'>Request parameters</h3>
+<h3 id='events_request-parameters-3'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1704,6 +1771,789 @@ An event ticket type associates a ticket type to a specific event.</p>
         <h6>/venues</h6>
     </div>
 </div>
+<h2 id='venues_create-venue'>Create venue</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/venues</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>Create a basic venue</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My venue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific Time (US &amp; Canada)"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='venues_time-zones'>Time zones</h2>
+<p>Use the first column in the table below to determine which time zone to submit.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>TZ</th>
+<th>UTC Offset</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>International Date Line West</td>
+<td>Etc/GMT+12</td>
+<td>-12:00</td>
+</tr>
+<tr>
+<td>American Samoa</td>
+<td>Pacific/Pago_Pago</td>
+<td>-11:00</td>
+</tr>
+<tr>
+<td>Midway Island</td>
+<td>Pacific/Midway</td>
+<td>-11:00</td>
+</tr>
+<tr>
+<td>Hawaii</td>
+<td>Pacific/Honolulu</td>
+<td>-10:00</td>
+</tr>
+<tr>
+<td>Alaska</td>
+<td>America/Juneau</td>
+<td>-09:00</td>
+</tr>
+<tr>
+<td>Pacific Time (US &amp; Canada)</td>
+<td>America/Los_Angeles</td>
+<td>-08:00</td>
+</tr>
+<tr>
+<td>Tijuana</td>
+<td>America/Tijuana</td>
+<td>-08:00</td>
+</tr>
+<tr>
+<td>Arizona</td>
+<td>America/Phoenix</td>
+<td>-07:00</td>
+</tr>
+<tr>
+<td>Chihuahua</td>
+<td>America/Chihuahua</td>
+<td>-07:00</td>
+</tr>
+<tr>
+<td>Mazatlan</td>
+<td>America/Mazatlan</td>
+<td>-07:00</td>
+</tr>
+<tr>
+<td>Mountain Time (US &amp; Canada)</td>
+<td>America/Denver</td>
+<td>-07:00</td>
+</tr>
+<tr>
+<td>Central America</td>
+<td>America/Guatemala</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Central Time (US &amp; Canada)</td>
+<td>America/Chicago</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Guadalajara</td>
+<td>America/Mexico_City</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Mexico City</td>
+<td>America/Mexico_City</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Monterrey</td>
+<td>America/Monterrey</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Saskatchewan</td>
+<td>America/Regina</td>
+<td>-06:00</td>
+</tr>
+<tr>
+<td>Bogota</td>
+<td>America/Bogota</td>
+<td>-05:00</td>
+</tr>
+<tr>
+<td>Eastern Time (US &amp; Canada)</td>
+<td>America/New_York</td>
+<td>-05:00</td>
+</tr>
+<tr>
+<td>Indiana (East)</td>
+<td>America/Indiana/Indianapolis</td>
+<td>-05:00</td>
+</tr>
+<tr>
+<td>Lima</td>
+<td>America/Lima</td>
+<td>-05:00</td>
+</tr>
+<tr>
+<td>Quito</td>
+<td>America/Lima</td>
+<td>-05:00</td>
+</tr>
+<tr>
+<td>Atlantic Time (Canada)</td>
+<td>America/Halifax</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>Caracas</td>
+<td>America/Caracas</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>Georgetown</td>
+<td>America/Guyana</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>La Paz</td>
+<td>America/La_Paz</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>Puerto Rico</td>
+<td>America/Puerto_Rico</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>Santiago</td>
+<td>America/Santiago</td>
+<td>-04:00</td>
+</tr>
+<tr>
+<td>Newfoundland</td>
+<td>America/St_Johns</td>
+<td>-03:30</td>
+</tr>
+<tr>
+<td>Brasilia</td>
+<td>America/Sao_Paulo</td>
+<td>-03:00</td>
+</tr>
+<tr>
+<td>Buenos Aires</td>
+<td>America/Argentina/Buenos_Aires</td>
+<td>-03:00</td>
+</tr>
+<tr>
+<td>Greenland</td>
+<td>America/Godthab</td>
+<td>-03:00</td>
+</tr>
+<tr>
+<td>Montevideo</td>
+<td>America/Montevideo</td>
+<td>-03:00</td>
+</tr>
+<tr>
+<td>Mid-Atlantic</td>
+<td>Atlantic/South_Georgia</td>
+<td>-02:00</td>
+</tr>
+<tr>
+<td>Azores</td>
+<td>Atlantic/Azores</td>
+<td>-01:00</td>
+</tr>
+<tr>
+<td>Cape Verde Is.</td>
+<td>Atlantic/Cape_Verde</td>
+<td>-01:00</td>
+</tr>
+<tr>
+<td>Casablanca</td>
+<td>Africa/Casablanca</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>Dublin</td>
+<td>Europe/Dublin</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>Edinburgh</td>
+<td>Europe/London</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>Lisbon</td>
+<td>Europe/Lisbon</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>London</td>
+<td>Europe/London</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>Monrovia</td>
+<td>Africa/Monrovia</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>UTC</td>
+<td>Etc/UTC</td>
+<td>+00:00</td>
+</tr>
+<tr>
+<td>Amsterdam</td>
+<td>Europe/Amsterdam</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Belgrade</td>
+<td>Europe/Belgrade</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Berlin</td>
+<td>Europe/Berlin</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Bern</td>
+<td>Europe/Zurich</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Bratislava</td>
+<td>Europe/Bratislava</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Brussels</td>
+<td>Europe/Brussels</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Budapest</td>
+<td>Europe/Budapest</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Copenhagen</td>
+<td>Europe/Copenhagen</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Ljubljana</td>
+<td>Europe/Ljubljana</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Madrid</td>
+<td>Europe/Madrid</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Paris</td>
+<td>Europe/Paris</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Prague</td>
+<td>Europe/Prague</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Rome</td>
+<td>Europe/Rome</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Sarajevo</td>
+<td>Europe/Sarajevo</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Skopje</td>
+<td>Europe/Skopje</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Stockholm</td>
+<td>Europe/Stockholm</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Vienna</td>
+<td>Europe/Vienna</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Warsaw</td>
+<td>Europe/Warsaw</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>West Central Africa</td>
+<td>Africa/Algiers</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Zagreb</td>
+<td>Europe/Zagreb</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Zurich</td>
+<td>Europe/Zurich</td>
+<td>+01:00</td>
+</tr>
+<tr>
+<td>Athens</td>
+<td>Europe/Athens</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Bucharest</td>
+<td>Europe/Bucharest</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Cairo</td>
+<td>Africa/Cairo</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Harare</td>
+<td>Africa/Harare</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Helsinki</td>
+<td>Europe/Helsinki</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Jerusalem</td>
+<td>Asia/Jerusalem</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Kaliningrad</td>
+<td>Europe/Kaliningrad</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Kyiv</td>
+<td>Europe/Kiev</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Pretoria</td>
+<td>Africa/Johannesburg</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Riga</td>
+<td>Europe/Riga</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Sofia</td>
+<td>Europe/Sofia</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Tallinn</td>
+<td>Europe/Tallinn</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Vilnius</td>
+<td>Europe/Vilnius</td>
+<td>+02:00</td>
+</tr>
+<tr>
+<td>Baghdad</td>
+<td>Asia/Baghdad</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Istanbul</td>
+<td>Europe/Istanbul</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Kuwait</td>
+<td>Asia/Kuwait</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Minsk</td>
+<td>Europe/Minsk</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Moscow</td>
+<td>Europe/Moscow</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Nairobi</td>
+<td>Africa/Nairobi</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Riyadh</td>
+<td>Asia/Riyadh</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>St. Petersburg</td>
+<td>Europe/Moscow</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Volgograd</td>
+<td>Europe/Volgograd</td>
+<td>+03:00</td>
+</tr>
+<tr>
+<td>Tehran</td>
+<td>Asia/Tehran</td>
+<td>+03:30</td>
+</tr>
+<tr>
+<td>Abu Dhabi</td>
+<td>Asia/Muscat</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Baku</td>
+<td>Asia/Baku</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Muscat</td>
+<td>Asia/Muscat</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Samara</td>
+<td>Europe/Samara</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Tbilisi</td>
+<td>Asia/Tbilisi</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Yerevan</td>
+<td>Asia/Yerevan</td>
+<td>+04:00</td>
+</tr>
+<tr>
+<td>Kabul</td>
+<td>Asia/Kabul</td>
+<td>+04:30</td>
+</tr>
+<tr>
+<td>Ekaterinburg</td>
+<td>Asia/Yekaterinburg</td>
+<td>+05:00</td>
+</tr>
+<tr>
+<td>Islamabad</td>
+<td>Asia/Karachi</td>
+<td>+05:00</td>
+</tr>
+<tr>
+<td>Karachi</td>
+<td>Asia/Karachi</td>
+<td>+05:00</td>
+</tr>
+<tr>
+<td>Tashkent</td>
+<td>Asia/Tashkent</td>
+<td>+05:00</td>
+</tr>
+<tr>
+<td>Chennai</td>
+<td>Asia/Kolkata</td>
+<td>+05:30</td>
+</tr>
+<tr>
+<td>Kolkata</td>
+<td>Asia/Kolkata</td>
+<td>+05:30</td>
+</tr>
+<tr>
+<td>Mumbai</td>
+<td>Asia/Kolkata</td>
+<td>+05:30</td>
+</tr>
+<tr>
+<td>New Delhi</td>
+<td>Asia/Kolkata</td>
+<td>+05:30</td>
+</tr>
+<tr>
+<td>Sri Jayawardenepura</td>
+<td>Asia/Colombo</td>
+<td>+05:30</td>
+</tr>
+<tr>
+<td>Kathmandu</td>
+<td>Asia/Kathmandu</td>
+<td>+05:45</td>
+</tr>
+<tr>
+<td>Almaty</td>
+<td>Asia/Almaty</td>
+<td>+06:00</td>
+</tr>
+<tr>
+<td>Astana</td>
+<td>Asia/Dhaka</td>
+<td>+06:00</td>
+</tr>
+<tr>
+<td>Dhaka</td>
+<td>Asia/Dhaka</td>
+<td>+06:00</td>
+</tr>
+<tr>
+<td>Urumqi</td>
+<td>Asia/Urumqi</td>
+<td>+06:00</td>
+</tr>
+<tr>
+<td>Rangoon</td>
+<td>Asia/Rangoon</td>
+<td>+06:30</td>
+</tr>
+<tr>
+<td>Bangkok</td>
+<td>Asia/Bangkok</td>
+<td>+07:00</td>
+</tr>
+<tr>
+<td>Hanoi</td>
+<td>Asia/Bangkok</td>
+<td>+07:00</td>
+</tr>
+<tr>
+<td>Jakarta</td>
+<td>Asia/Jakarta</td>
+<td>+07:00</td>
+</tr>
+<tr>
+<td>Krasnoyarsk</td>
+<td>Asia/Krasnoyarsk</td>
+<td>+07:00</td>
+</tr>
+<tr>
+<td>Novosibirsk</td>
+<td>Asia/Novosibirsk</td>
+<td>+07:00</td>
+</tr>
+<tr>
+<td>Beijing</td>
+<td>Asia/Shanghai</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Chongqing</td>
+<td>Asia/Chongqing</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Hong Kong</td>
+<td>Asia/Hong_Kong</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Irkutsk</td>
+<td>Asia/Irkutsk</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Kuala Lumpur</td>
+<td>Asia/Kuala_Lumpur</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Perth</td>
+<td>Australia/Perth</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Singapore</td>
+<td>Asia/Singapore</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Taipei</td>
+<td>Asia/Taipei</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Ulaanbaatar</td>
+<td>Asia/Ulaanbaatar</td>
+<td>+08:00</td>
+</tr>
+<tr>
+<td>Osaka</td>
+<td>Asia/Tokyo</td>
+<td>+09:00</td>
+</tr>
+<tr>
+<td>Sapporo</td>
+<td>Asia/Tokyo</td>
+<td>+09:00</td>
+</tr>
+<tr>
+<td>Seoul</td>
+<td>Asia/Seoul</td>
+<td>+09:00</td>
+</tr>
+<tr>
+<td>Tokyo</td>
+<td>Asia/Tokyo</td>
+<td>+09:00</td>
+</tr>
+<tr>
+<td>Yakutsk</td>
+<td>Asia/Yakutsk</td>
+<td>+09:00</td>
+</tr>
+<tr>
+<td>Adelaide</td>
+<td>Australia/Adelaide</td>
+<td>+09:30</td>
+</tr>
+<tr>
+<td>Darwin</td>
+<td>Australia/Darwin</td>
+<td>+09:30</td>
+</tr>
+<tr>
+<td>Brisbane</td>
+<td>Australia/Brisbane</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Canberra</td>
+<td>Australia/Melbourne</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Guam</td>
+<td>Pacific/Guam</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Hobart</td>
+<td>Australia/Hobart</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Melbourne</td>
+<td>Australia/Melbourne</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Port Moresby</td>
+<td>Pacific/Port_Moresby</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Sydney</td>
+<td>Australia/Sydney</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Vladivostok</td>
+<td>Asia/Vladivostok</td>
+<td>+10:00</td>
+</tr>
+<tr>
+<td>Magadan</td>
+<td>Asia/Magadan</td>
+<td>+11:00</td>
+</tr>
+<tr>
+<td>New Caledonia</td>
+<td>Pacific/Noumea</td>
+<td>+11:00</td>
+</tr>
+<tr>
+<td>Solomon Is.</td>
+<td>Pacific/Guadalcanal</td>
+<td>+11:00</td>
+</tr>
+<tr>
+<td>Srednekolymsk</td>
+<td>Asia/Srednekolymsk</td>
+<td>+11:00</td>
+</tr>
+<tr>
+<td>Auckland</td>
+<td>Pacific/Auckland</td>
+<td>+12:00</td>
+</tr>
+<tr>
+<td>Fiji</td>
+<td>Pacific/Fiji</td>
+<td>+12:00</td>
+</tr>
+<tr>
+<td>Kamchatka</td>
+<td>Asia/Kamchatka</td>
+<td>+12:00</td>
+</tr>
+<tr>
+<td>Marshall Is.</td>
+<td>Pacific/Majuro</td>
+<td>+12:00</td>
+</tr>
+<tr>
+<td>Wellington</td>
+<td>Pacific/Auckland</td>
+<td>+12:00</td>
+</tr>
+<tr>
+<td>Chatham Is.</td>
+<td>Pacific/Chatham</td>
+<td>+12:45</td>
+</tr>
+<tr>
+<td>Nuku&#39;alofa</td>
+<td>Pacific/Tongatapu</td>
+<td>+13:00</td>
+</tr>
+<tr>
+<td>Samoa</td>
+<td>Pacific/Apia</td>
+<td>+13:00</td>
+</tr>
+<tr>
+<td>Tokelau Is.</td>
+<td>Pacific/Fakaofo</td>
+<td>+13:00</td>
+</tr>
+</tbody></table>
 <h1 id='orders_orders'>Orders</h1><h2 id='orders_order-properties'>Order properties</h2>
 <blockquote>
 <p>Example Response</p>
@@ -3849,7 +4699,82 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
         <h6>/countries/{country-id}/states</h6>
     </div>
 </div>
+<h1 id='enterprise_enterprise'>Enterprise</h1>
+<p>The Enterprise API is only available for private label and reseller clients. These endpoints require an Enterprise API Key
+(different from the one described in the introduction). Please contact support to get your API key.</p>
+<h2 id='enterprise_base-url'>Base URL</h2>
+<table><thead>
+<tr>
+<th>Api Version</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Latest</td>
+<td><code>https://guestmanager.com/api/public/enterprise</code></td>
+</tr>
+<tr>
+<td><code>v1</code></td>
+<td><code>https://guestmanager.com/api/public/enterprise/v1</code></td>
+</tr>
+</tbody></table>
+<h2 id='enterprise_authentication'>Authentication</h2>
+<p>Please see the Authentication section under Topics.</p>
+<h2 id='enterprise_using-the-api-endpoints-above'>Using the API endpoints above</h2>
+<p>To use the API endpoints above on behalf of your company clients, you must use a company API Key (not your enterprise API key). You can get the
+company API key below when creating the company. Be sure to store this key somewhere in your database.</p>
+<h2 id='enterprise_create-company'>Create company</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/companies</h6>
+    </div>
+</div>
+<h3 id='enterprise_request-parameters'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>company[name]</code></td>
+<td><code>string</code></td>
+<td><em>yes</em></td>
+<td>Company name.</td>
+</tr>
+<tr>
+<td><code>company[address_attributes][country_code]</code></td>
+<td><code>integer</code></td>
+<td><em>yes</em></td>
+<td>ISO code of the company&#39;s country.</td>
+</tr>
+</tbody></table>
 
+<blockquote>
+<p>Sample request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New company"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US "</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='enterprise_response'>Response</h3>
+<blockquote>
+<p>Sample response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company name"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"******"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*******"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
