@@ -6,7 +6,7 @@ Authentication is done through the `Authorization` request header. The value sho
 
 ```shell
 ### Request Header
-curl "http://guestmanager.com/api/pubic/v1"
+curl "http://app.guestmanager.com/api/pubic/v1"
   -H "Authorization: Token meowmeowmeow"
 ```
 

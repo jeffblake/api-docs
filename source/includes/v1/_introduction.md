@@ -6,8 +6,8 @@
 
 Api Version          | URL
 -------------------- | -----------
-Latest               | `https://guestmanager.com/api/public`
-`v1`                 | `https://guestmanager.com/api/public/v1`
+Latest               | `https://app.guestmanager.com/api/public`
+`v1`                 | `https://app.guestmanager.com/api/public/v1`
 
 ## Versioning
 The version is specified in the request URL. If the version is omitted, the latest version will be used by default.

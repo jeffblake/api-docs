@@ -7,8 +7,8 @@ The Enterprise API is only available for private label and reseller clients. The
 
 Api Version          | URL
 -------------------- | -----------
-Latest               | `https://guestmanager.com/api/public/enterprise`
-`v1`                 | `https://guestmanager.com/api/public/enterprise/v1`
+Latest               | `https://app.guestmanager.com/api/public/enterprise`
+`v1`                 | `https://app.guestmanager.com/api/public/enterprise/v1`
 
 ## Authentication
 Please see the Authentication section under Topics.
