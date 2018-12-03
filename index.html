@@ -906,10 +906,23 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 </tbody></table>
 <h1 id='topics_topics'>Topics</h1><h2 id='topics_authentication'>Authentication</h2>
 <p>Authentication is done through the <code>Authorization</code> request header. The value should be in the format <code>Token abcdefg</code> where <code>abcdefg</code> is replaced with your API Key.</p>
-<pre class="highlight shell tab-shell"><code><span class="c">### Request Header</span>
-curl <span class="s2">"http://app.guestmanager.com/api/pubic/v1"</span>
-  -H <span class="s2">"Authorization: Token meowmeowmeow"</span>
-</code></pre><h3 id='topics_api-keys'>API keys</h3>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://app.guestmanager.com/api/public/v1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Token abcedf123'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your company name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='topics_api-keys'>API keys</h3>
 <p>API Keys are created in the company dashboard under the Config menu. API keys are authorized for either <code>read</code>, <code>write</code>, or both.</p>
 <h3 id='topics_api-key-permissions'>API key permissions</h3>
 <p>API Keys are authorized for <code>read</code>, <code>write</code>, or both.</p>
@@ -917,7 +930,7 @@ curl <span class="s2">"http://app.guestmanager.com/api/pubic/v1"</span>
 <table><thead>
 <tr>
 <th>Attribute</th>
-<th>Request methods</th>
+<th>Allowed request methods</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4720,7 +4733,23 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </tbody></table>
 <h2 id='enterprise_authentication'>Authentication</h2>
 <p>Please see the Authentication section under Topics.</p>
-<h2 id='enterprise_using-the-api-endpoints-above'>Using the API endpoints above</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://app.guestmanager.com/api/public/enterprise/v1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Token abcedf123'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your enterprise name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='enterprise_using-the-api-endpoints-above'>Using the API endpoints above</h2>
 <p>To use the API endpoints above on behalf of your company clients, you must use a company API Key (not your enterprise API key). You can get the
 company API key below when creating the company. Be sure to store this key somewhere in your database.</p>
 <h2 id='enterprise_create-company'>Create company</h2>
