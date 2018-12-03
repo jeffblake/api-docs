@@ -13,6 +13,24 @@ Latest               | `https://app.guestmanager.com/api/public/enterprise`
 ## Authentication
 Please see the Authentication section under Topics.
 
+> Request
+
+```shell
+curl -X GET \
+  https://app.guestmanager.com/api/public/enterprise/v1 \
+  -H 'Authorization: Token abcedf123' \
+  -H 'Content-Type: application/json'
+```
+
+> Response
+
+```json
+{
+  "id": 0,
+  "name": "Your enterprise name"
+}
+```
+
 ## Using the API endpoints above
 To use the API endpoints above on behalf of your company clients, you must use a company API Key (not your enterprise API key). You can get the
 company API key below when creating the company. Be sure to store this key somewhere in your database.

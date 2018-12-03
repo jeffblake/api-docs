@@ -4,10 +4,22 @@
 
 Authentication is done through the `Authorization` request header. The value should be in the format `Token abcdefg` where `abcdefg` is replaced with your API Key.
 
+> Request
+
 ```shell
-### Request Header
-curl "http://app.guestmanager.com/api/pubic/v1"
-  -H "Authorization: Token meowmeowmeow"
+curl -X GET \
+  https://app.guestmanager.com/api/public/v1 \
+  -H 'Authorization: Token abcedf123' \
+  -H 'Content-Type: application/json'
+```
+
+> Response
+
+```json
+{
+  "id": 0,
+  "name": "Your company name"
+}
 ```
 
 ### API keys
@@ -16,7 +28,7 @@ API Keys are created in the company dashboard under the Config menu. API keys ar
 ### API key permissions
 API Keys are authorized for `read`, `write`, or both.
 
-Attribute                 | Request methods
+Attribute                 | Allowed request methods
 ------------------------- | -----------------
 `read`                    | `GET`
 `write`                   | `POST`, `PATCH`, `DELETE`
