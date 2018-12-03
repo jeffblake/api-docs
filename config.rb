@@ -1,5 +1,6 @@
 # Unique header generation
 require './lib/unique_head.rb'
+require './lib/nesting_unique_head.rb'
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -8,10 +9,11 @@ set :markdown,
     smartypants: true,
     disable_indented_code_blocks: true,
     prettify: true,
+    strikethrough: true,
     tables: true,
     with_toc_data: true,
     no_intra_emphasis: true,
-    renderer: UniqueHeadCounter
+    renderer: NestingUniqueHeadCounter
 
 # Assets
 set :css_dir, 'stylesheets'
