@@ -1,10 +1,13 @@
 
 <!doctype html>
-<html>
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <title>Guest Manager API Documentation - REST API v1</title>
 
     <style>
@@ -218,326 +221,326 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc" class="toc-list-h1">
+      <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction_introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#introduction_rest" class="toc-h2 toc-link" data-title="Introduction">REST</a>
+                    <a href="#introduction-rest" class="toc-h2 toc-link" data-title="REST">REST</a>
                   </li>
                   <li>
-                    <a href="#introduction_base-url" class="toc-h2 toc-link" data-title="Introduction">Base URL</a>
+                    <a href="#introduction-base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
                   </li>
                   <li>
-                    <a href="#introduction_versioning" class="toc-h2 toc-link" data-title="Introduction">Versioning</a>
+                    <a href="#introduction-versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
                   </li>
                   <li>
-                    <a href="#introduction_rate-limiting" class="toc-h2 toc-link" data-title="Introduction">Rate limiting</a>
+                    <a href="#introduction-rate-limiting" class="toc-h2 toc-link" data-title="Rate limiting">Rate limiting</a>
                   </li>
                   <li>
-                    <a href="#introduction_tooling" class="toc-h2 toc-link" data-title="Introduction">Tooling</a>
+                    <a href="#introduction-tooling" class="toc-h2 toc-link" data-title="Tooling">Tooling</a>
                   </li>
                   <li>
-                    <a href="#introduction_feedback" class="toc-h2 toc-link" data-title="Introduction">Feedback</a>
+                    <a href="#introduction-feedback" class="toc-h2 toc-link" data-title="Feedback">Feedback</a>
                   </li>
                   <li>
-                    <a href="#introduction_requests" class="toc-h2 toc-link" data-title="Introduction">Requests</a>
+                    <a href="#introduction-requests" class="toc-h2 toc-link" data-title="Requests">Requests</a>
                   </li>
                   <li>
-                    <a href="#introduction_responses" class="toc-h2 toc-link" data-title="Introduction">Responses</a>
+                    <a href="#introduction-responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
                   </li>
                   <li>
-                    <a href="#introduction_errors" class="toc-h2 toc-link" data-title="Introduction">Errors</a>
+                    <a href="#introduction-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#topics_topics" class="toc-h1 toc-link" data-title="Topics">Topics</a>
+            <a href="#topics" class="toc-h1 toc-link" data-title="Topics">Topics</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#topics_authentication" class="toc-h2 toc-link" data-title="Topics">Authentication</a>
+                    <a href="#topics-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
-                    <a href="#topics_common-attributes" class="toc-h2 toc-link" data-title="Topics">Common attributes</a>
+                    <a href="#topics-common-attributes" class="toc-h2 toc-link" data-title="Common attributes">Common attributes</a>
                   </li>
                   <li>
-                    <a href="#topics_data-types" class="toc-h2 toc-link" data-title="Topics">Data types</a>
+                    <a href="#topics-data-types" class="toc-h2 toc-link" data-title="Data types">Data types</a>
                   </li>
                   <li>
-                    <a href="#topics_filters" class="toc-h2 toc-link" data-title="Topics">Filters</a>
+                    <a href="#topics-filters" class="toc-h2 toc-link" data-title="Filters">Filters</a>
                   </li>
                   <li>
-                    <a href="#topics_pagination" class="toc-h2 toc-link" data-title="Topics">Pagination</a>
+                    <a href="#topics-pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
                   </li>
                   <li>
-                    <a href="#topics_fields-and-relationships" class="toc-h2 toc-link" data-title="Topics">Fields and relationships</a>
+                    <a href="#topics-fields-and-relationships" class="toc-h2 toc-link" data-title="Fields and relationships">Fields and relationships</a>
                   </li>
                   <li>
-                    <a href="#topics_sorting" class="toc-h2 toc-link" data-title="Topics">Sorting</a>
+                    <a href="#topics-sorting" class="toc-h2 toc-link" data-title="Sorting">Sorting</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#events_events" class="toc-h1 toc-link" data-title="Events">Events</a>
+            <a href="#events" class="toc-h1 toc-link" data-title="Events">Events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#events_event-properties" class="toc-h2 toc-link" data-title="Events">Event properties</a>
+                    <a href="#events-event-properties" class="toc-h2 toc-link" data-title="Event properties">Event properties</a>
                   </li>
                   <li>
-                    <a href="#events_start-and-end-attributes" class="toc-h2 toc-link" data-title="Events">Start and end attributes</a>
+                    <a href="#events-start-and-end-attributes" class="toc-h2 toc-link" data-title="Start and end attributes">Start and end attributes</a>
                   </li>
                   <li>
-                    <a href="#events_list-events" class="toc-h2 toc-link" data-title="Events">List events</a>
+                    <a href="#events-list-events" class="toc-h2 toc-link" data-title="List events">List events</a>
                   </li>
                   <li>
-                    <a href="#events_fetch-event" class="toc-h2 toc-link" data-title="Events">Fetch event</a>
+                    <a href="#events-fetch-event" class="toc-h2 toc-link" data-title="Fetch event">Fetch event</a>
                   </li>
                   <li>
-                    <a href="#events_create-event" class="toc-h2 toc-link" data-title="Events">Create event</a>
+                    <a href="#events-create-event" class="toc-h2 toc-link" data-title="Create event">Create event</a>
                   </li>
                   <li>
-                    <a href="#events_fetch-ticket-tiers" class="toc-h2 toc-link" data-title="Events">Fetch ticket tiers</a>
+                    <a href="#events-fetch-ticket-tiers" class="toc-h2 toc-link" data-title="Fetch ticket tiers">Fetch ticket tiers</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#ticket-types_ticket-types" class="toc-h1 toc-link" data-title="Ticket types">Ticket types</a>
+            <a href="#ticket-types" class="toc-h1 toc-link" data-title="Ticket types">Ticket types</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#ticket-types_ticket-type-properties" class="toc-h2 toc-link" data-title="Ticket types">Ticket type properties</a>
+                    <a href="#ticket-types-ticket-type-properties" class="toc-h2 toc-link" data-title="Ticket type properties">Ticket type properties</a>
                   </li>
                   <li>
-                    <a href="#ticket-types_event-ticket-type-properties" class="toc-h2 toc-link" data-title="Ticket types">Event ticket type properties</a>
+                    <a href="#ticket-types-event-ticket-type-properties" class="toc-h2 toc-link" data-title="Event ticket type properties">Event ticket type properties</a>
                   </li>
                   <li>
-                    <a href="#ticket-types_create-a-ticket-type-for-an-event" class="toc-h2 toc-link" data-title="Ticket types">Create a ticket type for an event</a>
+                    <a href="#ticket-types-create-a-ticket-type-for-an-event" class="toc-h2 toc-link" data-title="Create a ticket type for an event">Create a ticket type for an event</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#ticket-tiers_ticket-tiers" class="toc-h1 toc-link" data-title="Ticket Tiers">Ticket Tiers</a>
+            <a href="#ticket-tiers" class="toc-h1 toc-link" data-title="Ticket Tiers">Ticket Tiers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#ticket-tiers_tier-properties" class="toc-h2 toc-link" data-title="Ticket Tiers">Tier properties</a>
+                    <a href="#ticket-tiers-tier-properties" class="toc-h2 toc-link" data-title="Tier properties">Tier properties</a>
                   </li>
                   <li>
-                    <a href="#ticket-tiers_tier-level-properties" class="toc-h2 toc-link" data-title="Ticket Tiers">Tier level properties</a>
+                    <a href="#ticket-tiers-tier-level-properties" class="toc-h2 toc-link" data-title="Tier level properties">Tier level properties</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#recurring-events_recurring-events" class="toc-h1 toc-link" data-title="Recurring events">Recurring events</a>
+            <a href="#recurring-events" class="toc-h1 toc-link" data-title="Recurring events">Recurring events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#recurring-events_properties" class="toc-h2 toc-link" data-title="Recurring events">Properties</a>
+                    <a href="#recurring-events-properties" class="toc-h2 toc-link" data-title="Properties">Properties</a>
                   </li>
                   <li>
-                    <a href="#recurring-events_list-recurring-events" class="toc-h2 toc-link" data-title="Recurring events">List recurring events</a>
+                    <a href="#recurring-events-list-recurring-events" class="toc-h2 toc-link" data-title="List recurring events">List recurring events</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#event-categories_event-categories" class="toc-h1 toc-link" data-title="Event Categories">Event Categories</a>
+            <a href="#event-categories" class="toc-h1 toc-link" data-title="Event Categories">Event Categories</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#event-categories_category-properties" class="toc-h2 toc-link" data-title="Event Categories">Category properties</a>
+                    <a href="#event-categories-category-properties" class="toc-h2 toc-link" data-title="Category properties">Category properties</a>
                   </li>
                   <li>
-                    <a href="#event-categories_list-categories" class="toc-h2 toc-link" data-title="Event Categories">List categories</a>
+                    <a href="#event-categories-list-categories" class="toc-h2 toc-link" data-title="List categories">List categories</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#venues_venues" class="toc-h1 toc-link" data-title="Venues">Venues</a>
+            <a href="#venues" class="toc-h1 toc-link" data-title="Venues">Venues</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#venues_venue-properties" class="toc-h2 toc-link" data-title="Venues">Venue properties</a>
+                    <a href="#venues-venue-properties" class="toc-h2 toc-link" data-title="Venue properties">Venue properties</a>
                   </li>
                   <li>
-                    <a href="#venues_list-venues" class="toc-h2 toc-link" data-title="Venues">List venues</a>
+                    <a href="#venues-list-venues" class="toc-h2 toc-link" data-title="List venues">List venues</a>
                   </li>
                   <li>
-                    <a href="#venues_create-venue" class="toc-h2 toc-link" data-title="Venues">Create venue</a>
+                    <a href="#venues-create-venue" class="toc-h2 toc-link" data-title="Create venue">Create venue</a>
                   </li>
                   <li>
-                    <a href="#venues_time-zones" class="toc-h2 toc-link" data-title="Venues">Time zones</a>
+                    <a href="#venues-time-zones" class="toc-h2 toc-link" data-title="Time zones">Time zones</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#orders_orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#orders_order-properties" class="toc-h2 toc-link" data-title="Orders">Order properties</a>
+                    <a href="#orders-order-properties" class="toc-h2 toc-link" data-title="Order properties">Order properties</a>
                   </li>
                   <li>
-                    <a href="#orders_order-states" class="toc-h2 toc-link" data-title="Orders">Order states</a>
+                    <a href="#orders-order-states" class="toc-h2 toc-link" data-title="Order states">Order states</a>
                   </li>
                   <li>
-                    <a href="#orders_payment-states" class="toc-h2 toc-link" data-title="Orders">Payment states</a>
+                    <a href="#orders-payment-states" class="toc-h2 toc-link" data-title="Payment states">Payment states</a>
                   </li>
                   <li>
-                    <a href="#orders_exceptional-errors" class="toc-h2 toc-link" data-title="Orders">Exceptional errors</a>
+                    <a href="#orders-exceptional-errors" class="toc-h2 toc-link" data-title="Exceptional errors">Exceptional errors</a>
                   </li>
                   <li>
-                    <a href="#orders_create-an-order" class="toc-h2 toc-link" data-title="Orders">Create an order</a>
+                    <a href="#orders-create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
                   </li>
                   <li>
-                    <a href="#orders_fetch-order" class="toc-h2 toc-link" data-title="Orders">Fetch order</a>
+                    <a href="#orders-fetch-order" class="toc-h2 toc-link" data-title="Fetch order">Fetch order</a>
                   </li>
                   <li>
-                    <a href="#orders_update-order" class="toc-h2 toc-link" data-title="Orders">Update order</a>
+                    <a href="#orders-update-order" class="toc-h2 toc-link" data-title="Update order">Update order</a>
                   </li>
                   <li>
-                    <a href="#orders_apply-coupon-code" class="toc-h2 toc-link" data-title="Orders">Apply coupon code</a>
+                    <a href="#orders-apply-coupon-code" class="toc-h2 toc-link" data-title="Apply coupon code">Apply coupon code</a>
                   </li>
                   <li>
-                    <a href="#orders_list-orders" class="toc-h2 toc-link" data-title="Orders">List orders</a>
+                    <a href="#orders-list-orders" class="toc-h2 toc-link" data-title="List orders">List orders</a>
                   </li>
                   <li>
-                    <a href="#orders_add-items" class="toc-h2 toc-link" data-title="Orders">Add items</a>
+                    <a href="#orders-add-items" class="toc-h2 toc-link" data-title="Add items">Add items</a>
                   </li>
                   <li>
-                    <a href="#orders_remove-items" class="toc-h2 toc-link" data-title="Orders">Remove items</a>
+                    <a href="#orders-remove-items" class="toc-h2 toc-link" data-title="Remove items">Remove items</a>
                   </li>
                   <li>
-                    <a href="#orders_delete-line-item" class="toc-h2 toc-link" data-title="Orders">Delete line item</a>
+                    <a href="#orders-delete-line-item" class="toc-h2 toc-link" data-title="Delete line item">Delete line item</a>
                   </li>
                   <li>
-                    <a href="#orders_update-line-item" class="toc-h2 toc-link" data-title="Orders">Update line item</a>
+                    <a href="#orders-update-line-item" class="toc-h2 toc-link" data-title="Update line item">Update line item</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#checkout_checkout" class="toc-h1 toc-link" data-title="Checkout">Checkout</a>
+            <a href="#checkout" class="toc-h1 toc-link" data-title="Checkout">Checkout</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#checkout_link-based-checkout" class="toc-h2 toc-link" data-title="Checkout">Link based checkout</a>
+                    <a href="#checkout-link-based-checkout" class="toc-h2 toc-link" data-title="Link based checkout">Link based checkout</a>
                   </li>
                   <li>
-                    <a href="#checkout_api-based-checkout" class="toc-h2 toc-link" data-title="Checkout">API based checkout</a>
+                    <a href="#checkout-api-based-checkout" class="toc-h2 toc-link" data-title="API based checkout">API based checkout</a>
                   </li>
                   <li>
-                    <a href="#checkout_checkout-states" class="toc-h2 toc-link" data-title="Checkout">Checkout states</a>
+                    <a href="#checkout-checkout-states" class="toc-h2 toc-link" data-title="Checkout states">Checkout states</a>
                   </li>
                   <li>
-                    <a href="#checkout_standard-checkout" class="toc-h2 toc-link" data-title="Checkout">Standard checkout</a>
+                    <a href="#checkout-standard-checkout" class="toc-h2 toc-link" data-title="Standard checkout">Standard checkout</a>
                   </li>
                   <li>
-                    <a href="#checkout_guest-checkout" class="toc-h2 toc-link" data-title="Checkout">Guest checkout</a>
+                    <a href="#checkout-guest-checkout" class="toc-h2 toc-link" data-title="Guest checkout">Guest checkout</a>
                   </li>
                   <li>
-                    <a href="#checkout_resuming-an-order" class="toc-h2 toc-link" data-title="Checkout">Resuming an order</a>
+                    <a href="#checkout-resuming-an-order" class="toc-h2 toc-link" data-title="Resuming an order">Resuming an order</a>
                   </li>
                   <li>
-                    <a href="#checkout_begin-checkout" class="toc-h2 toc-link" data-title="Checkout">Begin checkout</a>
+                    <a href="#checkout-begin-checkout" class="toc-h2 toc-link" data-title="Begin checkout">Begin checkout</a>
                   </li>
                   <li>
-                    <a href="#checkout_update-and-transition-order" class="toc-h2 toc-link" data-title="Checkout">Update and transition order</a>
+                    <a href="#checkout-update-and-transition-order" class="toc-h2 toc-link" data-title="Update and transition order">Update and transition order</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-cart-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>cart</code> step</a>
+                    <a href="#checkout-cart-step" class="toc-h2 toc-link" data-title="cart step"><code>cart</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-tickets-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>tickets</code> step</a>
+                    <a href="#checkout-tickets-step" class="toc-h2 toc-link" data-title="tickets step"><code>tickets</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-address-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>address</code> step</a>
+                    <a href="#checkout-address-step" class="toc-h2 toc-link" data-title="address step"><code>address</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-form-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>form</code> step</a>
+                    <a href="#checkout-form-step" class="toc-h2 toc-link" data-title="form step"><code>form</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-payment-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>payment</code> step</a>
+                    <a href="#checkout-payment-step" class="toc-h2 toc-link" data-title="payment step"><code>payment</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-processing-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>processing</code> step</a>
+                    <a href="#checkout-processing-step" class="toc-h2 toc-link" data-title="processing step"><code>processing</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-complete-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>complete</code> step</a>
+                    <a href="#checkout-complete-step" class="toc-h2 toc-link" data-title="complete step"><code>complete</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-requested-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>requested</code> step</a>
+                    <a href="#checkout-requested-step" class="toc-h2 toc-link" data-title="requested step"><code>requested</code> step</a>
                   </li>
                   <li>
-                    <a href="#checkout_code-reserved-code-step" class="toc-h2 toc-link" data-title="Checkout"><code>reserved</code> step</a>
+                    <a href="#checkout-reserved-step" class="toc-h2 toc-link" data-title="reserved step"><code>reserved</code> step</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#tickets_tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
+            <a href="#tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#tickets_ticket-properties" class="toc-h2 toc-link" data-title="Tickets">Ticket properties</a>
+                    <a href="#tickets-ticket-properties" class="toc-h2 toc-link" data-title="Ticket properties">Ticket properties</a>
                   </li>
                   <li>
-                    <a href="#tickets_fetch-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Fetch a ticket</a>
+                    <a href="#tickets-fetch-a-ticket" class="toc-h2 toc-link" data-title="Fetch a ticket">Fetch a ticket</a>
                   </li>
                   <li>
-                    <a href="#tickets_create-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Create a ticket</a>
+                    <a href="#tickets-create-a-ticket" class="toc-h2 toc-link" data-title="Create a ticket">Create a ticket</a>
                   </li>
                   <li>
-                    <a href="#tickets_update-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Update a ticket</a>
+                    <a href="#tickets-update-a-ticket" class="toc-h2 toc-link" data-title="Update a ticket">Update a ticket</a>
                   </li>
                   <li>
-                    <a href="#tickets_delete-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Delete a ticket</a>
+                    <a href="#tickets-delete-a-ticket" class="toc-h2 toc-link" data-title="Delete a ticket">Delete a ticket</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#responses_responses" class="toc-h1 toc-link" data-title="Responses">Responses</a>
+            <a href="#responses" class="toc-h1 toc-link" data-title="Responses">Responses</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#responses_response-properties" class="toc-h2 toc-link" data-title="Responses">Response properties</a>
+                    <a href="#responses-response-properties" class="toc-h2 toc-link" data-title="Response properties">Response properties</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#payment-methods_payment-methods" class="toc-h1 toc-link" data-title="Payment Methods">Payment Methods</a>
+            <a href="#payment-methods" class="toc-h1 toc-link" data-title="Payment Methods">Payment Methods</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#payment-methods_payment-method-properties" class="toc-h2 toc-link" data-title="Payment Methods">Payment method properties</a>
+                    <a href="#payment-methods-payment-method-properties" class="toc-h2 toc-link" data-title="Payment method properties">Payment method properties</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#addresses_addresses" class="toc-h1 toc-link" data-title="Addresses">Addresses</a>
+            <a href="#addresses" class="toc-h1 toc-link" data-title="Addresses">Addresses</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#addresses_address-properties" class="toc-h2 toc-link" data-title="Addresses">Address properties</a>
+                    <a href="#addresses-address-properties" class="toc-h2 toc-link" data-title="Address properties">Address properties</a>
                   </li>
                   <li>
-                    <a href="#addresses_state-properties" class="toc-h2 toc-link" data-title="Addresses">State properties</a>
+                    <a href="#addresses-state-properties" class="toc-h2 toc-link" data-title="State properties">State properties</a>
                   </li>
                   <li>
-                    <a href="#addresses_country-properties" class="toc-h2 toc-link" data-title="Addresses">Country properties</a>
+                    <a href="#addresses-country-properties" class="toc-h2 toc-link" data-title="Country properties">Country properties</a>
                   </li>
                   <li>
-                    <a href="#addresses_list-countries" class="toc-h2 toc-link" data-title="Addresses">List countries</a>
+                    <a href="#addresses-list-countries" class="toc-h2 toc-link" data-title="List countries">List countries</a>
                   </li>
                   <li>
-                    <a href="#addresses_list-country-states" class="toc-h2 toc-link" data-title="Addresses">List country states</a>
+                    <a href="#addresses-list-country-states" class="toc-h2 toc-link" data-title="List country states">List country states</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#enterprise_enterprise" class="toc-h1 toc-link" data-title="Enterprise">Enterprise</a>
+            <a href="#enterprise" class="toc-h1 toc-link" data-title="Enterprise">Enterprise</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#enterprise_base-url" class="toc-h2 toc-link" data-title="Enterprise">Base URL</a>
+                    <a href="#enterprise-base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
                   </li>
                   <li>
-                    <a href="#enterprise_authentication" class="toc-h2 toc-link" data-title="Enterprise">Authentication</a>
+                    <a href="#enterprise-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
-                    <a href="#enterprise_using-the-api-endpoints-above" class="toc-h2 toc-link" data-title="Enterprise">Using the API endpoints above</a>
+                    <a href="#enterprise-using-the-api-endpoints-above" class="toc-h2 toc-link" data-title="Using the API endpoints above">Using the API endpoints above</a>
                   </li>
                   <li>
-                    <a href="#enterprise_create-company" class="toc-h2 toc-link" data-title="Enterprise">Create company</a>
+                    <a href="#enterprise-create-company" class="toc-h2 toc-link" data-title="Create company">Create company</a>
                   </li>
               </ul>
           </li>
-      </div>
+      </ul>
         <ul class="toc-footer">
             <li><a href="https://www.guestmanager.com">Guest Manager</a></li>
             <li><a href="https://docs.guestmanager.com">Support Documentation</a></li>
@@ -547,7 +550,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction_introduction'>Introduction</h1><h2 id='introduction_rest'>REST</h2><h2 id='introduction_base-url'>Base URL</h2>
+        <h1 id='introduction'>Introduction</h1><h2 id='introduction-rest'>REST</h2><h2 id='introduction-base-url'>Base URL</h2>
 <table><thead>
 <tr>
 <th>Api Version</th>
@@ -563,15 +566,15 @@
 <td><code>https://app.guestmanager.com/api/public/v1</code></td>
 </tr>
 </tbody></table>
-<h2 id='introduction_versioning'>Versioning</h2>
+<h2 id='introduction-versioning'>Versioning</h2>
 <p>The version is specified in the request URL. If the version is omitted, the latest version will be used by default.</p>
-<h2 id='introduction_rate-limiting'>Rate limiting</h2>
+<h2 id='introduction-rate-limiting'>Rate limiting</h2>
 <p>API requests are throttled by IP address and limited to 300 requests per 5 minute period.</p>
-<h2 id='introduction_tooling'>Tooling</h2>
+<h2 id='introduction-tooling'>Tooling</h2>
 <p>Postman is a great app for testing and experimenting with our API.</p>
-<h2 id='introduction_feedback'>Feedback</h2>
+<h2 id='introduction-feedback'>Feedback</h2>
 <p>Do you have a suggestion on how we can improve this API? Email us at support@guestmanager.com.</p>
-<h2 id='introduction_requests'>Requests</h2><h3 id='introduction_headers'>Headers</h3>
+<h2 id='introduction-requests'>Requests</h2><h3 id='introduction-requests-headers'>Headers</h3>
 <p>The following headers must be specified in all API requests.</p>
 
 <table><thead>
@@ -593,9 +596,9 @@
 <td><code>application/json</code></td>
 </tr>
 </tbody></table>
-<h3 id='introduction_parameters'>Parameters</h3>
+<h3 id='introduction-requests-parameters'>Parameters</h3>
 <p>All parameters should be submitted as JSON, however url-encoded data is also suitable. Provide only the attributes that you wish to change - do not submit the entire object, as you will likely encounter an error due to read-only attributes.</p>
-<h2 id='introduction_responses'>Responses</h2>
+<h2 id='introduction-responses'>Responses</h2>
 <p>All responses are returned as JSON, along with a relevant status code.</p>
 
 <p>You may change how results are returned by specifying an <code>adapter</code> in the <code>GET</code> request.</p>
@@ -624,7 +627,7 @@
 <li>* Alpha.</li>
 <li>** Super Duper Alpha.</li>
 </ul>
-<h3 id='introduction_successful-status-codes'>Successful status codes</h3>
+<h3 id='introduction-responses-successful-status-codes'>Successful status codes</h3>
 <table><thead>
 <tr>
 <th>Code</th>
@@ -644,7 +647,7 @@
 <td>No Content -- used for <code>DELETE</code> requests.</td>
 </tr>
 </tbody></table>
-<h2 id='introduction_errors'>Errors</h2><h3 id='introduction_error-status-codes'>Error status codes</h3>
+<h2 id='introduction-errors'>Errors</h2><h3 id='introduction-errors-error-status-codes'>Error status codes</h3>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -696,7 +699,7 @@
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
-<h3 id='introduction_exceptional-errors'>Exceptional errors</h3>
+<h3 id='introduction-errors-exceptional-errors'>Exceptional errors</h3>
 <p>Exceptions vary in format. Please see the right hand panel for examples.</p>
 
 <table><thead>
@@ -765,7 +768,7 @@
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='introduction_validation-errors'>Validation errors</h3>
+</span></code></pre><h3 id='introduction-errors-validation-errors'>Validation errors</h3>
 <p>Validation errors occur when a provided attribute does not meet the validation requirements on the model. The status code is always <code>422</code>.</p>
 
 <blockquote>
@@ -820,7 +823,7 @@
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='introduction_error-response'>Error response</h4>
+</span></code></pre><h4 id='introduction-errors-validation-errors-error-response'>Error response</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -854,7 +857,7 @@
 <td>Errors on associated objects.</td>
 </tr>
 </tbody></table>
-<h4 id='introduction_error-node'>Error node</h4>
+<h4 id='introduction-errors-validation-errors-error-node'>Error node</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -883,10 +886,10 @@
 <td>A human readable version of the <code>code</code></td>
 </tr>
 </tbody></table>
-<h4 id='introduction_association-errors'>Association errors</h4>
+<h4 id='introduction-errors-validation-errors-association-errors'>Association errors</h4>
 <p>When you are submitting nested parameters, e.g. <code>tickets</code> with an <code>Order</code>, the errors associated to those resources are specified in an <code>array</code>, in the <code>errors</code> attribute, with the key being the name of the association. E.g. for <code>tickets</code> submitted along with an order, the key to access those is <code>errors.associations.tickets</code>
 Inside the association errors key, you will find a hash, indexed by the ID of the associated record. See example.</p>
-<h4 id='introduction_validation-error-codes'>Validation error codes</h4>
+<h4 id='introduction-errors-validation-errors-validation-error-codes'>Validation error codes</h4>
 <p>https://github.com/rails/rails/blob/master/activemodel/lib/active_model/locale/en.yml</p>
 
 <table><thead>
@@ -904,7 +907,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td>attribute format is invalid.</td>
 </tr>
 </tbody></table>
-<h1 id='topics_topics'>Topics</h1><h2 id='topics_authentication'>Authentication</h2>
+<h1 id='topics'>Topics</h1><h2 id='topics-authentication'>Authentication</h2>
 <p>Authentication is done through the <code>Authorization</code> request header. The value should be in the format <code>Token abcdefg</code> where <code>abcdefg</code> is replaced with your API Key.</p>
 
 <blockquote>
@@ -922,9 +925,9 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your company name"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='topics_api-keys'>API keys</h3>
+</span></code></pre><h3 id='topics-authentication-api-keys'>API keys</h3>
 <p>API Keys are created in the company dashboard under the Config menu. API keys are authorized for either <code>read</code>, <code>write</code>, or both.</p>
-<h3 id='topics_api-key-permissions'>API key permissions</h3>
+<h3 id='topics-authentication-api-key-permissions'>API key permissions</h3>
 <p>API Keys are authorized for <code>read</code>, <code>write</code>, or both.</p>
 
 <table><thead>
@@ -942,7 +945,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td><code>POST</code>, <code>PATCH</code>, <code>DELETE</code></td>
 </tr>
 </tbody></table>
-<h2 id='topics_common-attributes'>Common attributes</h2>
+<h2 id='topics-common-attributes'>Common attributes</h2>
 <p>All resources have the following attributes.</p>
 
 <table><thead>
@@ -973,7 +976,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td>When the record was deleted. <i class="label label-info">read-only</i></td>
 </tr>
 </tbody></table>
-<h2 id='topics_data-types'>Data types</h2>
+<h2 id='topics-data-types'>Data types</h2>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -992,7 +995,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td>All monetary amounts are returned as a <code>string</code> to two decimal places.</td>
 </tr>
 </tbody></table>
-<h2 id='topics_filters'>Filters</h2>
+<h2 id='topics-filters'>Filters</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1006,7 +1009,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td><code>&quot;1,2,3&quot;</code> or <code>json {&quot;ids&quot;: [1,2,3]}</code></td>
 </tr>
 </tbody></table>
-<h2 id='topics_pagination'>Pagination</h2>
+<h2 id='topics-pagination'>Pagination</h2>
 <p>For resource collection endpoints, the following parameters can be used to paginate responses.</p>
 
 <table><thead>
@@ -1027,7 +1030,7 @@ Inside the association errors key, you will find a hash, indexed by the ID of th
 <td>The page to return records for.</td>
 </tr>
 </tbody></table>
-<h2 id='topics_fields-and-relationships'>Fields and relationships</h2>
+<h2 id='topics-fields-and-relationships'>Fields and relationships</h2>
 <p>To increase performance and optimize network traffic, you may specify only the fields and relationships you interested in.
 Refer to a specific resource endpoint to see which fields and relationships are available.</p>
 
@@ -1046,7 +1049,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td>Comma separated string of the relationships you are interested in for that particular model.</td>
 </tr>
 </tbody></table>
-<h2 id='topics_sorting'>Sorting</h2>
+<h2 id='topics-sorting'>Sorting</h2>
 <p>For resource collection endpoints, you can sort by the following common attributes, or any resource-specific attribute (e.g. <code>start_date</code> for <code>Event</code>)</p>
 
 <table><thead>
@@ -1064,7 +1067,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td><code>id</code>, <code>created_at</code>, <code>updated_at</code>, or any resource specific attribute.</td>
 </tr>
 </tbody></table>
-<h1 id='events_events'>Events</h1><h2 id='events_event-properties'>Event properties</h2>
+<h1 id='events'>Events</h1><h2 id='events-event-properties'>Event properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1168,7 +1171,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='events_start-and-end-attributes'>Start and end attributes</h2>
+<h2 id='events-start-and-end-attributes'>Start and end attributes</h2>
 <p>For convenience, <code>start</code> and <code>end</code> are provided as objects, each containing <code>tz</code>, <code>local</code>, and a <code>utc</code> attribute.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"tz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
@@ -1199,14 +1202,14 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td><code>datetime</code> in UTC (global) format.</td>
 </tr>
 </tbody></table>
-<h2 id='events_list-events'>List events</h2>
+<h2 id='events-list-events'>List events</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/events</h6>
     </div>
 </div>
-<h3 id='events_request-parameters'>Request parameters</h3>
+<h3 id='events-list-events-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1294,21 +1297,21 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td>Ending end date range.</td>
 </tr>
 </tbody></table>
-<h2 id='events_fetch-event'>Fetch event</h2>
+<h2 id='events-fetch-event'>Fetch event</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/events/{id}</h6>
     </div>
 </div>
-<h2 id='events_create-event'>Create event</h2>
+<h2 id='events-create-event'>Create event</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/events</h6>
     </div>
 </div>
-<h3 id='events_request-parameters-2'>Request parameters</h3>
+<h3 id='events-create-event-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1342,7 +1345,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td>End date and time of the event.</td>
 </tr>
 </tbody></table>
-<h2 id='events_fetch-ticket-tiers'>Fetch ticket tiers</h2>
+<h2 id='events-fetch-ticket-tiers'>Fetch ticket tiers</h2>
 <p>Returns the bookable items for an event.</p>
 
 <p>Each Tier has at least one Price Level. The variant_id in the price_levels array is important, because it’s used to create an Order.</p>
@@ -1353,7 +1356,7 @@ Refer to a specific resource endpoint to see which fields and relationships are 
         <h6>/events/{id}/ticket_tiers</h6>
     </div>
 </div>
-<h3 id='events_request-parameters-3'>Request parameters</h3>
+<h3 id='events-fetch-ticket-tiers-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1375,10 +1378,10 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td><code>price_levels</code></td>
 </tr>
 </tbody></table>
-<h1 id='ticket-types_ticket-types'>Ticket types</h1>
+<h1 id='ticket-types'>Ticket types</h1>
 <p>Ticket types are composed of two data models: ticket type, and event ticket type. A ticket type is a standalone entity that can be re-used for many different events.
 An event ticket type associates a ticket type to a specific event.</p>
-<h2 id='ticket-types_ticket-type-properties'>Ticket type properties</h2>
+<h2 id='ticket-types-ticket-type-properties'>Ticket type properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1424,7 +1427,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Whether tickets are attached in emails (true) or provided as a download link (false).</td>
 </tr>
 </tbody></table>
-<h2 id='ticket-types_event-ticket-type-properties'>Event ticket type properties</h2>
+<h2 id='ticket-types-event-ticket-type-properties'>Event ticket type properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1463,14 +1466,14 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Override the ticket type if necessary.</td>
 </tr>
 </tbody></table>
-<h2 id='ticket-types_create-a-ticket-type-for-an-event'>Create a ticket type for an event</h2><h3 id='ticket-types_request'>Request</h3>
+<h2 id='ticket-types-create-a-ticket-type-for-an-event'>Create a ticket type for an event</h2><h3 id='ticket-types-create-a-ticket-type-for-an-event-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/event_ticket_types</h6>
     </div>
 </div>
-<h4 id='ticket-types_parameters'>Parameters</h4>
+<h4 id='ticket-types-create-a-ticket-type-for-an-event-request-parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1489,7 +1492,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>See properties above. Used to create a new ticket type. Required if <code>event_ticket_type[ticket_type_id]</code> is not provided.</td>
 </tr>
 </tbody></table>
-<h4 id='ticket-types_examples'>Examples</h4>
+<h4 id='ticket-types-create-a-ticket-type-for-an-event-request-examples'>Examples</h4>
 <p>See example requests on the right.</p>
 
 <blockquote>
@@ -1513,7 +1516,7 @@ An event ticket type associates a ticket type to a specific event.</p>
     </span><span class="s2">"ticket_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='ticket-tiers_ticket-tiers'>Ticket Tiers</h1><h2 id='ticket-tiers_tier-properties'>Tier properties</h2>
+</span></code></pre><h1 id='ticket-tiers'>Ticket Tiers</h1><h2 id='ticket-tiers-tier-properties'>Tier properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1547,7 +1550,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Array of <code>TicketTierLevel</code></td>
 </tr>
 </tbody></table>
-<h2 id='ticket-tiers_tier-level-properties'>Tier level properties</h2>
+<h2 id='ticket-tiers-tier-level-properties'>Tier level properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1596,9 +1599,9 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>The related variant.</td>
 </tr>
 </tbody></table>
-<h1 id='recurring-events_recurring-events'>Recurring events</h1>
+<h1 id='recurring-events'>Recurring events</h1>
 <p>Top level non-bookable events that serve as the wrapper around individual event date/times. The ID of the class can be used to query against the Events API to return date/times for that series.</p>
-<h2 id='recurring-events_properties'>Properties</h2>
+<h2 id='recurring-events-properties'>Properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1632,14 +1635,14 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Tags associated to this series.</td>
 </tr>
 </tbody></table>
-<h2 id='recurring-events_list-recurring-events'>List recurring events</h2>
+<h2 id='recurring-events-list-recurring-events'>List recurring events</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/series</h6>
     </div>
 </div>
-<h3 id='recurring-events_request'>Request</h3>
+<h3 id='recurring-events-list-recurring-events-request'>Request</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1661,9 +1664,9 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td><code>published</code>, <code>unpublished</code></td>
 </tr>
 </tbody></table>
-<h1 id='event-categories_event-categories'>Event Categories</h1>
+<h1 id='event-categories'>Event Categories</h1>
 <p>An event can have many categories.</p>
-<h2 id='event-categories_category-properties'>Category properties</h2>
+<h2 id='event-categories-category-properties'>Category properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1707,14 +1710,14 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Sub-categories.</td>
 </tr>
 </tbody></table>
-<h2 id='event-categories_list-categories'>List categories</h2>
+<h2 id='event-categories-list-categories'>List categories</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/categories</h6>
     </div>
 </div>
-<h3 id='event-categories_request-parameters'>Request parameters</h3>
+<h3 id='event-categories-list-categories-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1728,7 +1731,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td><code>name</code>, <code>position</code></td>
 </tr>
 </tbody></table>
-<h1 id='venues_venues'>Venues</h1><h2 id='venues_venue-properties'>Venue properties</h2>
+<h1 id='venues'>Venues</h1><h2 id='venues-venue-properties'>Venue properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1777,14 +1780,14 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Address of the venue. See <code>Address</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='venues_list-venues'>List venues</h2>
+<h2 id='venues-list-venues'>List venues</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/venues</h6>
     </div>
 </div>
-<h2 id='venues_create-venue'>Create venue</h2>
+<h2 id='venues-create-venue'>Create venue</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
@@ -1801,7 +1804,7 @@ An event ticket type associates a ticket type to a specific event.</p>
     </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific Time (US &amp; Canada)"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='venues_time-zones'>Time zones</h2>
+</span></code></pre><h2 id='venues-time-zones'>Time zones</h2>
 <p>Use the first column in the table below to determine which time zone to submit.</p>
 
 <table><thead>
@@ -2567,7 +2570,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>+13:00</td>
 </tr>
 </tbody></table>
-<h1 id='orders_orders'>Orders</h1><h2 id='orders_order-properties'>Order properties</h2>
+<h1 id='orders'>Orders</h1><h2 id='orders-order-properties'>Order properties</h2>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
@@ -2881,7 +2884,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>Admin note.</td>
 </tr>
 </tbody></table>
-<h3 id='orders_related-objects'>Related objects</h3>
+<h3 id='orders-order-properties-related-objects'>Related objects</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2930,7 +2933,7 @@ An event ticket type associates a ticket type to a specific event.</p>
 <td>If any promo&#39;s were applied to this order. If so, a corresponding <code>Adjustment</code> will be present on the order or line item.</td>
 </tr>
 </tbody></table>
-<h3 id='orders_guest-checkout-properties'>Guest checkout properties</h3>
+<h3 id='orders-order-properties-guest-checkout-properties'>Guest checkout properties</h3>
 <p>Add these attributes through either the create or update order endpoint.
 The <code>guest_id</code> attribute will be set on the order through a find or create process based on the provided email and phone number.</p>
 
@@ -2972,7 +2975,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Country of the phone number. 2 digit ISO code, uppercase.</td>
 </tr>
 </tbody></table>
-<h3 id='orders_line-item-properties'>Line item properties</h3>
+<h3 id='orders-order-properties-line-item-properties'>Line item properties</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3041,7 +3044,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Tickets issued as specified by the variant&#39;s package. <i class="label label-info">read-only</i></td>
 </tr>
 </tbody></table>
-<h4 id='orders_ticket-tier-properties'>Ticket tier properties</h4>
+<h4 id='orders-order-properties-line-item-properties-ticket-tier-properties'>Ticket tier properties</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3080,7 +3083,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Name of the venue where event is held.</td>
 </tr>
 </tbody></table>
-<h4 id='orders_line-item-validation-errors'>Line item validation errors</h4>
+<h4 id='orders-order-properties-line-item-properties-line-item-validation-errors'>Line item validation errors</h4>
 <table><thead>
 <tr>
 <th><code>code</code></th>
@@ -3096,7 +3099,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Product is sold out.</td>
 </tr>
 </tbody></table>
-<h3 id='orders_adjustment-properties'>Adjustment properties</h3>
+<h3 id='orders-order-properties-adjustment-properties'>Adjustment properties</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3175,7 +3178,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>If this amount is monies owed to Guest Manager. <i class="label label-info">read-only</i></td>
 </tr>
 </tbody></table>
-<h3 id='orders_payment-properties'>Payment properties</h3>
+<h3 id='orders-order-properties-payment-properties'>Payment properties</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3234,7 +3237,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>A decline reason.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_order-states'>Order states</h2>
+<h2 id='orders-order-states'>Order states</h2>
 <table><thead>
 <tr>
 <th><code>state</code></th>
@@ -3262,7 +3265,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>No action was taken on order X hours after expired. Enabled if Abandoned Cart Recovery feature is configured.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_payment-states'>Payment states</h2>
+<h2 id='orders-payment-states'>Payment states</h2>
 <table><thead>
 <tr>
 <th><code>payment_state</code></th>
@@ -3294,7 +3297,7 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Payment failed.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_exceptional-errors'>Exceptional errors</h2>
+<h2 id='orders-exceptional-errors'>Exceptional errors</h2>
 <p>Exceptions vary in format. Please see the right hand panel for examples.</p>
 
 <table><thead>
@@ -3308,18 +3311,18 @@ The <code>guest_id</code> attribute will be set on the order through a find or c
 <td>Order is in an uneditable state. (e.g. <code>complete</code>)</td>
 </tr>
 </tbody></table>
-<h2 id='orders_create-an-order'>Create an order</h2>
+<h2 id='orders-create-an-order'>Create an order</h2>
 <aside class="notice">
 Please note that once an order is created, the tickets are reserved for 15 minutes as indicated by the `expires_at` attribute. You can still send the guest to checkout after 15 minutes, and the system will attempt to re-reserve the tickets and continue checkout. If the tickets are no longer available, the user is unable to proceed.
 </aside>
-<h3 id='orders_request'>Request</h3>
+<h3 id='orders-create-an-order-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/orders</h6>
     </div>
 </div>
-<h4 id='orders_parameters'>Parameters</h4>
+<h4 id='orders-create-an-order-request-parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3369,14 +3372,14 @@ Please note that once an order is created, the tickets are reserved for 15 minut
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='orders_fetch-order'>Fetch order</h2>
+</span></code></pre><h2 id='orders-fetch-order'>Fetch order</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/orders/{id}</h6>
     </div>
 </div>
-<h2 id='orders_update-order'>Update order</h2>
+<h2 id='orders-update-order'>Update order</h2>
 <p>Updates an order. All line items must be provided.</p>
 
 <div class="api-endpoint">
@@ -3406,7 +3409,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='orders_request-parameters'>Request parameters</h3>
+</span></code></pre><h3 id='orders-update-order-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3426,7 +3429,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Include this parameter to automatically being the checkout process.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_apply-coupon-code'>Apply coupon code</h2>
+<h2 id='orders-apply-coupon-code'>Apply coupon code</h2>
 <p>Attempts to apply a coupon/promo code to the order.</p>
 
 <div class="api-endpoint">
@@ -3435,7 +3438,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{id}/apply_coupon_code</h6>
     </div>
 </div>
-<h3 id='orders_request-parameters-2'>Request parameters</h3>
+<h3 id='orders-apply-coupon-code-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3454,7 +3457,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
 </tr>
 </tbody></table>
-<h3 id='orders_response'>Response</h3>
+<h3 id='orders-apply-coupon-code-response'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3470,14 +3473,14 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Error. Coupon not found, expired, inactive, or ineligible. Review the <code>error</code> message.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_list-orders'>List orders</h2>
+<h2 id='orders-list-orders'>List orders</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/orders</h6>
     </div>
 </div>
-<h2 id='orders_add-items'>Add items</h2>
+<h2 id='orders-add-items'>Add items</h2>
 <p>“Add to cart” Adds specified quantity of the variant to the order.</p>
 
 <div class="api-endpoint">
@@ -3486,7 +3489,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{order-id}/line_items/add</h6>
     </div>
 </div>
-<h3 id='orders_request-parameters-3'>Request parameters</h3>
+<h3 id='orders-add-items-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3505,7 +3508,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Quantity of <code>variant_id</code> to add.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_remove-items'>Remove items</h2>
+<h2 id='orders-remove-items'>Remove items</h2>
 <p>“Remove from cart” Removes specified quantity of the variant from the order.</p>
 
 <div class="api-endpoint">
@@ -3514,7 +3517,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{order-id}/line_items/remove</h6>
     </div>
 </div>
-<h3 id='orders_request-parameters-4'>Request parameters</h3>
+<h3 id='orders-remove-items-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3533,7 +3536,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Quantity of <code>variant_id</code> to remove.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_delete-line-item'>Delete line item</h2>
+<h2 id='orders-delete-line-item'>Delete line item</h2>
 <p>Deletes an entire line item from the order.</p>
 
 <div class="api-endpoint">
@@ -3542,7 +3545,7 @@ Please note that once an order is created, the tickets are reserved for 15 minut
         <h6>/orders/{order-id}/line_items/{id}</h6>
     </div>
 </div>
-<h3 id='orders_parameters-2'>Parameters</h3>
+<h3 id='orders-delete-line-item-parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3561,14 +3564,14 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>The line item ID to delete. <em>not</em> the variant ID.</td>
 </tr>
 </tbody></table>
-<h2 id='orders_update-line-item'>Update line item</h2>
+<h2 id='orders-update-line-item'>Update line item</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-patch">PATCH</i>
         <h6>/orders/{order-id}/line_items/{id}</h6>
     </div>
 </div>
-<h3 id='orders_request-parameters-5'>Request parameters</h3>
+<h3 id='orders-update-line-item-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3592,9 +3595,9 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>The quantity.</td>
 </tr>
 </tbody></table>
-<h1 id='checkout_checkout'>Checkout</h1>
+<h1 id='checkout'>Checkout</h1>
 <p>There are two ways to implement the checkout process via the API.</p>
-<h2 id='checkout_link-based-checkout'>Link based checkout</h2>
+<h2 id='checkout-link-based-checkout'>Link based checkout</h2>
 <p>The <code>links</code> attribute on the <code>Order</code> will specify a URL that you can redirect users to or open in an <code>iFrame</code> popup within your site. This will utilize the Guest Manager UI.</p>
 
 <blockquote>
@@ -3606,9 +3609,9 @@ Please note that once an order is created, the tickets are reserved for 15 minut
     </span><span class="s2">"checkout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='checkout_api-based-checkout'>API based checkout</h2>
+</span></code></pre><h2 id='checkout-api-based-checkout'>API based checkout</h2>
 <p>For complete control of the checkout experience, you may implement the checkout step UI yourself and make API calls to transition the order forward.</p>
-<h2 id='checkout_checkout-states'>Checkout states</h2>
+<h2 id='checkout-checkout-states'>Checkout states</h2>
 <table><thead>
 <tr>
 <th><code>state</code></th>
@@ -3717,13 +3720,13 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='checkout_standard-checkout'>Standard checkout</h2>
+<h2 id='checkout-standard-checkout'>Standard checkout</h2>
 <p>Requires the guest to login or register. This method is not currently supported via the API.</p>
-<h2 id='checkout_guest-checkout'>Guest checkout</h2>
+<h2 id='checkout-guest-checkout'>Guest checkout</h2>
 <p>Allows the guest to checkout an order without authenticating or registering their email or phone number.
 The <code>enable_guest_checkout</code> option must be enabled on the <code>CheckoutCustomization</code> object.
 The order will require <code>email</code>, <code>first_name</code>, and <code>last_name</code> to be updated before transitioning the order from the <code>cart</code> step to the checkout process. <code>phone_number</code> and <code>phone_number_country</code> may also be provided.</p>
-<h2 id='checkout_resuming-an-order'>Resuming an order</h2>
+<h2 id='checkout-resuming-an-order'>Resuming an order</h2>
 <p>Inspect the <code>expires_at</code> attribute on the order. This is 15 minutes in the future by default. When this timer expires, the order is moved from whatever state it is currently, to <code>expired</code>. The tickets are released back to inventory
 When an order expires, need to resume it. Need to check that inventory was successfully re-reserved (e.g. if sold out, not on sale, tickets are not available).</p>
 
@@ -3733,7 +3736,7 @@ When an order expires, need to resume it. Need to check that inventory was succe
         <h6>/checkout/{id}/resume</h6>
     </div>
 </div>
-<h3 id='checkout_request-parameters'>Request parameters</h3>
+<h3 id='checkout-resuming-an-order-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3749,7 +3752,7 @@ When an order expires, need to resume it. Need to check that inventory was succe
 <td>Provide the order&#39;s guest_token to authorize updates to this order.</td>
 </tr>
 </tbody></table>
-<h2 id='checkout_begin-checkout'>Begin checkout</h2>
+<h2 id='checkout-begin-checkout'>Begin checkout</h2>
 <p>Attempt to move the order to the next step in the checkout process without providing any new attributes. Typically this is used for moving an order from <code>cart</code> to the first step in the checkout process, as this transition does not require any new attributes.</p>
 
 <div class="api-endpoint">
@@ -3758,7 +3761,7 @@ When an order expires, need to resume it. Need to check that inventory was succe
         <h6>/checkout/{id}/next</h6>
     </div>
 </div>
-<h3 id='checkout_request-parameters-2'>Request parameters</h3>
+<h3 id='checkout-begin-checkout-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3778,10 +3781,10 @@ When an order expires, need to resume it. Need to check that inventory was succe
 <td>Optional. Attempt to move the order directly to this state.</td>
 </tr>
 </tbody></table>
-<h3 id='checkout_response'>Response</h3>
+<h3 id='checkout-begin-checkout-response'>Response</h3>
 <p>Upon successful transition to checkout, Inspect the <code>state</code> (string) and <code>checkout_steps</code> (array of strings) attributes on the Order and update your UI accordingly.
 The last step will be one of <code>complete</code>, <code>requested</code>, or <code>reserved</code>, depending on the availability and on-sale restrictions of the items in the cart.</p>
-<h2 id='checkout_update-and-transition-order'>Update and transition order</h2>
+<h2 id='checkout-update-and-transition-order'>Update and transition order</h2>
 <p>This is the sole endpoint for transitioning an order through the various checkout steps. Which step the order is on will dictate which attributes need to be submitted.</p>
 
 <div class="api-endpoint">
@@ -3790,7 +3793,7 @@ The last step will be one of <code>complete</code>, <code>requested</code>, or <
         <h6>/checkout/{id}</h6>
     </div>
 </div>
-<h3 id='checkout_request-parameters-3'>Request parameters</h3>
+<h3 id='checkout-update-and-transition-order-request-parameters'>Request parameters</h3>
 <p>The following parameters should be submitted for every checkout step, along with the step-specific data.</p>
 
 <table><thead>
@@ -3816,7 +3819,7 @@ The last step will be one of <code>complete</code>, <code>requested</code>, or <
 <td>Include the relevent information specified below, according to the current step.</td>
 </tr>
 </tbody></table>
-<h3 id='checkout_response-errors'>Response Errors</h3>
+<h3 id='checkout-update-and-transition-order-response-errors'>Response Errors</h3>
 <p>Every time this endpoint is called, the order is first checked for checkout eligibility, so it is important to handle all of these errors in every checkout step.</p>
 
 <p>Refer to the section on errors for the JSON format of the response.</p>
@@ -3844,9 +3847,9 @@ The last step will be one of <code>complete</code>, <code>requested</code>, or <
 <td>Order cannot transition to provided state.</td>
 </tr>
 </tbody></table>
-<h2 id='checkout_code-cart-code-step'><code>cart</code> step</h2>
+<h2 id='checkout-cart-step'><code>cart</code> step</h2>
 <p>The default state of all newly created orders.</p>
-<h2 id='checkout_code-tickets-code-step'><code>tickets</code> step</h2>
+<h2 id='checkout-tickets-step'><code>tickets</code> step</h2>
 <p>The tickets step is included if the ticket type related to the line item in the cart has been set to include the name or email fields during checkout.
 The purpose of this step is to collect attendee information prior to completion of an order.</p>
 
@@ -3903,7 +3906,7 @@ The purpose of this step is to collect attendee information prior to completion 
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='checkout_request-parameters-4'>Request parameters</h3>
+</span></code></pre><h3 id='checkout-code-tickets-code-step-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3915,11 +3918,11 @@ The purpose of this step is to collect attendee information prior to completion 
 <td>Array. Include <code>id</code>, <code>name</code>, <code>email</code>, <code>keep</code>, for each ticket.</td>
 </tr>
 </tbody></table>
-<h3 id='checkout_notes'>Notes</h3>
+<h3 id='checkout-code-tickets-code-step-notes'>Notes</h3>
 <ul>
 <li>Only one ticket should be eligible to assign directly to the customer, the rest of the tickets should have a <code>name</code> attribute required, and optional <code>email</code></li>
 </ul>
-<h2 id='checkout_code-address-code-step'><code>address</code> step</h2>
+<h2 id='checkout-address-step'><code>address</code> step</h2>
 <p>This step is included if shipping is enabled for any of the line items, order total is greater than 0, and/or if the billing address is set to required for all orders (via the <code>CheckoutCustomization</code>), even if the order total is 0.</p>
 
 <blockquote>
@@ -3965,9 +3968,9 @@ The purpose of this step is to collect attendee information prior to completion 
 <td>See <code>Address</code> for format.</td>
 </tr>
 </tbody></table>
-<h3 id='checkout_response-2'>Response</h3>
+<h3 id='checkout-code-address-code-step-response'>Response</h3>
 <p>Upon successful addition of address information, you will see a populated <code>bill_address_id</code> and/or <code>ship_address_id</code>.</p>
-<h2 id='checkout_code-form-code-step'><code>form</code> step</h2>
+<h2 id='checkout-form-step'><code>form</code> step</h2>
 <p>This step is included if a Form (i.e. Questions or Survey) has been configured on this order. Inspect the <code>responses</code> attribute on the <code>Order</code>.</p>
 
 <p>Only the <code>answers</code> <code>id</code> and <code>value</code> need to be submitted back.
@@ -4020,7 +4023,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>See <code>FormResponse</code> for format.</td>
 </tr>
 </tbody></table>
-<h2 id='checkout_code-payment-code-step'><code>payment</code> step</h2>
+<h2 id='checkout-payment-step'><code>payment</code> step</h2>
 <p>This step is included if the order total is greater than 0. Inspect the <code>payment_methods</code> attribute to see which options are available for payment.</p>
 
 <p>Do not submit credit card information via the API. Use your payment provider&#39;s Javascript SDK to create a token instead.</p>
@@ -4058,7 +4061,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='checkout_payment-request-parameters'>Payment request parameters</h3>
+</span></code></pre><h3 id='checkout-code-payment-code-step-payment-request-parameters'>Payment request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4102,11 +4105,11 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>3 or 4 digit code on the card to perform verification.</td>
 </tr>
 </tbody></table>
-<h2 id='checkout_code-processing-code-step'><code>processing</code> step</h2>
+<h2 id='checkout-processing-step'><code>processing</code> step</h2>
 <p>This step is not present in the <code>checkout_steps</code> attribute. Once payment information is submitted in the <code>payment</code> step, the payments are processed asynchronously during the <code>processing</code> state.</p>
 
 <p>Poll the order until the <code>state</code> changes from <code>processing</code>. If payment failed, the <code>state</code> will return to <code>payment</code>. If successful, the order will be complete and in the <code>complete</code> state.</p>
-<h3 id='checkout_poll-order-state'>Poll order state</h3>
+<h3 id='checkout-code-processing-code-step-poll-order-state'>Poll order state</h3>
 <p>If the order is still processing, a single <code>state</code> attribute will be returned, for efficiency. If the order is no longer processing, you will receive a full <code>Order</code> object back.</p>
 
 <div class="api-endpoint">
@@ -4132,7 +4135,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
   </span><span class="s2">"payment_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="w">
   </span><span class="err">/*</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">redacted</span><span class="w"> </span><span class="err">*/</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='checkout_code-complete-code-step'><code>complete</code> step</h2>
+</span></code></pre><h2 id='checkout-complete-step'><code>complete</code> step</h2>
 <p>Order is now complete. Tickets have been fulfilled. The order is not necessarily fully paid at this point. <code>completed_at</code> will be non-null.</p>
 
 <table><thead>
@@ -4154,29 +4157,29 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>`paid</td>
 </tr>
 </tbody></table>
-<h2 id='checkout_code-requested-code-step'><code>requested</code> step</h2>
+<h2 id='checkout-requested-step'><code>requested</code> step</h2>
 <p>Included if any of the products in the order are currently sold out, <em>and</em> the product has <code>can_request</code> attribute enabled.</p>
-<h2 id='checkout_code-reserved-code-step'><code>reserved</code> step</h2>
+<h2 id='checkout-reserved-step'><code>reserved</code> step</h2>
 <p>Included if any of the products in the order are not currently on sale, <em>and</em> the product has <code>can_reserve</code> attribute enabled.</p>
-<h1 id='tickets_tickets'>Tickets</h1><h2 id='tickets_ticket-properties'>Ticket properties</h2>
+<h1 id='tickets'>Tickets</h1><h2 id='tickets-ticket-properties'>Ticket properties</h2>
 <p>{TBI}</p>
-<h2 id='tickets_fetch-a-ticket'>Fetch a ticket</h2><h3 id='tickets_request'>Request</h3>
+<h2 id='tickets-fetch-a-ticket'>Fetch a ticket</h2><h3 id='tickets-fetch-a-ticket-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/tickets/{id}</h6>
     </div>
 </div>
-<h4 id='tickets_parameters'>Parameters</h4>
+<h4 id='tickets-fetch-a-ticket-request-parameters'>Parameters</h4>
 <p>No parameters.</p>
-<h2 id='tickets_create-a-ticket'>Create a ticket</h2><h3 id='tickets_request-2'>Request</h3>
+<h2 id='tickets-create-a-ticket'>Create a ticket</h2><h3 id='tickets-create-a-ticket-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/tickets</h6>
     </div>
 </div>
-<h4 id='tickets_parameters-2'>Parameters</h4>
+<h4 id='tickets-create-a-ticket-request-parameters'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4269,25 +4272,25 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
     </span><span class="s2">"dispatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='tickets_update-a-ticket'>Update a ticket</h2><h3 id='tickets_request-3'>Request</h3>
+</span></code></pre><h2 id='tickets-update-a-ticket'>Update a ticket</h2><h3 id='tickets-update-a-ticket-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-patch">PATCH</i>
         <h6>/tickets/{id}</h6>
     </div>
 </div>
-<h4 id='tickets_parameters-3'>Parameters</h4>
+<h4 id='tickets-update-a-ticket-request-parameters'>Parameters</h4>
 <p>See parameters for create a ticket.</p>
-<h2 id='tickets_delete-a-ticket'>Delete a ticket</h2><h3 id='tickets_request-4'>Request</h3>
+<h2 id='tickets-delete-a-ticket'>Delete a ticket</h2><h3 id='tickets-delete-a-ticket-request'>Request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-delete">DELETE</i>
         <h6>/tickets/{id}</h6>
     </div>
 </div>
-<h4 id='tickets_parameters-4'>Parameters</h4>
+<h4 id='tickets-delete-a-ticket-request-parameters'>Parameters</h4>
 <p>None.</p>
-<h1 id='responses_responses'>Responses</h1><h2 id='responses_response-properties'>Response properties</h2>
+<h1 id='responses'>Responses</h1><h2 id='responses-response-properties'>Response properties</h2>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
@@ -4423,7 +4426,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>Individual answers contained in this response.</td>
 </tr>
 </tbody></table>
-<h3 id='responses_answer-attributes'>Answer attributes</h3>
+<h3 id='responses-response-properties-answer-attributes'>Answer attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4452,7 +4455,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>The question. <i class="label label-info">read-only</i></td>
 </tr>
 </tbody></table>
-<h3 id='responses_field-attributes'>Field attributes</h3>
+<h3 id='responses-response-properties-field-attributes'>Field attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4491,7 +4494,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>If <code>type</code> is <code>multiple_choice</code>, these are the possible answers.</td>
 </tr>
 </tbody></table>
-<h3 id='responses_option-attributes'>Option attributes</h3>
+<h3 id='responses-response-properties-option-attributes'>Option attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4515,7 +4518,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>How to sort the option.</td>
 </tr>
 </tbody></table>
-<h1 id='payment-methods_payment-methods'>Payment Methods</h1><h2 id='payment-methods_payment-method-properties'>Payment method properties</h2>
+<h1 id='payment-methods'>Payment Methods</h1><h2 id='payment-methods-payment-method-properties'>Payment method properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4574,7 +4577,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>If the gateway supports credit card tokenization, use this key to generate a token clientside before submitting to the API.</td>
 </tr>
 </tbody></table>
-<h1 id='addresses_addresses'>Addresses</h1><h2 id='addresses_address-properties'>Address properties</h2>
+<h1 id='addresses'>Addresses</h1><h2 id='addresses-address-properties'>Address properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4643,7 +4646,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td><code>Country</code></td>
 </tr>
 </tbody></table>
-<h2 id='addresses_state-properties'>State properties</h2>
+<h2 id='addresses-state-properties'>State properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4667,7 +4670,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>The country this state is in.</td>
 </tr>
 </tbody></table>
-<h2 id='addresses_country-properties'>Country properties</h2>
+<h2 id='addresses-country-properties'>Country properties</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4696,7 +4699,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td>Phone prefix.</td>
 </tr>
 </tbody></table>
-<h2 id='addresses_list-countries'>List countries</h2>
+<h2 id='addresses-list-countries'>List countries</h2>
 <p>If you need to create address forms in your UI, it is recommended to use our maintained list of country data and <code>ids</code>.</p>
 
 <div class="api-endpoint">
@@ -4705,17 +4708,17 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
         <h6>/countries</h6>
     </div>
 </div>
-<h2 id='addresses_list-country-states'>List country states</h2>
+<h2 id='addresses-list-country-states'>List country states</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
         <h6>/countries/{country-id}/states</h6>
     </div>
 </div>
-<h1 id='enterprise_enterprise'>Enterprise</h1>
+<h1 id='enterprise'>Enterprise</h1>
 <p>The Enterprise API is only available for private label and reseller clients. These endpoints require an Enterprise API Key
 (different from the one described in the introduction). Please contact support to get your API key.</p>
-<h2 id='enterprise_base-url'>Base URL</h2>
+<h2 id='enterprise-base-url'>Base URL</h2>
 <table><thead>
 <tr>
 <th>Api Version</th>
@@ -4731,7 +4734,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 <td><code>https://app.guestmanager.com/api/public/enterprise/v1</code></td>
 </tr>
 </tbody></table>
-<h2 id='enterprise_authentication'>Authentication</h2>
+<h2 id='enterprise-authentication'>Authentication</h2>
 <p>Please see the Authentication section under Topics.</p>
 
 <blockquote>
@@ -4749,17 +4752,17 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your enterprise name"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='enterprise_using-the-api-endpoints-above'>Using the API endpoints above</h2>
+</span></code></pre><h2 id='enterprise-using-the-api-endpoints-above'>Using the API endpoints above</h2>
 <p>To use the API endpoints above on behalf of your company clients, you must use a company API Key (not your enterprise API key). You can get the
 company API key below when creating the company. Be sure to store this key somewhere in your database.</p>
-<h2 id='enterprise_create-company'>Create company</h2>
+<h2 id='enterprise-create-company'>Create company</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">POST</i>
         <h6>/companies</h6>
     </div>
 </div>
-<h3 id='enterprise_request-parameters'>Request parameters</h3>
+<h3 id='enterprise-create-company-request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4793,7 +4796,7 @@ company API key below when creating the company. Be sure to store this key somew
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='enterprise_response'>Response</h3>
+</span></code></pre><h3 id='enterprise-create-company-response'>Response</h3>
 <blockquote>
 <p>Sample response</p>
 </blockquote>
