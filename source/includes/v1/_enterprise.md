@@ -58,7 +58,7 @@ Attribute                      | Type     | Required   | Description
   "company": {
     "name": "New company",
     "address_attributes": {
-      "country_code": "US "
+      "country_code": "US"
     }
   }
 }
