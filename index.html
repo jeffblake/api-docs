@@ -1344,6 +1344,12 @@ Refer to a specific resource endpoint to see which fields and relationships are 
 <td><em>yes</em></td>
 <td>End date and time of the event.</td>
 </tr>
+<tr>
+<td><code>event[published_at]</code></td>
+<td><code>datetime</code></td>
+<td><em>no</em></td>
+<td>Set this to any date to publish the event.</td>
+</tr>
 </tbody></table>
 <h2 id='events-fetch-ticket-tiers'>Fetch ticket tiers</h2>
 <p>Returns the bookable items for an event.</p>
@@ -1796,12 +1802,32 @@ An event ticket type associates a ticket type to a specific event.</p>
 </div>
 
 <blockquote>
-<p>Create a basic venue</p>
+<p>Minimum request parameters</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My venue"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific Time (US &amp; Canada)"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Complete request parameters</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My venue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"details"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133222.2222"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"134444.2222"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific Time (US &amp; Canada)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main st"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V6T2J3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='venues-time-zones'>Time zones</h2>
@@ -4578,6 +4604,8 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </tr>
 </tbody></table>
 <h1 id='addresses'>Addresses</h1><h2 id='addresses-address-properties'>Address properties</h2>
+<p>For convenience, you can provide either <code>country_code</code> and <code>state_code</code> in place of <code>country_id</code> and <code>state_id</code></p>
+
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4607,7 +4635,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </tr>
 <tr>
 <td><code>state_name</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Name of the State.</td>
 </tr>
 <tr>
@@ -4617,7 +4645,7 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </tr>
 <tr>
 <td><code>country_name</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Name of the country.</td>
 </tr>
 <tr>
@@ -4637,12 +4665,12 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </tr>
 <tr>
 <td><code>state</code></td>
-<td>object</td>
+<td>object <i class="label label-info">read-only</i></td>
 <td><code>State</code></td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td>object</td>
+<td>object <i class="label label-info">read-only</i></td>
 <td><code>Country</code></td>
 </tr>
 </tbody></table>
@@ -4656,17 +4684,17 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </thead><tbody>
 <tr>
 <td><code>name</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Name of the state.</td>
 </tr>
 <tr>
 <td><code>code</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Abbreviation of the state name.</td>
 </tr>
 <tr>
 <td><code>country_id</code></td>
-<td>integer</td>
+<td>integer <i class="label label-info">read-only</i></td>
 <td>The country this state is in.</td>
 </tr>
 </tbody></table>
@@ -4680,22 +4708,22 @@ For multiple choice fields, the <code>answer.value</code> will be the <code>id</
 </thead><tbody>
 <tr>
 <td><code>name</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Name of the country.</td>
 </tr>
 <tr>
 <td><code>code</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>ISO code of the country.</td>
 </tr>
 <tr>
 <td><code>currency_code</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Currency ISO code.</td>
 </tr>
 <tr>
 <td><code>phone_prefix</code></td>
-<td>string</td>
+<td>string <i class="label label-info">read-only</i></td>
 <td>Phone prefix.</td>
 </tr>
 </tbody></table>
@@ -4778,7 +4806,7 @@ company API key below when creating the company. Be sure to store this key somew
 <td>Company name.</td>
 </tr>
 <tr>
-<td><code>company[address_attributes][country_code]</code></td>
+<td><code>company[address][country_code]</code></td>
 <td><code>integer</code></td>
 <td><em>yes</em></td>
 <td>ISO code of the company&#39;s country.</td>
@@ -4791,20 +4819,41 @@ company API key below when creating the company. Be sure to store this key somew
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New company"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='enterprise-create-company-response'>Response</h3>
+<p>You will receive back two API keys, one authorized for read only, and the other authorized for read and writes. Please store the Company
+<code>id</code>, and <code>api_keys</code> in your own database, as you will need these to perform API requests on behalf of your clients.</p>
+
+<p>The <code>password</code> and <code>pin</code> are used to log in to the iOS Check In App.</p>
+
 <blockquote>
 <p>Sample response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company name"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"******"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*******"</span><span class="w">
+  </span><span class="s2">"api_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"...."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"write"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1235</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"...."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"write"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
       </div>
