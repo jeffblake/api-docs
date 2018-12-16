@@ -46,10 +46,11 @@ company API key below when creating the company. Be sure to store this key somew
 
 ### Request parameters
 
-Attribute                      | Type     | Required   | Description
------------------------------- | -------- | --------- | ----------
-`company[name]`                | `string`   | *yes*    | Company name.
-`company[address_attributes][country_code]`    | `integer`   | *yes*    | ISO code of the company's country.
+Attribute                           | Type        | Required  | Description
+----------------------------------- | ----------- | --------- | ----------
+`company[name]`                     | `string`    | *yes*     | Company name.
+`company[address][country_code]`    | `integer`   | *yes*     | ISO code of the company's country.
+
 
 > Sample request
 
@@ -57,7 +58,7 @@ Attribute                      | Type     | Required   | Description
 {
   "company": {
     "name": "New company",
-    "address_attributes": {
+    "address": {
       "country_code": "US"
     }
   }
@@ -66,13 +67,34 @@ Attribute                      | Type     | Required   | Description
 
 ### Response
 
+You will receive back two API keys, one authorized for read only, and the other authorized for read and writes. Please store the Company
+`id`, and `api_keys` in your own database, as you will need these to perform API requests on behalf of your clients.
+
+The `password` and `pin` are used to log in to the iOS Check In App.
+
 > Sample response
 
 ```json
 {
+  "id": 10,
   "name": "Company name",
   "password": "******",
   "pin": "1234"
-  "api_key": "*******"
+  "api_keys": [
+    {
+      "id": 1234,
+      "name": null,
+      "access_token": "....",
+      "read": true,
+      "write": false
+    },
+    {
+      "id": 1235,
+      "name": null,
+      "access_token": "....",
+      "read": true,
+      "write": true
+    }
+  ]
 }
 ```

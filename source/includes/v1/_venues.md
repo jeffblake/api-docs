@@ -32,13 +32,34 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
-> Create a basic venue
+> Minimum request parameters
 
 ```json
 {
   "venue": {
     "name": "My venue",
     "time_zone": "Pacific Time (US & Canada)"
+  }
+}
+```
+
+> Complete request parameters
+
+```json
+{
+  "venue": {
+    "name": "My venue",
+    "description": "details",
+    "latitude": "133222.2222",
+    "longitude": "134444.2222",
+    "time_zone": "Pacific Time (US & Canada)",
+    "address": {
+      "address1": "123 Main st",
+      "city": "Vancouver",
+      "zipcode": "V6T2J3",
+      "country_code": "CA",
+      "state_code": "BC"
+    }
   }
 }
 ```

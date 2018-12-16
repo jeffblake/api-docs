@@ -96,6 +96,8 @@ Attribute                      | Type     | Required   | Description
 `event[venue_id]`              | `integer`   | *yes*    | `id` of the venue. Please find or create a venue first.
 `event[start_date]`            | `datetime`   | *yes*    | Start date and time of the event.
 `event[end_date]`              | `datetime`  | *yes*    | End date and time of the event.
+`event[published_at]`          | `datetime`  | *no*    | Set this to any date to publish the event.
+
 
 ## Fetch ticket tiers
 Returns the bookable items for an event.
