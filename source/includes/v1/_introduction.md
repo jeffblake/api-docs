@@ -38,17 +38,6 @@ All parameters should be submitted as JSON, however url-encoded data is also sui
 ## Responses
 All responses are returned as JSON, along with a relevant status code.
 
-You may change how results are returned by specifying an `adapter` in the `GET` request.
-
-`adapter`       | Description
---------------- | -----------------
-`attributes`    | Default. Array of objects, with no top-level key.
-`json`*         | Array of objects, with a top-level key, and pagination information.
-`json_api`**    | Conforms to the JSON API spec.
-
-- * Alpha.
-- ** Super Duper Alpha.
-
 ### Successful status codes
 Code                 | Description
 -------------------- | -----------
