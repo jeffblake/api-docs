@@ -600,33 +600,6 @@
 <p>All parameters should be submitted as JSON, however url-encoded data is also suitable. Provide only the attributes that you wish to change - do not submit the entire object, as you will likely encounter an error due to read-only attributes.</p>
 <h2 id='introduction-responses'>Responses</h2>
 <p>All responses are returned as JSON, along with a relevant status code.</p>
-
-<p>You may change how results are returned by specifying an <code>adapter</code> in the <code>GET</code> request.</p>
-
-<table><thead>
-<tr>
-<th><code>adapter</code></th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>attributes</code></td>
-<td>Default. Array of objects, with no top-level key.</td>
-</tr>
-<tr>
-<td><code>json</code>*</td>
-<td>Array of objects, with a top-level key, and pagination information.</td>
-</tr>
-<tr>
-<td><code>json_api</code>**</td>
-<td>Conforms to the JSON API spec.</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>* Alpha.</li>
-<li>** Super Duper Alpha.</li>
-</ul>
 <h3 id='introduction-responses-successful-status-codes'>Successful status codes</h3>
 <table><thead>
 <tr>
