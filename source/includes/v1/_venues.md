@@ -1,18 +1,6 @@
 # Venues
 
-## Venue properties
-
-Attribute                      | Type     | Description
------------------------------- | -------- | -----------
-`name`                         | string   | Name of the venue.
-`description`                  | text     | Additional line can be used to describe the venue.
-`slug`                         | string   | Auto-generated for use in url-generation.
-`time_zone`                    | string   | Time zone where the venue is located.
-`latitude`                     | string   | Latitude of venue. Used for Apple Wallet.
-`longitude`                    | string   | Longitude of venue. Used for Apple Wallet.
-`address_id`                   | integer  | ID of the associated address.
-`address`                      | object   | Address of the venue. See `Address`.
-
+See [**Objects**](#objects-venue) section for details on the fields and relationships.
 
 ## List venues
 
@@ -23,6 +11,55 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
+> List venues with addresses
+
+```shell
+curl -X GET \
+  'https://app.guestmanager.com/api/public/v2/venues?include=address' \
+  -H 'Authorization: Token abcdefg' \
+  -H 'Content-Type: application/json' \
+```
+
+> Response
+
+```json
+{
+    "data": [...],
+    "meta": {
+        "count": 8,
+        "total": 8,
+        "page": {
+            "number": 1,
+            "size": 10,
+            "next": null,
+            "prev": null,
+            "total": 1,
+            "last": true,
+            "first": true,
+            "out_of_range": false
+        },
+        "links": {
+            "self": ".../api/public/v2/venues?include=address",
+            "next": null,
+            "prev": null,
+            "last": ".../api/public/v2/venues?include=address&page%5Bnumber%5D=1",
+            "first": ".../api/public/v2/venues?include=address&page%5Bnumber%5D=1"
+        }
+    }
+}
+```
+
+### Request parameters
+
+Parameter                        | Type        | Required | Default    | Description
+-------------------------------- | ----------- | -------- | ---------- | -----------
+`page[size]`                     | `integer`   | *no*     | `10`       | How many records to return per request. Default is `10`, maximum is `100`
+`page[number]`                   | `integer`   | *no*     | `1`        | The page of records to request.
+`sort[{field}]`                  | `string`    | *no*     | *none*     | Replace `{field}` with one of `id`, `created_at`, `updated_at`, `name`, and set the value to `asc` or `desc`. You may specify multiple sort fields.
+`fields`                         | `string`    | *no*     | `id,name`  | Comma separated list of attributes to return.
+`include`                        | `string`    | *no*     | *none*     | Relationships to include. See `Venue` object for possible relationships.
+
+
 ## Create venue
 
 <div class="api-endpoint">
@@ -32,192 +69,100 @@ Attribute                      | Type     | Description
 	</div>
 </div>
 
-> Minimum request parameters
+> Create venue (minimum parameters)
 
-```json
-{
-  "venue": {
-    "name": "My venue",
-    "time_zone": "Pacific Time (US & Canada)"
-  }
-}
+```shell
+curl -X POST \
+  https://app.guestmanager.com/api/public/v2/venues \
+  -H 'Authorization: Token abcdefg' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"venue": {
+		"name": "The Rio Theatre",
+		"time_zone": "Pacific Time (US & Canada)"
+	}
+}'
 ```
 
-> Complete request parameters
+> Response
 
 ```json
 {
-  "venue": {
-    "name": "My venue",
-    "description": "details",
-    "latitude": "133222.2222",
-    "longitude": "134444.2222",
+    "id": 3245,
+    "name": "The Rio Theatre",
+    "description": null,
+    "slug": "the-rio-theatre",
+    "created_at": "2019-01-07T20:33:44.583012Z",
+    "updated_at": "2019-01-07T20:33:44.583012Z",
     "time_zone": "Pacific Time (US & Canada)",
-    "address": {
-      "address1": "123 Main st",
-      "city": "Vancouver",
-      "zipcode": "V6T2J3",
-      "country_code": "CA",
-      "state_code": "BC"
-    }
-  }
+    "tzinfo": {
+        "name": "Pacific Time (US & Canada)",
+        "identifier": "America/Los_Angeles",
+        "offset": -28800,
+        "formatted_offset": "-08:00"
+    },
+    "address": null
 }
 ```
 
-## Time zones
+> Create venue (utilizing all parameters)
 
-Use the first column in the table below to determine which time zone to submit.
+```shell
+curl -X POST \
+  https://app.guestmanager.com/api/public/v2/venues \
+  -H 'Authorization: Token abcdefg' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "venue": {
+        "name": "The Rio Theatre",
+        "description": "its around the corner",
+        "time_zone": "Pacific Time (US & Canada)",
+        "address": {
+            "address1": "123 Main st",
+            "city": "Vancouver",
+            "zipcode": "V6T2J3",
+            "country_code": "CA",
+            "state_code": "BC"
+        }
+    }
+}'
+```
 
-Name | TZ | UTC Offset
-------- | --------------- | ---------------
-International Date Line West | Etc/GMT+12 | -12:00
-American Samoa | Pacific/Pago_Pago | -11:00
-Midway Island | Pacific/Midway | -11:00
-Hawaii | Pacific/Honolulu | -10:00
-Alaska | America/Juneau | -09:00
-Pacific Time (US & Canada) | America/Los_Angeles | -08:00
-Tijuana | America/Tijuana | -08:00
-Arizona | America/Phoenix | -07:00
-Chihuahua | America/Chihuahua | -07:00
-Mazatlan | America/Mazatlan | -07:00
-Mountain Time (US & Canada) | America/Denver | -07:00
-Central America | America/Guatemala | -06:00
-Central Time (US & Canada) | America/Chicago | -06:00
-Guadalajara | America/Mexico_City | -06:00
-Mexico City | America/Mexico_City | -06:00
-Monterrey | America/Monterrey | -06:00
-Saskatchewan | America/Regina | -06:00
-Bogota | America/Bogota | -05:00
-Eastern Time (US & Canada) | America/New_York | -05:00
-Indiana (East) | America/Indiana/Indianapolis | -05:00
-Lima | America/Lima | -05:00
-Quito | America/Lima | -05:00
-Atlantic Time (Canada) | America/Halifax | -04:00
-Caracas | America/Caracas | -04:00
-Georgetown | America/Guyana | -04:00
-La Paz | America/La_Paz | -04:00
-Puerto Rico | America/Puerto_Rico | -04:00
-Santiago | America/Santiago | -04:00
-Newfoundland | America/St_Johns | -03:30
-Brasilia | America/Sao_Paulo | -03:00
-Buenos Aires | America/Argentina/Buenos_Aires | -03:00
-Greenland | America/Godthab | -03:00
-Montevideo | America/Montevideo | -03:00
-Mid-Atlantic | Atlantic/South_Georgia | -02:00
-Azores | Atlantic/Azores | -01:00
-Cape Verde Is. | Atlantic/Cape_Verde | -01:00
-Casablanca | Africa/Casablanca | +00:00
-Dublin | Europe/Dublin | +00:00
-Edinburgh | Europe/London | +00:00
-Lisbon | Europe/Lisbon | +00:00
-London | Europe/London | +00:00
-Monrovia | Africa/Monrovia | +00:00
-UTC | Etc/UTC | +00:00
-Amsterdam | Europe/Amsterdam | +01:00
-Belgrade | Europe/Belgrade | +01:00
-Berlin | Europe/Berlin | +01:00
-Bern | Europe/Zurich | +01:00
-Bratislava | Europe/Bratislava | +01:00
-Brussels | Europe/Brussels | +01:00
-Budapest | Europe/Budapest | +01:00
-Copenhagen | Europe/Copenhagen | +01:00
-Ljubljana | Europe/Ljubljana | +01:00
-Madrid | Europe/Madrid | +01:00
-Paris | Europe/Paris | +01:00
-Prague | Europe/Prague | +01:00
-Rome | Europe/Rome | +01:00
-Sarajevo | Europe/Sarajevo | +01:00
-Skopje | Europe/Skopje | +01:00
-Stockholm | Europe/Stockholm | +01:00
-Vienna | Europe/Vienna | +01:00
-Warsaw | Europe/Warsaw | +01:00
-West Central Africa | Africa/Algiers | +01:00
-Zagreb | Europe/Zagreb | +01:00
-Zurich | Europe/Zurich | +01:00
-Athens | Europe/Athens | +02:00
-Bucharest | Europe/Bucharest | +02:00
-Cairo | Africa/Cairo | +02:00
-Harare | Africa/Harare | +02:00
-Helsinki | Europe/Helsinki | +02:00
-Jerusalem | Asia/Jerusalem | +02:00
-Kaliningrad | Europe/Kaliningrad | +02:00
-Kyiv | Europe/Kiev | +02:00
-Pretoria | Africa/Johannesburg | +02:00
-Riga | Europe/Riga | +02:00
-Sofia | Europe/Sofia | +02:00
-Tallinn | Europe/Tallinn | +02:00
-Vilnius | Europe/Vilnius | +02:00
-Baghdad | Asia/Baghdad | +03:00
-Istanbul | Europe/Istanbul | +03:00
-Kuwait | Asia/Kuwait | +03:00
-Minsk | Europe/Minsk | +03:00
-Moscow | Europe/Moscow | +03:00
-Nairobi | Africa/Nairobi | +03:00
-Riyadh | Asia/Riyadh | +03:00
-St. Petersburg | Europe/Moscow | +03:00
-Volgograd | Europe/Volgograd | +03:00
-Tehran | Asia/Tehran | +03:30
-Abu Dhabi | Asia/Muscat | +04:00
-Baku | Asia/Baku | +04:00
-Muscat | Asia/Muscat | +04:00
-Samara | Europe/Samara | +04:00
-Tbilisi | Asia/Tbilisi | +04:00
-Yerevan | Asia/Yerevan | +04:00
-Kabul | Asia/Kabul | +04:30
-Ekaterinburg | Asia/Yekaterinburg | +05:00
-Islamabad | Asia/Karachi | +05:00
-Karachi | Asia/Karachi | +05:00
-Tashkent | Asia/Tashkent | +05:00
-Chennai | Asia/Kolkata | +05:30
-Kolkata | Asia/Kolkata | +05:30
-Mumbai | Asia/Kolkata | +05:30
-New Delhi | Asia/Kolkata | +05:30
-Sri Jayawardenepura | Asia/Colombo | +05:30
-Kathmandu | Asia/Kathmandu | +05:45
-Almaty | Asia/Almaty | +06:00
-Astana | Asia/Dhaka | +06:00
-Dhaka | Asia/Dhaka | +06:00
-Urumqi | Asia/Urumqi | +06:00
-Rangoon | Asia/Rangoon | +06:30
-Bangkok | Asia/Bangkok | +07:00
-Hanoi | Asia/Bangkok | +07:00
-Jakarta | Asia/Jakarta | +07:00
-Krasnoyarsk | Asia/Krasnoyarsk | +07:00
-Novosibirsk | Asia/Novosibirsk | +07:00
-Beijing | Asia/Shanghai | +08:00
-Chongqing | Asia/Chongqing | +08:00
-Hong Kong | Asia/Hong_Kong | +08:00
-Irkutsk | Asia/Irkutsk | +08:00
-Kuala Lumpur | Asia/Kuala_Lumpur | +08:00
-Perth | Australia/Perth | +08:00
-Singapore | Asia/Singapore | +08:00
-Taipei | Asia/Taipei | +08:00
-Ulaanbaatar | Asia/Ulaanbaatar | +08:00
-Osaka | Asia/Tokyo | +09:00
-Sapporo | Asia/Tokyo | +09:00
-Seoul | Asia/Seoul | +09:00
-Tokyo | Asia/Tokyo | +09:00
-Yakutsk | Asia/Yakutsk | +09:00
-Adelaide | Australia/Adelaide | +09:30
-Darwin | Australia/Darwin | +09:30
-Brisbane | Australia/Brisbane | +10:00
-Canberra | Australia/Melbourne | +10:00
-Guam | Pacific/Guam | +10:00
-Hobart | Australia/Hobart | +10:00
-Melbourne | Australia/Melbourne | +10:00
-Port Moresby | Pacific/Port_Moresby | +10:00
-Sydney | Australia/Sydney | +10:00
-Vladivostok | Asia/Vladivostok | +10:00
-Magadan | Asia/Magadan | +11:00
-New Caledonia | Pacific/Noumea | +11:00
-Solomon Is. | Pacific/Guadalcanal | +11:00
-Srednekolymsk | Asia/Srednekolymsk | +11:00
-Auckland | Pacific/Auckland | +12:00
-Fiji | Pacific/Fiji | +12:00
-Kamchatka | Asia/Kamchatka | +12:00
-Marshall Is. | Pacific/Majuro | +12:00
-Wellington | Pacific/Auckland | +12:00
-Chatham Is. | Pacific/Chatham | +12:45
-Nuku'alofa | Pacific/Tongatapu | +13:00
-Samoa | Pacific/Apia | +13:00
-Tokelau Is. | Pacific/Fakaofo | +13:00
+> Response
+
+```json
+{
+    "id": 3246,
+    "name": "The Rio Theatre",
+    "description": "its around the corner",
+    "slug": "the-rio-theatre-7ea12f80-35c0-4599-bdfc-3ef7c7e9f658",
+    "created_at": "2019-01-07T20:35:48.650021Z",
+    "updated_at": "2019-01-07T20:35:48.650021Z",
+    "time_zone": "Pacific Time (US & Canada)",
+    "tzinfo": {
+        "name": "Pacific Time (US & Canada)",
+        "identifier": "America/Los_Angeles",
+        "offset": -28800,
+        "formatted_offset": "-08:00"
+    },
+    "address": {
+        "id": 144350,
+        "address1": "123 Main st",
+        "city": "Vancouver",
+        "zipcode": "V6T2J3",
+        "state_name": "British Columbia",
+        "state_code": "BC",
+        "country_name": "Canada",
+        "country_code": "CA"
+    }
+}
+```
+
+### Parameters
+
+Parameter                          | Type        | Required        | Description
+---------------------------------- | ----------- | --------------- | -------------------------
+`venue[name]`                      | `string`    | Yes             | Name of the venue.
+`venue[description]`               | `string`    | No              | Any additional details about the venue.
+`venue[time_zone]`                 | `string`    | Yes             | Time zone. See Object reference for list of time zones.
+`venue[address]`                   | `object`    | No              | Venue address. See Object reference for parameters.
