@@ -521,6 +521,7 @@ Parameter                        | Type          | Required  | Description
 
 * Don't forget to set the multipart boundary in the `content-type` header. More info: <https://stackoverflow.com/questions/3508338/what-is-the-boundary-in-multipart-form-data/20321259#20321259>
 * How to send multi-part requests with Postman: <https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request>
+
 ## Update event list
 
 <div class="api-endpoint">
