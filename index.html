@@ -290,6 +290,9 @@
                   <li>
                     <a href="#events-create-event-list" class="toc-h2 toc-link" data-title="Create event list">Create event list</a>
                   </li>
+                  <li>
+                    <a href="#events-update-event-list" class="toc-h2 toc-link" data-title="Update event list">Update event list</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2013,10 +2016,9 @@ recommended to find or create the ticket type separately, and then add it to the
 
 <ul>
 <li>Don&#39;t forget to set the multipart boundary in the <code>content-type</code> header. More info: <a href="https://stackoverflow.com/questions/3508338/what-is-the-boundary-in-multipart-form-data/20321259#20321259">https://stackoverflow.com/questions/3508338/what-is-the-boundary-in-multipart-form-data/20321259#20321259</a></li>
-<li>How to send multi-part requests with Postman: <a href="https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request">https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request</a>
-## Update event list</li>
+<li>How to send multi-part requests with Postman: <a href="https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request">https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request</a></li>
 </ul>
-
+<h2 id='events-update-event-list'>Update event list</h2>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-patch">PATCH</i>
@@ -2037,7 +2039,7 @@ recommended to find or create the ticket type separately, and then add it to the
         "name": "new name"
     }
 }'</span>
-</code></pre><h3 id='events-create-event-list-request-parameters'>Request parameters</h3>
+</code></pre><h3 id='events-update-event-list-request-parameters'>Request parameters</h3>
 <p>See parameters for creating a list.</p>
 <h1 id='ticket-types'>Ticket types</h1>
 <p>Ticket types are composed of two data models: ticket type, and event ticket type. A ticket type is a standalone entity that can be re-used for many different events.
