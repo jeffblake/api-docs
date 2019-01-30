@@ -464,3 +464,87 @@ Parameter                        | Type        | Required  | Default | Descripti
 `fields`                         | `string`    | *no*     | `all` | Comma separated list of attributes to return.
 `include`                        | `string`    | *no*     | ` `  | Relationships to include.
 `images[list][image]`            | `object`    | *no*     | ` `  | Customize the image (resize, etc). See *Topics* for details.
+
+## Create event list
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/events/{event-id}/lists</h6>
+	</div>
+</div>
+
+> Create event list
+
+```shell
+curl -X POST \
+  https://app.guestmanager.com/api/public/v2/events/71339/lists \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Token abcdefg' \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -F 'list[image]=@/path/to/file/image.png' \
+  -F 'list[name]=New list' \
+  -F 'list[description]=blah blah'
+```
+
+> Response
+
+```json
+{
+    "id": 1018378,
+    "name": "New list",
+    "description": "blah blah",
+    "slug": "new-list-5839e45b-27ee-49f4-9de6-85d285b75191",
+    "status": "visible",
+    "permanent_list_id": null,
+    "image": {
+        "original": "https://app.guestmanager.com/....png"
+    },
+    "permanent_list": null,
+    "setting": {
+        "description": "<p>...</p>",
+        "image": {
+            "original": "https://app.guestmanager.com/...jpg"
+        }
+    }
+}
+```
+
+
+### Request parameters
+
+Parameter                        | Type          | Required  | Description
+-------------------------------- | ------------- | --------- | -----------
+`list[name]`                     | `string`      | *yes*     | Name of the list.
+`list[image]`                    | `multipart`   | *no*      | If providing an image, the API request must be in multipart. Only submit JPG images, or non-interlaced PNGs.
+`list[description]`              | `string`      | *no*      | Describe the list. This content can be dynamically inserted onto a ticket.
+
+* Don't forget to set the multipart boundary in the `content-type` header. More info: <https://stackoverflow.com/questions/3508338/what-is-the-boundary-in-multipart-form-data/20321259#20321259>
+* How to send multi-part requests with Postman: <https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request>
+## Update event list
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-patch">PATCH</i>
+		<h6>/events/{event-id}/lists/{id}</h6>
+	</div>
+</div>
+
+> Update event list
+
+```shell
+curl -X PATCH \
+  https://app.guestmanager.com/api/public/v2/events/71339/lists/1018382 \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Token abcdef' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"list": {
+		"name": "new name"
+	}
+}'
+```
+
+### Request parameters
+
+See parameters for creating a list.

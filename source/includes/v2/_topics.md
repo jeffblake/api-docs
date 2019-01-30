@@ -182,6 +182,7 @@ Validation errors occur when a provided attribute does not meet the validation r
             {
                 "field": "email",
                 "label": "Email",
+                "name": null,
                 "code": "invalid",
                 "message": "is invalid"
             }
@@ -228,22 +229,25 @@ Validation errors occur when a provided attribute does not meet the validation r
 
 ### Error response
 
-Attribute             | Type     | Meaning
---------------------- | -------- | -----------------
-`type`                | string   | always `validation_error`
-`message`             | string   | All of the validation errors concatenated into a single message.
-`errors`              | object   | Details on the individual validation errors. Look for the key relevant to the resource you are modifying. E.g. for Orders, the key is `order`
-`errors[attributes]`  | array    | Errors on the object itself.
-`errors[associations]`| hash     | Errors on associated objects.
+Attribute             | Type       | Meaning
+--------------------- | ---------- | -----------------
+`type`                | `string`   | always `validation_error`
+`message`             | `string`   | All of the validation errors concatenated into a single message.
+`errors`              | `object`   | Details on the individual validation errors. Look for the key relevant to the resource you are modifying. E.g. for Orders, the key is `order`
+`errors[attributes]`  | `array`    | Errors on the object itself.
+`errors[associations]`| `hash`     | Errors on associated objects.
 
 ### Error node
 
-Attribute             | Type     | Meaning
---------------------- | -------- | -----------------
-`attribute`           | string   | The attribute on the model that triggered the error.
-`label`               | string   | A human readable version of the attribute.
-`code`                | string   | The type of validation error. See below for possibile codes.
-`message`             | string   | A human readable version of the `code`
+Attribute             | Type       | Meaning
+--------------------- | ---------- | -----------------
+`attribute`           | `string`   | The attribute on the model that triggered the error.
+`label`               | `string`   | A human readable version of the attribute name.
+`name`                | `string`   | If the relevant attribute is a relationship, we will add the name of that record here.
+`code`                | `string`   | The type of validation error. See below for possibile codes.
+`message`             | `string`   | A human readable version of the `code`
+`detail`              | `object`   | Any extra attributes that may be useful, depending on the error.
+
 
 ### Association errors
 When you are submitting nested parameters, e.g. `tickets` with an `Order`, the errors associated to those resources are specified in an `array`, in the `errors` attribute, with the key being the name of the association. E.g. for `tickets` submitted along with an order, the key to access those is `errors.associations.tickets`
