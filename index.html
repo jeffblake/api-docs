@@ -355,6 +355,9 @@
                     <a href="#orders-update-order" class="toc-h2 toc-link" data-title="Update order">Update order</a>
                   </li>
                   <li>
+                    <a href="#orders-void-order" class="toc-h2 toc-link" data-title="Void order">Void order</a>
+                  </li>
+                  <li>
                     <a href="#orders-apply-coupon-code" class="toc-h2 toc-link" data-title="Apply coupon code">Apply coupon code</a>
                   </li>
                   <li>
@@ -3436,6 +3439,35 @@ Please note that once an order is created, the tickets are reserved for 15 minut
 <td>Orders created through the API must be in <code>guest_checkout</code> mode.</td>
 </tr>
 </tbody></table>
+<h2 id='orders-void-order'>Void order</h2>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/orders/{id}/void</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>Void order request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://app.guestmanager.com/api/public/v2/orders/214894/void <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Token abcdefg'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Void order response (details omitted)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">214894</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GMBIU2EZ7K9D46"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voided"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='orders-void-order-request-parameters'>Request parameters</h3>
+<p><em>None required</em></p>
 <h2 id='orders-apply-coupon-code'>Apply coupon code</h2>
 <p>Attempts to apply a coupon/promo code to the order.</p>
 
