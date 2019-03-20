@@ -500,6 +500,8 @@ Exceptions vary in format. Please see the right hand panel for examples.
 
 ## Void order
 
+Incomplete orders, non-voided orders, and completed orders that do not have a credit card payment on them may be voided. Completed orders with cash or check
+payments applied may be voided.
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
