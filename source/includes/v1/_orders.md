@@ -498,6 +498,42 @@ Exceptions vary in format. Please see the right hand panel for examples.
 `cannot_modify`             | Order is in an uneditable state. (e.g. `complete`)
 `guest_checkout_required`   | Orders created through the API must be in `guest_checkout` mode.
 
+## Void order
+
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-patch">PATCH</i>
+		<h6>/orders/{id}/void</h6>
+	</div>
+</div>
+
+> Void order request
+
+```shell
+curl -X PATCH \
+  https://app.guestmanager.com/api/public/v2/orders/214894/void \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Token abcdefg' \
+  -H 'Content-Type: application/json' \
+}'
+```
+
+> Void order response (details omitted)
+
+```json
+{
+    "id": 214894,
+    "number": "GMBIU2EZ7K9D46",
+    "state": "voided",
+    ...
+}
+```
+
+### Request parameters
+
+*None required*
+
 ## Apply coupon code
 Attempts to apply a coupon/promo code to the order.
 
