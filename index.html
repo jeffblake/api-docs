@@ -6670,6 +6670,21 @@ curl -X POST <span class="se">\</span>
 <td>Use a custom pre-created email template (optional).</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+  When using a custom subject, body, or email template, you can access the properties of the tickets dynamically using our templating language.
+  The <code>tickets</code> array is accessible. For example, you could do
+  <br>
+  <code>
+    {% for ticket in tickets %}
+    <br>
+      Your {{ ticket.ticket_type.name }} to {{ ticket.event.name }} is attached!
+      <br>
+    {% endfor %}
+    <br>
+  </code>
+  Learn more here: <a href="https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email" target="_blank">https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email</a>
+</aside>
 <h3 id='tickets-email-multiple-tickets-response'>Response</h3>
 <table><thead>
 <tr>
