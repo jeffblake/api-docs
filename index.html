@@ -455,6 +455,9 @@
                     <a href="#tickets-email-ticket" class="toc-h2 toc-link" data-title="Email ticket">Email ticket</a>
                   </li>
                   <li>
+                    <a href="#tickets-email-multiple-tickets" class="toc-h2 toc-link" data-title="Email multiple tickets">Email multiple tickets</a>
+                  </li>
+                  <li>
                     <a href="#tickets-void-ticket" class="toc-h2 toc-link" data-title="Void ticket">Void ticket</a>
                   </li>
               </ul>
@@ -6586,7 +6589,107 @@ curl -X POST <span class="se">\</span>
   https://app.guestmanager.com/api/public/v2/tickets/2589827/email <span class="se">\</span>
   -H <span class="s1">'Authorization: Token abcedfg'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-</code></pre><h2 id='tickets-void-ticket'>Void ticket</h2>
+</code></pre><h2 id='tickets-email-multiple-tickets'>Email multiple tickets</h2>
+<p>Send multiple tickets in a single email.</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-patch">PATCH</i>
+        <h6>/tickets/bulk_email</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>Email multiple tickets</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://app.guestmanager.com/api/public/v2/tickets/bulk_email <span class="se">\</span>
+  -H <span class="s1">'Accept: */*'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Token abcdefg'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "ids": "2368510,2607936",
+    "email": "jeff@test.com",
+  "subject": "Custom subject line"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Sample response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1223527</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-16T00:13:14.313530Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-16T00:13:14.313530Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticket_multiple_email"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeff@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unopened"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"delivery_error_detail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"click_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"open_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom subject"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='tickets-email-multiple-tickets-request-parameters'>Request parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ids</code></td>
+<td><code>array</code>, or comma separated <code>string</code></td>
+<td><em>yes</em></td>
+<td>The ID numbers of the tickets to include in the email.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td><em>yes</em></td>
+<td>The email address to send the tickets to.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td><em>no</em></td>
+<td>Optional custom subject line.</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><code>string</code></td>
+<td><em>no</em></td>
+<td>Optional custom email body. HTML is supported.</td>
+</tr>
+<tr>
+<td><code>email_template_id</code></td>
+<td><code>integer</code></td>
+<td><em>no</em></td>
+<td>Use a custom pre-created email template (optional).</td>
+</tr>
+</tbody></table>
+<h3 id='tickets-email-multiple-tickets-response'>Response</h3>
+<table><thead>
+<tr>
+<th>Response code</th>
+<th>Successful?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Yes</td>
+<td>Email is queued for delivery. an <code>Email</code> record is returned in the API call.</td>
+</tr>
+<tr>
+<td><code>422</code></td>
+<td>No</td>
+<td>Invalid ticket ID&#39;s, or email address.</td>
+</tr>
+</tbody></table>
+<h2 id='tickets-void-ticket'>Void ticket</h2>
 <p>Voiding a ticket will change the status to <code>invalidated</code> and send an email to the ticket holder notifying them that their ticket is no longer valid.</p>
 
 <div class="api-endpoint">
