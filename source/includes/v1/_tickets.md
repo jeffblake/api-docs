@@ -422,6 +422,9 @@ curl -X PATCH \
 }
 ```
 
+<aside class="warning">
+  Please note that this endpoint allows you to send any of your tickets to *any* email address. The ticket holder email address plays no role in this endpoint.
+</aside>
 
 ### Request parameters
 Parameter              | Type                                  | Required     | Description
@@ -436,13 +439,10 @@ Parameter              | Type                                  | Required     | 
   When using a custom subject, body, or email template, you can access the properties of the tickets dynamically using our templating language.
   The <code>tickets</code> array is accessible. For example, you could do
   <br>
-  <code>
+  <code style="display:block;white-space:pre-wrap">
     {% for ticket in tickets %}
-    <br>
       Your {{ ticket.ticket_type.name }} to {{ ticket.event.name }} is attached!
-      <br>
     {% endfor %}
-    <br>
   </code>
   Learn more here: <a href="https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email" target="_blank">https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email</a>
 </aside>
