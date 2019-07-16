@@ -378,6 +378,67 @@ curl -X PATCH \
   -H 'Content-Type: application/json' \
 ```
 
+## Email multiple tickets
+Send multiple tickets in a single email.
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-patch">PATCH</i>
+		<h6>/tickets/bulk_email</h6>
+	</div>
+</div>
+
+> Email multiple tickets
+
+```shell
+curl -X PATCH \
+  https://app.guestmanager.com/api/public/v2/tickets/bulk_email \
+  -H 'Accept: */*' \
+  -H 'Authorization: Token abcdefg' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": "2368510,2607936",
+	"email": "jeff@test.com",
+  "subject": "Custom subject line"
+}'
+```
+
+> Sample response
+
+```json
+{
+    "id": 1223527,
+    "created_at": "2019-07-16T00:13:14.313530Z",
+    "updated_at": "2019-07-16T00:13:14.313530Z",
+    "type": "ticket_multiple_email",
+    "email": "jeff@test.com",
+    "state": "draft",
+    "status": "unopened",
+    "delivery_error_detail": null,
+    "click_count": 0,
+    "open_count": 0,
+    "subject": "My custom subject",
+    "body": null
+}
+```
+
+### Request parameters
+Parameter              | Type                                  | Required     | Description
+---------------------- | ------------------------------------- | ------------ | --------------
+`ids`                  | `array`, or comma separated `string`  | *yes*        | The ID numbers of the tickets to include in the email.
+`email`                | `string`                              | *yes*        | The email address to send the tickets to.
+`subject`              | `string`                              | *no*         | Optional custom subject line.
+`body`                 | `string`                              | *no*         | Optional custom email body. HTML is supported.
+`email_template_id`    | `integer`                             | *no*         | Use a custom pre-created email template (optional).
+
+### Response
+
+Response code     | Successful?   | Description
+--------------    | ------------  | -------------
+`200`             | Yes           | Email is queued for delivery. an `Email` record is returned in the API call.
+`422`             | No            | Invalid ticket ID's, or email address.
+
+
 ## Void ticket
 Voiding a ticket will change the status to `invalidated` and send an email to the ticket holder notifying them that their ticket is no longer valid.
 
