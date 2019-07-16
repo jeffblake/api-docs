@@ -422,6 +422,7 @@ curl -X PATCH \
 }
 ```
 
+
 ### Request parameters
 Parameter              | Type                                  | Required     | Description
 ---------------------- | ------------------------------------- | ------------ | --------------
@@ -430,6 +431,21 @@ Parameter              | Type                                  | Required     | 
 `subject`              | `string`                              | *no*         | Optional custom subject line.
 `body`                 | `string`                              | *no*         | Optional custom email body. HTML is supported.
 `email_template_id`    | `integer`                             | *no*         | Use a custom pre-created email template (optional).
+
+<aside class="notice">
+  When using a custom subject, body, or email template, you can access the properties of the tickets dynamically using our templating language.
+  The <code>tickets</code> array is accessible. For example, you could do
+  <br>
+  <code>
+    {% for ticket in tickets %}
+    <br>
+      Your {{ ticket.ticket_type.name }} to {{ ticket.event.name }} is attached!
+      <br>
+    {% endfor %}
+    <br>
+  </code>
+  Learn more here: <a href="https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email" target="_blank">https://docs.guestmanager.com/en/articles/2557603-customizing-the-ticket-email</a>
+</aside>
 
 ### Response
 
