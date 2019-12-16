@@ -102,7 +102,7 @@ curl -X POST \
     "status": "valid",
     "name": null,
     "email": null,
-    "barcode_id": "0574501952988944",
+    "barcode": "0574501952988944",
     "note": null,
     "event_id": 71389,
     "ticket_type_id": 3937,
@@ -168,7 +168,7 @@ curl -X POST \
     "status": "valid",
     "name": null,
     "email": null,
-    "barcode_id": "8710305528892125",
+    "barcode": "8710305528892125",
     "note": null,
     "event_id": 71389,
     "ticket_type_id": 3937,
@@ -251,7 +251,7 @@ Parameter                          | Type        | Required                     
 `ticket[ticket_type_id]`           | `int`       | No, if `event_ticket_type_id` is provided.                | The ticket type to assign this ticket to.
 `ticket[event_id]`                 | `int`       | No, if `event_ticket_type_id` is provided.                | The event to assign this ticket to.
 `ticket[dispatch]`                 | `boolean`   | No                                                        | If `true`, an email is dispatched to the owner of the ticket, with the ticket as a PDF attachment.
-`ticket[barcode_id]`               | `string`    | No                                                        | A barcode number will be automatically generated if one is not provided.
+`ticket[barcode]`               | `string`    | No                                                        | A barcode number will be automatically generated if one is not provided.
 `ticket[list_id]`                  | `int`       | No                                                        | The list to assign this ticket to. If not provided, defaults to the company master list.
 `ticket[permanent_list_id]`        | `int`       | No                                                        | The permanent list. If provided, the event specific `list_id` will be automatically set.
 `ticket[custom_fields]`            | `array`     | No                                                        | User defined custom fields. For each object, provide `value` and either `field_id` or `label`. See example.
@@ -292,7 +292,7 @@ curl -X PATCH \
     "status": "valid",
     "name": "New name",
     "email": "newemail@gmail.com",
-    "barcode_id": "8710305528892125",
+    "barcode": "8710305528892125",
     "note": null,
     "event_id": 71389,
     "ticket_type_id": 3937,

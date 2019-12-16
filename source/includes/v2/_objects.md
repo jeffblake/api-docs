@@ -347,7 +347,7 @@ Field                          | Type       | Description
     "status": "redeemed",
     "name": "Joe Jordan",
     "email": "joe.jordan@****.co",
-    "barcode_id": "8894042401339101",
+    "barcode": "8894042401339101",
     "note": null,
     "event_id": 68718,
     "ticket_type_id": 4329,
@@ -421,8 +421,8 @@ Attribute                     | Type      | Description
 `checkin_at`                  | `datetime`| When the ticket was scanned or checked in. <i class="label label-info">read-only</i>
 `dispatched_at`               | `datetime`| When the ticket was delivered to the contact (by email) <i class="label label-info">read-only</i>
 `downloaded_at`               | `datetime`| When the contact downloaded their ticket. <i class="label label-info">read-only</i>
-`barcode_id`                  | `string`  | An event-specific barcode identifier that you can specify to scan the ticket.
-`number`                      | `string`  | Globally unique identifier, used to generate barcode and validate ticket (if `barcode_id` not provided). <i class="label label-info">read-only</i>
+`barcode`                  | `string`  | An event-specific barcode identifier that you can specify to scan the ticket.
+`number`                      | `string`  | Globally unique identifier, used to generate barcode and validate ticket (if `barcode` not provided). <i class="label label-info">read-only</i>
 `name`                        | `string`  | Name on the ticket. Usually `null`, when `contact_id` is provided.
 `email`                       | `string`  | Email on the ticket. Usually `null`, when `contact_id` is provided.
 `note`                        | `string`  | Note to display to staff at check-in.
