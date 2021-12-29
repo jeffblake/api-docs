@@ -433,10 +433,10 @@ Attribute                     | Type      | Description
 
 Status                         | Description
 ------------------------------ | --------------------
-`valid`                        | Ticket is valid and can be checked in or scanned.
-`redeemed`                     | Ticket was checked in and cannot be scanned again. See `checkin_at` for timestamp of when scan occurred.
-`out`                          | Ticket was scanned out (after having been previously `redeemed`)
-`invalidated`                  | No longer usable, but not deleted.
+`confirmed`                    | Ticket is valid and can be checked in or scanned.
+`checked_in`                   | Ticket was checked in and cannot be scanned again. See `checkin_at` for timestamp of when scan occurred.
+`checked_out`                  | Ticket was scanned out (after having been previously `redeemed`)
+`voided`                       | No longer usable, but not deleted.
 `transferred`                  | Contact transferred ticket to another contact. No longer scan eligible. A new ticket was created and issued to replace this one.
 `pending`                      | When a contact creates an `Order`, tickets are `pending` until the order checkout process is completed.
 
